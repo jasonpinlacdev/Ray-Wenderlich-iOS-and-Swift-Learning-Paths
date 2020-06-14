@@ -184,16 +184,16 @@ struct ContentView: View {
     }
     
     
-    func alertTitle() -> String{
+    func alertTitle() -> String {
         switch pointsForCurrentRound() {
-        case 100:
-            return "Bullseye"
-        case 97..<100:
-            return "So close"
+        case 200:
+            return "Bullseye!"
+        case 97..<150:
+            return "So close!"
         case 90..<97:
-            return "Almost"
+            return "Not Bad."
         default:
-            return "Not even close"
+            return "Not Even Close."
         }
     }
     
