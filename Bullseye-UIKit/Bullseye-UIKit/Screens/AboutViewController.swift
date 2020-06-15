@@ -60,7 +60,7 @@ class AboutViewController: UIViewController {
                            """
         
         let aboutTitleLabel = UILabel()
-        aboutTitleLabel.font = UIFont.systemFont(ofSize: 26)
+        aboutTitleLabel.font = UIFont(name: "Arial Rounded MT Bold", size: 26)
         aboutTitleLabel.text = aboutTitle
         aboutTitleLabel.textColor = UIColor.black
         aboutTitleLabel.textAlignment = .center
@@ -68,7 +68,7 @@ class AboutViewController: UIViewController {
         aboutTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         let aboutBodyLabel = UILabel()
-        aboutBodyLabel.font = UIFont.systemFont(ofSize: 26)
+        aboutBodyLabel.font = UIFont(name: "Arial Rounded MT Bold", size: 26)
         aboutBodyLabel.text = aboutBody
         aboutBodyLabel.textColor = UIColor.black
         aboutBodyLabel.textAlignment = .center
@@ -84,7 +84,7 @@ class AboutViewController: UIViewController {
             aboutTitleLabel.topAnchor.constraint(equalTo: beigeContainer.topAnchor, constant: 25),
             aboutTitleLabel.centerXAnchor.constraint(equalTo: beigeContainer.centerXAnchor),
             
-            aboutBodyLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: -10),
+            aboutBodyLabel.topAnchor.constraint(equalTo: aboutTitleLabel.bottomAnchor, constant: -5),
             aboutBodyLabel.centerXAnchor.constraint(equalTo: beigeContainer.centerXAnchor),
             aboutBodyLabel.leadingAnchor.constraint(equalTo: beigeContainer.leadingAnchor, constant: 20),
             aboutBodyLabel.trailingAnchor.constraint(equalTo: beigeContainer.trailingAnchor, constant: -20),

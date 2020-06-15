@@ -15,7 +15,7 @@ class BEDescriptionLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         self.text = text
         textAlignment = .center
-        font = UIFont.systemFont(ofSize: 22)
+        font = UIFont(name: "Arial Rounded MT Bold", size: 22)
         textColor = .white
         setShadow()
     }

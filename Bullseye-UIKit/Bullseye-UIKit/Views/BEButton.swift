@@ -18,8 +18,11 @@ class BEButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         setTitle(title, for: .normal)
-        setTitleColor(.systemGray4, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        setTitleColor(UIColor(red: 96.0/255.0, green: 30.0/255.0, blue: 0, alpha: 1.0), for: .normal)
+        setTitleShadowColor(UIColor(red: 1, green: 1, blue: 1, alpha: 0.5), for: .normal)
+        titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+        reversesTitleShadowWhenHighlighted = true
+        titleLabel?.font = UIFont(name: "Arial Rounded MT Bold", size: 24)
         addTarget(target, action: action, for: forEvent)
     }
     

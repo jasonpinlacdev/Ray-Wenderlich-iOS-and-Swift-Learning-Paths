@@ -128,7 +128,7 @@ class BullseyeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -50),
             backgroundImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
@@ -152,7 +152,7 @@ class BullseyeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             targetDescriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 35),
-            targetDescriptionLabel.widthAnchor.constraint(equalToConstant: 400),
+            targetDescriptionLabel.widthAnchor.constraint(equalToConstant: 425),
             targetDescriptionLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: -50),
             
             targetNumberLabel.centerYAnchor.constraint(equalTo: targetDescriptionLabel.centerYAnchor),

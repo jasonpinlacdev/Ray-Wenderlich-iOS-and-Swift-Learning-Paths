@@ -15,7 +15,7 @@ class BEValueLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         self.text = value
         textAlignment = .center
-        font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+        font = UIFont(name: "Arial Rounded MT Bold", size: fontSize)
         self.textColor = textColor
         setShadow()
     }

@@ -12,10 +12,11 @@ class BESlider: UISlider {
     
     init() {
         super.init(frame: .zero)
-        minimumTrackTintColor = .systemGreen
-        maximumTrackTintColor = .white
-//        setMinimumTrackImage(UIImage(named: "SliderTrackLeft"), for: .normal)
-//        setMaximumTrackImage(UIImage(named: "SliderTrackRight"), for: .normal)
+//        minimumTrackTintColor = .systemGreen
+//        maximumTrackTintColor = .white
+        
+        setMinimumTrackImage(UIImage(named: "SliderTrackLeft")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)), for: .normal)
+        setMaximumTrackImage(UIImage(named: "SliderTrackRight")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)), for: .normal)
 //
         setThumbImage(UIImage(named: "SliderThumb-Normal"), for: .normal)
         setThumbImage(UIImage(named: "SliderThumb-Highlighted"), for: .highlighted)
@@ -25,16 +26,16 @@ class BESlider: UISlider {
         setValue(50.0, animated: false)
         translatesAutoresizingMaskIntoConstraints = false
         
-        setShadow()
+//        setShadow()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func trackRect(forBounds bounds: CGRect) -> CGRect {
-        var newRect = super.trackRect(forBounds: bounds)
-        newRect.size.height = 7.5
-        return newRect
-    }
+//    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+//        var newRect = super.trackRect(forBounds: bounds)
+//        newRect.size.height = 7.5
+//        return newRect
+//    }
 }
