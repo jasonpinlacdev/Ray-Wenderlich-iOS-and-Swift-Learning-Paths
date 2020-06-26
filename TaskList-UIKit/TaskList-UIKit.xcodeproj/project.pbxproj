@@ -19,6 +19,10 @@
 		E1B8E68924A45BC500EFDADA /* TLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68824A45BC500EFDADA /* TLTaskDetailViewController.swift */; };
 		E1B8E68B24A54C2000EFDADA /* TaskBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68A24A54C2000EFDADA /* TaskBank.swift */; };
 		E1B8E68D24A5639800EFDADA /* TLCreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68C24A5639800EFDADA /* TLCreateTaskViewController.swift */; };
+		E1B8E68F24A69B0200EFDADA /* TLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68E24A69B0200EFDADA /* TLButton.swift */; };
+		E1B8E69124A69B3600EFDADA /* TLContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69024A69B3600EFDADA /* TLContainerView.swift */; };
+		E1B8E69324A69B5D00EFDADA /* TLTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69224A69B5D00EFDADA /* TLTextField.swift */; };
+		E1B8E69524A69B8300EFDADA /* TLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69424A69B8300EFDADA /* TLLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		E1B8E68824A45BC500EFDADA /* TLTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTaskDetailViewController.swift; sourceTree = "<group>"; };
 		E1B8E68A24A54C2000EFDADA /* TaskBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBank.swift; sourceTree = "<group>"; };
 		E1B8E68C24A5639800EFDADA /* TLCreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLCreateTaskViewController.swift; sourceTree = "<group>"; };
+		E1B8E68E24A69B0200EFDADA /* TLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLButton.swift; sourceTree = "<group>"; };
+		E1B8E69024A69B3600EFDADA /* TLContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLContainerView.swift; sourceTree = "<group>"; };
+		E1B8E69224A69B5D00EFDADA /* TLTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTextField.swift; sourceTree = "<group>"; };
+		E1B8E69424A69B8300EFDADA /* TLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +78,7 @@
 			children = (
 				E1B8E67D24A42F5B00EFDADA /* Utility */,
 				E1B8E67724A4291F00EFDADA /* Models */,
-				E1B8E67624A4290F00EFDADA /* Views */,
+				E1B8E67624A4290F00EFDADA /* Custom Views */,
 				E1B8E67824A4292700EFDADA /* Controllers */,
 				E1B8E66024A424BA00EFDADA /* AppDelegate.swift */,
 				E1B8E66224A424BA00EFDADA /* SceneDelegate.swift */,
@@ -81,12 +89,16 @@
 			path = "TaskList-UIKit";
 			sourceTree = "<group>";
 		};
-		E1B8E67624A4290F00EFDADA /* Views */ = {
+		E1B8E67624A4290F00EFDADA /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				E1B8E68424A453F100EFDADA /* TLTableViewCell.swift */,
+				E1B8E69A24A69BC500EFDADA /* Labels */,
+				E1B8E69924A69BBA00EFDADA /* TextFields */,
+				E1B8E69824A69B9A00EFDADA /* Views */,
+				E1B8E69724A69B9000EFDADA /* Cells */,
+				E1B8E69624A69B8800EFDADA /* Buttons */,
 			);
-			path = Views;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		E1B8E67724A4291F00EFDADA /* Models */ = {
@@ -115,6 +127,46 @@
 				E1B8E68224A44F3100EFDADA /* UIView+Ext.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		E1B8E69624A69B8800EFDADA /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8E68E24A69B0200EFDADA /* TLButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		E1B8E69724A69B9000EFDADA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8E68424A453F100EFDADA /* TLTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E1B8E69824A69B9A00EFDADA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8E69024A69B3600EFDADA /* TLContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1B8E69924A69BBA00EFDADA /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8E69224A69B5D00EFDADA /* TLTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		E1B8E69A24A69BC500EFDADA /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8E69424A69B8300EFDADA /* TLLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,10 +240,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B8E68124A446AE00EFDADA /* Constants.swift in Sources */,
+				E1B8E69324A69B5D00EFDADA /* TLTextField.swift in Sources */,
 				E1B8E67A24A42AD800EFDADA /* TLTableViewController.swift in Sources */,
+				E1B8E69124A69B3600EFDADA /* TLContainerView.swift in Sources */,
+				E1B8E69524A69B8300EFDADA /* TLLabel.swift in Sources */,
 				E1B8E68324A44F3100EFDADA /* UIView+Ext.swift in Sources */,
 				E1B8E68B24A54C2000EFDADA /* TaskBank.swift in Sources */,
 				E1B8E68524A453F100EFDADA /* TLTableViewCell.swift in Sources */,
+				E1B8E68F24A69B0200EFDADA /* TLButton.swift in Sources */,
 				E1B8E66124A424BA00EFDADA /* AppDelegate.swift in Sources */,
 				E1B8E68724A4588700EFDADA /* TaskItem.swift in Sources */,
 				E1B8E66324A424BA00EFDADA /* SceneDelegate.swift in Sources */,

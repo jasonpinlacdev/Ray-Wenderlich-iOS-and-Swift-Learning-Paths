@@ -38,7 +38,6 @@ class TLTableViewController: UITableViewController {
         let createTaskViewController = TLCreateTaskViewController()
         createTaskViewController.createClosure = { [weak self] in
             self?.tableView.reloadData()
-            print("CREATE .CLOSURE")
         }
         createTaskViewController.modalTransitionStyle = .crossDissolve
         createTaskViewController.modalPresentationStyle = .overFullScreen
@@ -84,27 +83,32 @@ extension TLTableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
-            let task = TaskBank.tasks[indexPath.row]
-
-            if !task.isCompleted {
-                cell.accessoryType = .checkmark
-                task.isCompleted = true
-            } else if task.isCompleted {
-                cell.accessoryType = .none
-                task.isCompleted = false
-            }
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-   
+        //        if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
+        //            let task = TaskBank.tasks[indexPath.row]
+        //
+        //            if !task.isCompleted {
+        //                cell.accessoryType = .checkmark
+        //                task.isCompleted = true
+        //            } else if task.isCompleted {
+        //                cell.accessoryType = .none
+        //                task.isCompleted = false
+        //            }
+        //            tableView.deselectRow(at: indexPath, animated: true)
+        //        }
+        
+        let taskViewController = TLTaskDetailViewController(task: TaskBank.tasks[indexPath.row])
+        taskViewController.delegate = self
+        taskViewController.modalTransitionStyle = .crossDissolve
+        taskViewController.modalPresentationStyle = .overFullScreen
+        present(taskViewController, animated: true)
     }
     
     
-//        override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-//              let taskViewController = TLTaskViewController(task: tasks[indexPath.row], atIndexPath: indexPath)
-//                  taskViewController.delegate = self
-//                  navigationController?.pushViewController(taskViewController, animated: true)
-//        }
+    //        override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    //              let taskViewController = TLTaskViewController(task: tasks[indexPath.row], atIndexPath: indexPath)
+    //                  taskViewController.delegate = self
+    //                  navigationController?.pushViewController(taskViewController, animated: true)
+    //        }
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
