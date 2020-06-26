@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol TLCreateTaskViewControllerDelegate {
+    func createTaskTapped()
+}
+
+
 class TLCreateTaskViewController: UIViewController {
     
-    var createClosure: (() -> Void)?
+    var delegate: TLCreateTaskViewControllerDelegate?
     
     var containerView = TLContainerView(frame: .zero)
     var titleLabel = TLLabel(text: "Create Task")
@@ -71,7 +76,7 @@ class TLCreateTaskViewController: UIViewController {
     @objc func createButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
         TaskBank.tasks.append(TaskItem(description: text))
-        createClosure?()
+        delegate?.createTaskTapped()
         textField.resignFirstResponder()
         dismiss(animated: true)
     }

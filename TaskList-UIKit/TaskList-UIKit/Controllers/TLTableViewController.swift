@@ -36,9 +36,7 @@ class TLTableViewController: UITableViewController {
     
     @objc func addButtonTapped(_ sender: UIBarButtonItem) {
         let createTaskViewController = TLCreateTaskViewController()
-        createTaskViewController.createClosure = { [weak self] in
-            self?.tableView.reloadData()
-        }
+        createTaskViewController.delegate = self
         createTaskViewController.modalTransitionStyle = .crossDissolve
         createTaskViewController.modalPresentationStyle = .overFullScreen
         present(createTaskViewController, animated: true)
@@ -122,7 +120,13 @@ extension TLTableViewController {
 
 
 extension TLTableViewController: TLTaskDetailViewControllerDelegate {
-    func taskViewSaveTapped() {
+    func editTaskTapped() {
+        tableView.reloadData()
+    }
+}
+
+extension TLTableViewController: TLCreateTaskViewControllerDelegate {
+    func createTaskTapped() {
         tableView.reloadData()
     }
 }

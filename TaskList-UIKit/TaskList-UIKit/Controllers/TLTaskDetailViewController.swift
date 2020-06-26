@@ -10,7 +10,7 @@ import UIKit
 
 // setup communication between two view controllers using protol delegate pattern
 protocol TLTaskDetailViewControllerDelegate {
-    func taskViewSaveTapped()
+    func editTaskTapped()
 }
 
 class TLTaskDetailViewController: UIViewController {
@@ -89,7 +89,7 @@ class TLTaskDetailViewController: UIViewController {
     @objc func editButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
         task.description = text
-        delegate?.taskViewSaveTapped()
+        delegate?.editTaskTapped()
         textField.resignFirstResponder()
         dismiss(animated: true)
     }
