@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TLCreateTaskViewControllerDelegate {
-    func createTaskTapped()
+    func didCreateTask()
 }
 
 
@@ -75,8 +75,9 @@ class TLCreateTaskViewController: UIViewController {
     
     @objc func createButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
-        TaskBank.tasks.append(TaskItem(description: text))
-        delegate?.createTaskTapped()
+        let task = TaskItem(description: text)
+        TaskBank.tasks.append(task)
+        delegate?.didCreateTask()
         textField.resignFirstResponder()
         dismiss(animated: true)
     }

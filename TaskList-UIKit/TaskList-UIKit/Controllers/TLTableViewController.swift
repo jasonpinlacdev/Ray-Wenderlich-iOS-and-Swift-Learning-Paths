@@ -68,12 +68,22 @@ extension TLTableViewController {
         }
         
         let task = TaskBank.tasks[indexPath.row]
-        cell.textLabel?.text = task.description
+        cell.accessoryType = .detailDisclosureButton
         
         if task.isCompleted {
-            cell.accessoryType = .checkmark
+            
+            let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+            let attributedString = NSMutableAttributedString(string: task.description, attributes: attributes)
+            cell.textLabel?.text = nil
+            cell.textLabel?.attributedText = attributedString
+            
+            cell.checkMarkImageView.isHidden = false
         } else if !task.isCompleted {
-            cell.accessoryType = .none
+            
+            cell.textLabel?.attributedText = nil
+            cell.textLabel?.text = task.description
+            
+            cell.checkMarkImageView.isHidden = true
         }
         
         return cell
@@ -81,32 +91,40 @@ extension TLTableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
-        //            let task = TaskBank.tasks[indexPath.row]
-        //
-        //            if !task.isCompleted {
-        //                cell.accessoryType = .checkmark
-        //                task.isCompleted = true
-        //            } else if task.isCompleted {
-        //                cell.accessoryType = .none
-        //                task.isCompleted = false
-        //            }
-        //            tableView.deselectRow(at: indexPath, animated: true)
-        //        }
-        
-        let taskViewController = TLTaskDetailViewController(task: TaskBank.tasks[indexPath.row])
-        taskViewController.delegate = self
-        taskViewController.modalTransitionStyle = .crossDissolve
-        taskViewController.modalPresentationStyle = .overFullScreen
-        present(taskViewController, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
+            let task = TaskBank.tasks[indexPath.row]
+            
+            if !task.isCompleted {
+                
+                let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+                let attributedString = NSMutableAttributedString(string: task.description, attributes: attributes)
+                cell.textLabel?.text = nil
+                cell.textLabel?.attributedText = attributedString
+                
+                cell.checkMarkImageView.isHidden = false
+                task.isCompleted = true
+            } else if task.isCompleted {
+                
+                cell.textLabel?.attributedText = nil
+                cell.textLabel?.text = task.description
+                
+                cell.checkMarkImageView.isHidden = true
+                task.isCompleted = false
+            }
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     
-    //        override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-    //              let taskViewController = TLTaskViewController(task: tasks[indexPath.row], atIndexPath: indexPath)
-    //                  taskViewController.delegate = self
-    //                  navigationController?.pushViewController(taskViewController, animated: true)
-    //        }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let taskDetailViewController = TLTaskDetailViewController(task: TaskBank.tasks[indexPath.row])
+        taskDetailViewController.delegate = self
+        taskDetailViewController.modalTransitionStyle = .crossDissolve
+        taskDetailViewController.modalPresentationStyle = .overFullScreen
+        present(taskDetailViewController, animated: true)
+    }
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -120,13 +138,13 @@ extension TLTableViewController {
 
 
 extension TLTableViewController: TLTaskDetailViewControllerDelegate {
-    func editTaskTapped() {
+    func didEditTask() {
         tableView.reloadData()
     }
 }
 
 extension TLTableViewController: TLCreateTaskViewControllerDelegate {
-    func createTaskTapped() {
+    func didCreateTask() {
         tableView.reloadData()
     }
 }
