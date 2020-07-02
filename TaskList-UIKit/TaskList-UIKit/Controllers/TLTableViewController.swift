@@ -10,6 +10,8 @@ import UIKit
 
 class TLTableViewController: UITableViewController {
     
+    var deleteButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -21,13 +23,14 @@ class TLTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Task List"
         tableView.register(TLTableViewCell.self, forCellReuseIdentifier: TLTableViewCell.reuseId)
-//        tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
     
     
     func configureUIBarButtonItems() {
         let addButton = UIBarButtonItem(image: IconImage.add, style: .plain, target: self, action: #selector(addButtonTapped(_:)))
-        let deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
+        deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
+        deleteButton.isEnabled = false
         let editButton = UIBarButtonItem(image: IconImage.edit, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         
         self.navigationItem.rightBarButtonItem = addButton
@@ -47,11 +50,27 @@ class TLTableViewController: UITableViewController {
     @objc func deleteButtonTapped(_ sender: UIBarButtonItem) {
         // deletes multiple selected tasks. For this to work we need to set tableView.allowsForMultipleSelectionDuringEditing property to true
         // also you need to add a guard statement in your tableView didSelectRowAt method to check if the tableView.isEditing is false
+        
+        if let selectedTaskIndexes = tableView.indexPathsForSelectedRows {
+            let descendingIndexes = selectedTaskIndexes.sorted { $0 > $1 }
+            descendingIndexes.forEach { index in
+                // we have to remove in descending order because or else well get the index out of range error
+                TaskBank.tasks.remove(at: index.row)
+            }
+
+            TaskBank.tasks.forEach { task in
+                print(task.textDescription)
+            }
+
+            tableView.deleteRows(at: descendingIndexes, with: .fade)
+        }
+       
     }
     
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
         // toggles on/off editing mode for the table view
         tableView.setEditing(!tableView.isEditing, animated: true)
+        deleteButton.isEnabled = tableView.isEditing
     }
 
 }

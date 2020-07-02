@@ -53,13 +53,4 @@ class TaskBank {
         tasks.insert(task, at: index)
     }
     
-    static func delete(tasks: [TaskItem]) {
-        tasks.forEach { task in
-            if let taskIndex = tasks.firstIndex(of: task) {
-                self.tasks.remove(at: taskIndex)
-            }
-        }
-    }
-    
-    
 }
