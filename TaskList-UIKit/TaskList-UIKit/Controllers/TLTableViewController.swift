@@ -21,6 +21,7 @@ class TLTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Task List"
         tableView.register(TLTableViewCell.self, forCellReuseIdentifier: TLTableViewCell.reuseId)
+//        tableView.allowsMultipleSelectionDuringEditing = true
     }
     
     
@@ -44,14 +45,15 @@ class TLTableViewController: UITableViewController {
     
     
     @objc func deleteButtonTapped(_ sender: UIBarButtonItem) {
-        
+        // deletes multiple selected tasks. For this to work we need to set tableView.allowsForMultipleSelectionDuringEditing property to true
+        // also you need to add a guard statement in your tableView didSelectRowAt method to check if the tableView.isEditing is false
     }
-    
     
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
-        
+        // toggles on/off editing mode for the table view
+        tableView.setEditing(!tableView.isEditing, animated: true)
     }
-    
+
 }
 
 
@@ -73,17 +75,17 @@ extension TLTableViewController {
         if task.isCompleted {
             
             let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
-            let attributedString = NSMutableAttributedString(string: task.description, attributes: attributes)
+            let attributedString = NSMutableAttributedString(string: task.textDescription, attributes: attributes)
             cell.textLabel?.text = nil
             cell.textLabel?.attributedText = attributedString
             
-            cell.checkMarkImageView.isHidden = false
+            cell.iconImageView.image = IconImage.checkmark
         } else if !task.isCompleted {
             
             cell.textLabel?.attributedText = nil
-            cell.textLabel?.text = task.description
+            cell.textLabel?.text = task.textDescription
             
-            cell.checkMarkImageView.isHidden = true
+            cell.iconImageView.image = IconImage.rectangle
         }
         
         return cell
@@ -91,24 +93,25 @@ extension TLTableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !tableView.isEditing else { return }
         if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
             let task = TaskBank.tasks[indexPath.row]
             
             if !task.isCompleted {
                 
                 let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
-                let attributedString = NSMutableAttributedString(string: task.description, attributes: attributes)
+                let attributedString = NSMutableAttributedString(string: task.textDescription, attributes: attributes)
                 cell.textLabel?.text = nil
                 cell.textLabel?.attributedText = attributedString
                 
-                cell.checkMarkImageView.isHidden = false
+                cell.iconImageView.image = IconImage.checkmark
                 task.isCompleted = true
             } else if task.isCompleted {
                 
                 cell.textLabel?.attributedText = nil
-                cell.textLabel?.text = task.description
+                cell.textLabel?.text = task.textDescription
                 
-                cell.checkMarkImageView.isHidden = true
+                cell.iconImageView.image = IconImage.rectangle
                 task.isCompleted = false
             }
             
@@ -132,6 +135,12 @@ extension TLTableViewController {
             TaskBank.tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // enables moving the rows in editing mode. We just have to provide the functionality for keeping the model in sync with the view
+        TaskBank.move(task: TaskBank.tasks[sourceIndexPath.row], to: destinationIndexPath.row)
     }
     
 }

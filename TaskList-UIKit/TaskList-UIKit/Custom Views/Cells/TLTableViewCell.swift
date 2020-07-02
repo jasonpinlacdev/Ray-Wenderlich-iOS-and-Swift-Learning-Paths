@@ -11,7 +11,7 @@ import UIKit
 class TLTableViewCell: UITableViewCell {
     
     static let reuseId = "TLTableViewCell"
-    let checkMarkImageView = UIImageView(image: IconImage.checkMark)
+    let iconImageView = UIImageView(image: IconImage.rectangle)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,15 +23,15 @@ class TLTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
-        addSubview(checkMarkImageView)
-        checkMarkImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(iconImageView)
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
         
         textLabel?.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            checkMarkImageView.centerYAnchor.constraint(equalTo: textLabel!.centerYAnchor),
-            checkMarkImageView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            textLabel!.leadingAnchor.constraint(equalTo: checkMarkImageView.trailingAnchor, constant: 20),
+            iconImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
+            textLabel!.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10),
             textLabel!.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
     }

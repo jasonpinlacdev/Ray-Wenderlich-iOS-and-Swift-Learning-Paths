@@ -39,7 +39,7 @@ class TLTaskDetailViewController: UIViewController {
     init(task: TaskItem) {
         self.task = task
         super.init(nibName: nil, bundle: nil)
-        textField.text = self.task.description
+        textField.text = self.task.textDescription
     }
     
     
@@ -88,7 +88,7 @@ class TLTaskDetailViewController: UIViewController {
     
     @objc func editButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
-        task.description = text
+        task.textDescription = text
         delegate?.didEditTask()
         textField.resignFirstResponder()
         dismiss(animated: true)

@@ -8,12 +8,13 @@
 
 import Foundation
 
-class TaskItem {
-    var description: String
+class TaskItem: NSObject {
+    
+    var textDescription: String
     var isCompleted: Bool
     
     init(description: String) {
-        self.description = description
+        self.textDescription = description
         isCompleted = false
     }
 }
