@@ -15,7 +15,6 @@
 		E1B8E68124A446AE00EFDADA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68024A446AE00EFDADA /* Constants.swift */; };
 		E1B8E68324A44F3100EFDADA /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68224A44F3100EFDADA /* UIView+Ext.swift */; };
 		E1B8E68524A453F100EFDADA /* TLTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68424A453F100EFDADA /* TLTableViewCell.swift */; };
-		E1B8E68724A4588700EFDADA /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68624A4588700EFDADA /* TaskItem.swift */; };
 		E1B8E68924A45BC500EFDADA /* TLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68824A45BC500EFDADA /* TLTaskDetailViewController.swift */; };
 		E1B8E68B24A54C2000EFDADA /* TaskBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68A24A54C2000EFDADA /* TaskBank.swift */; };
 		E1B8E68D24A5639800EFDADA /* TLCreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E68C24A5639800EFDADA /* TLCreateTaskViewController.swift */; };
@@ -36,7 +35,6 @@
 		E1B8E68024A446AE00EFDADA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1B8E68224A44F3100EFDADA /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E1B8E68424A453F100EFDADA /* TLTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTableViewCell.swift; sourceTree = "<group>"; };
-		E1B8E68624A4588700EFDADA /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		E1B8E68824A45BC500EFDADA /* TLTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTaskDetailViewController.swift; sourceTree = "<group>"; };
 		E1B8E68A24A54C2000EFDADA /* TaskBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBank.swift; sourceTree = "<group>"; };
 		E1B8E68C24A5639800EFDADA /* TLCreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLCreateTaskViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		E1B8E67724A4291F00EFDADA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E1B8E68624A4588700EFDADA /* TaskItem.swift */,
 				E1B8E68A24A54C2000EFDADA /* TaskBank.swift */,
 			);
 			path = Models;
@@ -249,7 +246,6 @@
 				E1B8E68524A453F100EFDADA /* TLTableViewCell.swift in Sources */,
 				E1B8E68F24A69B0200EFDADA /* TLButton.swift in Sources */,
 				E1B8E66124A424BA00EFDADA /* AppDelegate.swift in Sources */,
-				E1B8E68724A4588700EFDADA /* TaskItem.swift in Sources */,
 				E1B8E66324A424BA00EFDADA /* SceneDelegate.swift in Sources */,
 				E1B8E68D24A5639800EFDADA /* TLCreateTaskViewController.swift in Sources */,
 				E1B8E68924A45BC500EFDADA /* TLTaskDetailViewController.swift in Sources */,

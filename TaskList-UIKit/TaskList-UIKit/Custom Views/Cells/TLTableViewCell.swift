@@ -23,6 +23,7 @@ class TLTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
+        iconImageView.tintColor = .systemGreen
         contentView.addSubview(iconImageView)
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         

@@ -24,6 +24,7 @@ class TLTableViewController: UITableViewController {
         title = "Task List"
         tableView.register(TLTableViewCell.self, forCellReuseIdentifier: TLTableViewCell.reuseId)
         tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.rowHeight = 44;
     }
     
     
@@ -31,6 +32,7 @@ class TLTableViewController: UITableViewController {
         let addButton = UIBarButtonItem(image: IconImage.add, style: .plain, target: self, action: #selector(addButtonTapped(_:)))
         deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
         deleteButton.isEnabled = false
+        deleteButton.tintColor = .systemRed
         let editButton = UIBarButtonItem(image: IconImage.edit, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         
         self.navigationItem.rightBarButtonItem = addButton
@@ -49,20 +51,17 @@ class TLTableViewController: UITableViewController {
     
     @objc func deleteButtonTapped(_ sender: UIBarButtonItem) {
         // deletes multiple selected tasks. For this to work we need to set tableView.allowsForMultipleSelectionDuringEditing property to true
-        // also you need to add a guard statement in your tableView didSelectRowAt method to check if the tableView.isEditing is false
+        // also you need to add a guard statement in your tableView didSelectRowAt method to check if the tableView.isEditing is false to fix the cell row tapped bug.
         
         if let selectedTaskIndexes = tableView.indexPathsForSelectedRows {
+            // we have to remove in descending order because or else well get the index out of range error
             let descendingIndexes = selectedTaskIndexes.sorted { $0 > $1 }
             descendingIndexes.forEach { index in
-                // we have to remove in descending order because or else well get the index out of range error
-                TaskBank.tasks.remove(at: index.row)
+                TaskBank.prioritizedTasks[index.section].remove(at: index.row)
             }
-
-            TaskBank.tasks.forEach { task in
-                print(task.textDescription)
-            }
-
+            tableView.beginUpdates()
             tableView.deleteRows(at: descendingIndexes, with: .fade)
+            tableView.endUpdates()
         }
        
     }
@@ -78,8 +77,23 @@ class TLTableViewController: UITableViewController {
 
 extension TLTableViewController {
     
+    // MARK: - METHODS FOR TABLEVIEW SECTIONS - Remember, the model always has to be in sync with the UI -
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let priority = TaskPriority(rawValue: section) else { return "N/A" }
+        let title = TaskPriority.getStringName(for: priority)
+        return title
+    }
+    
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return TaskPriority.allCases.count
+    }
+    
+    // MARK: - METHODS FOR TABLEVIEW ROWS -
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TaskBank.tasks.count
+        return TaskBank.prioritizedTasks[section].count
     }
     
     
@@ -88,22 +102,22 @@ extension TLTableViewController {
             fatalError("Failed to dequeue a reusable TLTableViewCell for index path.")
         }
         
-        let task = TaskBank.tasks[indexPath.row]
+        let task = TaskBank.prioritizedTasks[indexPath.section][indexPath.row]
         cell.accessoryType = .detailDisclosureButton
         
+        // this is to get rid of the bug of a cell having striked through text even if a task for the cell is not completed
+        cell.textLabel?.attributedText = nil
+        cell.textLabel?.text = task.textDescription
+        
         if task.isCompleted {
-            
             let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
             let attributedString = NSMutableAttributedString(string: task.textDescription, attributes: attributes)
             cell.textLabel?.text = nil
             cell.textLabel?.attributedText = attributedString
-            
             cell.iconImageView.image = IconImage.checkmark
         } else if !task.isCompleted {
-            
             cell.textLabel?.attributedText = nil
             cell.textLabel?.text = task.textDescription
-            
             cell.iconImageView.image = IconImage.rectangle
         }
         
@@ -114,7 +128,7 @@ extension TLTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard !tableView.isEditing else { return }
         if let cell = tableView.cellForRow(at: indexPath) as? TLTableViewCell  {
-            let task = TaskBank.tasks[indexPath.row]
+            let task = TaskBank.prioritizedTasks[indexPath.section][indexPath.row]
             
             if !task.isCompleted {
                 
@@ -141,7 +155,7 @@ extension TLTableViewController {
     
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let taskDetailViewController = TLTaskDetailViewController(task: TaskBank.tasks[indexPath.row])
+        let taskDetailViewController = TLTaskDetailViewController(task: TaskBank.prioritizedTasks[indexPath.section][indexPath.row])
         taskDetailViewController.delegate = self
         taskDetailViewController.modalTransitionStyle = .crossDissolve
         taskDetailViewController.modalPresentationStyle = .overFullScreen
@@ -151,15 +165,17 @@ extension TLTableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            TaskBank.tasks.remove(at: indexPath.row)
+            TaskBank.prioritizedTasks[indexPath.section].remove(at: indexPath.row)
+            tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
         }
     }
     
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // enables moving the rows in editing mode. We just have to provide the functionality for keeping the model in sync with the view
-        TaskBank.move(task: TaskBank.tasks[sourceIndexPath.row], to: destinationIndexPath.row)
+        TaskBank.move(task: TaskBank.prioritizedTasks[sourceIndexPath.section][sourceIndexPath.row], to: destinationIndexPath.row, of: TaskPriority(rawValue: destinationIndexPath.section)!)
     }
     
 }

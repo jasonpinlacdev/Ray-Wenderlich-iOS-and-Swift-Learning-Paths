@@ -8,49 +8,83 @@
 
 import UIKit
 
+enum TaskPriority: Int, CaseIterable {
+    case high
+    case medium
+    case low
+    
+    static func getStringName(for priority: TaskPriority) -> String {
+        switch priority {
+        case .high:
+            return "High Priority"
+        case .medium:
+            return "Medium Priority"
+        case .low:
+            return "Low Priority"
+        }
+    }
+}
+
+class TaskItem: NSObject {
+    var textDescription: String
+    var priority: TaskPriority
+    var isCompleted: Bool
+    
+    init(description: String, priority: TaskPriority) {
+        self.textDescription = description
+        self.priority = priority
+        isCompleted = false
+    }
+}
+
 class TaskBank {
     
-    static var tasks = [
-               TaskItem(description: "wake up"),
-               TaskItem(description: "turn on pc"),
-               TaskItem(description: "DOTA"),
-               TaskItem(description: "contracts"),
-               TaskItem(description: "win games"),
-               TaskItem(description: "brush teeth"),
-               TaskItem(description: "eat"),
-               TaskItem(description: "study"),
-               TaskItem(description: "more study"),
-               TaskItem(description: "break"),
-               TaskItem(description: "eat"),
-               TaskItem(description: "study"),
-               TaskItem(description: "shower"),
-               TaskItem(description: "dota"),
-               TaskItem(description: "brush teeth"),
-               TaskItem(description: "sleep"),
-               TaskItem(description: "wake up 2"),
-               TaskItem(description: "turn on pc 2"),
-               TaskItem(description: "DOTA 2"),
-               TaskItem(description: "contracts 2"),
-               TaskItem(description: "win games 2"),
-               TaskItem(description: "brush teeth 2"),
-               TaskItem(description: "eat 2"),
-               TaskItem(description: "study 2"),
-               TaskItem(description: "more study 2"),
-               TaskItem(description: "break 2"),
-               TaskItem(description: "eat 2"),
-               TaskItem(description: "study 2"),
-               TaskItem(description: "shower 2"),
-               TaskItem(description: "dota 2"),
-               TaskItem(description: "brush teeth 2"),
-               TaskItem(description: "sleep 2"),
+    static var prioritizedTasks = [
+        // high priority
+        [
+            TaskItem(description: "Code an app", priority: .high),
+            TaskItem(description: "Study design patterns", priority: .high),
+            TaskItem(description: "Talk to bae", priority: .high)
+        ],
+        
+        // medium priority
+        [
+            TaskItem(description: "Play Dota", priority: .medium),
+            TaskItem(description: "Train Capoeira", priority: .medium),
+        ],
+        
+        // low priority
+        [
+            TaskItem(description: "Stretch", priority: .low),
+            TaskItem(description: "Watch Naruto", priority: .low),
+        ],
     ]
     
-    static func move(task: TaskItem, to index: Int) {
-        guard let currentIndex = self.tasks.firstIndex(of: task) else {
+    static func move(task: TaskItem, to index: Int, of priority: TaskPriority) {
+        guard let currentIndex = self.prioritizedTasks[task.priority.rawValue].firstIndex(of: task) else {
             return
         }
-        tasks.remove(at: currentIndex)
-        tasks.insert(task, at: index)
+        prioritizedTasks[task.priority.rawValue].remove(at: currentIndex)
+        prioritizedTasks[priority.rawValue].insert(task, at: index)
+    }
+    
+    
+    static func printTasks() {
+        print("=== High Priority Model ===")
+        prioritizedTasks[TaskPriority.high.rawValue].forEach { highTask in
+            print("[\(highTask.textDescription), \(highTask.isCompleted), \(highTask.priority)]")
+        }
+        
+        print("\n=== Medium Priority Model ===")
+        prioritizedTasks[TaskPriority.medium.rawValue].forEach { mediumTask in
+                  print("[\(mediumTask.textDescription), \(mediumTask.isCompleted), \(mediumTask.priority)]")
+              }
+        
+        print("\n=== Low Priority Model ===")
+        prioritizedTasks[TaskPriority.low.rawValue].forEach { lowTask in
+                  print("[\(lowTask.textDescription), \(lowTask.isCompleted), \(lowTask.priority)]")
+              }
+        print("\n-------------------------------------------\n")
     }
     
 }
