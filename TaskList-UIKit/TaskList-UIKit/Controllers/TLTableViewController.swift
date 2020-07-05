@@ -31,14 +31,18 @@ class TLTableViewController: UITableViewController {
     
     
     func configureUIBarButtonItems() {
-        let addButton = UIBarButtonItem(image: IconImage.add, style: .plain, target: self, action: #selector(addButtonTapped(_:)))
-        deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
+        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action:  #selector(addButtonTapped(_:)))
+        //        let addButton = UIBarButtonItem(image: IconImage.add, style: .plain, target: self, action: #selector(addButtonTapped(_:)))
+        deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
+        //        deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
         deleteButton.isEnabled = false
         deleteButton.tintColor = .systemRed
-        let editButton = UIBarButtonItem(image: IconImage.edit, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
+        let editButton = UIBarButtonItem(title: "Rearrange", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         
-        self.navigationItem.rightBarButtonItem = addButton
-        self.navigationItem.leftBarButtonItems = [editButton, deleteButton]
+        //        let editButton = UIBarButtonItem(image: IconImage.edit, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
+        
+        self.navigationItem.rightBarButtonItems = [addButton, deleteButton]
+        self.navigationItem.leftBarButtonItems = [editButton]
     }
     
     
@@ -65,7 +69,7 @@ class TLTableViewController: UITableViewController {
             tableView.deleteRows(at: descendingIndexes, with: .fade)
             tableView.endUpdates()
         }
-       
+        
     }
     
     
@@ -74,7 +78,7 @@ class TLTableViewController: UITableViewController {
         tableView.setEditing(!tableView.isEditing, animated: true)
         deleteButton.isEnabled = tableView.isEditing
     }
-
+    
 }
 
 
@@ -106,8 +110,7 @@ extension TLTableViewController {
         }
         
         let task = TaskBank.prioritizedTasks[indexPath.section][indexPath.row]
-        cell.accessoryType = .detailDisclosureButton
-        
+        cell.accessoryType = .detailButton
         // this is to get rid of the bug of a cell having striked through text even if a task for the cell is not completed
         cell.textLabel?.attributedText = nil
         cell.textLabel?.text = task.textDescription
@@ -117,11 +120,12 @@ extension TLTableViewController {
             let attributedString = NSMutableAttributedString(string: task.textDescription, attributes: attributes)
             cell.textLabel?.text = nil
             cell.textLabel?.attributedText = attributedString
-            cell.iconImageView.image = IconImage.checkmark
+            cell.iconImageView.isHidden = false
+            
         } else if !task.isCompleted {
             cell.textLabel?.attributedText = nil
             cell.textLabel?.text = task.textDescription
-            cell.iconImageView.image = IconImage.rectangle
+            cell.iconImageView.isHidden = true
         }
         return cell
     }
@@ -133,20 +137,16 @@ extension TLTableViewController {
             let task = TaskBank.prioritizedTasks[indexPath.section][indexPath.row]
             
             if !task.isCompleted {
-                
                 let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
                 let attributedString = NSMutableAttributedString(string: task.textDescription, attributes: attributes)
                 cell.textLabel?.text = nil
                 cell.textLabel?.attributedText = attributedString
-                
-                cell.iconImageView.image = IconImage.checkmark
+                cell.iconImageView.isHidden = false
                 TaskBank.setCompletion(on: task, complete: true)
             } else if task.isCompleted {
-                
                 cell.textLabel?.attributedText = nil
                 cell.textLabel?.text = task.textDescription
-                
-                cell.iconImageView.image = IconImage.rectangle
+                cell.iconImageView.isHidden = true
                 TaskBank.setCompletion(on: task, complete: false)
             }
             tableView.deselectRow(at: indexPath, animated: true)

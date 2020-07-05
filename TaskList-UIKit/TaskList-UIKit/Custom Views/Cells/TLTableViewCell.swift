@@ -11,7 +11,7 @@ import UIKit
 class TLTableViewCell: UITableViewCell {
     
     static let reuseId = "TLTableViewCell"
-    let iconImageView = UIImageView(image: IconImage.rectangle)
+    let iconImageView = UIImageView(image: IconImage.checkmark)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

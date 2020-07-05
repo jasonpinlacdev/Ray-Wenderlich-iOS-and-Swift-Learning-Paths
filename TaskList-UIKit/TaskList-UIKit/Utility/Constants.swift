@@ -12,6 +12,5 @@ enum IconImage {
     static var add = UIImage(systemName: "plus.square")
     static var delete = UIImage(systemName: "minus.square")
     static var edit = UIImage(systemName: "text.append")
-    static var checkmark = UIImage(systemName: "checkmark.rectangle.fill")
-    static var rectangle = UIImage(systemName: "rectangle")
+    static var checkmark = UIImage(systemName: "checkmark")
 }
