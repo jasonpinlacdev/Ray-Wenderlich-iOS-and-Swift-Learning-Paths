@@ -22,6 +22,7 @@
 		E1B8E69124A69B3600EFDADA /* TLContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69024A69B3600EFDADA /* TLContainerView.swift */; };
 		E1B8E69324A69B5D00EFDADA /* TLTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69224A69B5D00EFDADA /* TLTextField.swift */; };
 		E1B8E69524A69B8300EFDADA /* TLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E69424A69B8300EFDADA /* TLLabel.swift */; };
+		E1B8E6C224B1010800EFDADA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8E6C124B1010800EFDADA /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E1B8E69024A69B3600EFDADA /* TLContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLContainerView.swift; sourceTree = "<group>"; };
 		E1B8E69224A69B5D00EFDADA /* TLTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLTextField.swift; sourceTree = "<group>"; };
 		E1B8E69424A69B8300EFDADA /* TLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLLabel.swift; sourceTree = "<group>"; };
+		E1B8E6C124B1010800EFDADA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				E1B8E68024A446AE00EFDADA /* Constants.swift */,
 				E1B8E68224A44F3100EFDADA /* UIView+Ext.swift */,
+				E1B8E6C124B1010800EFDADA /* PersistenceManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B8E68124A446AE00EFDADA /* Constants.swift in Sources */,
+				E1B8E6C224B1010800EFDADA /* PersistenceManager.swift in Sources */,
 				E1B8E69324A69B5D00EFDADA /* TLTextField.swift in Sources */,
 				E1B8E67A24A42AD800EFDADA /* TLTableViewController.swift in Sources */,
 				E1B8E69124A69B3600EFDADA /* TLContainerView.swift in Sources */,

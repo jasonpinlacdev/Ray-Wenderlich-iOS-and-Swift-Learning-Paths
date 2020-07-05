@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum TaskPriority: Int, CaseIterable {
+enum TaskPriority: Int, CaseIterable, Codable {
     case high
     case medium
     case low
@@ -25,7 +25,7 @@ enum TaskPriority: Int, CaseIterable {
     }
 }
 
-class TaskItem: NSObject {
+class TaskItem: NSObject, Codable {
     var textDescription: String
     var priority: TaskPriority
     var isCompleted: Bool
@@ -43,29 +43,33 @@ class TaskBank {
         // high priority
         [
             TaskItem(description: "Code an app", priority: .high),
-            TaskItem(description: "Study design patterns", priority: .high),
-            TaskItem(description: "Talk to bae", priority: .high)
         ],
         
         // medium priority
         [
             TaskItem(description: "Play Dota", priority: .medium),
-            TaskItem(description: "Train Capoeira", priority: .medium),
         ],
         
         // low priority
         [
-            TaskItem(description: "Stretch", priority: .low),
             TaskItem(description: "Watch Naruto", priority: .low),
         ],
     ]
     
-    static func move(task: TaskItem, to index: Int, of priority: TaskPriority) {
-        guard let currentIndex = self.prioritizedTasks[task.priority.rawValue].firstIndex(of: task) else {
-            return
-        }
-        prioritizedTasks[task.priority.rawValue].remove(at: currentIndex)
-        prioritizedTasks[priority.rawValue].insert(task, at: index)
+    static func move(task: TaskItem, from sourceIndex: IndexPath, to destinationIndex: IndexPath) {
+        prioritizedTasks[sourceIndex.section].remove(at: sourceIndex.row)
+        prioritizedTasks[destinationIndex.section].insert(task, at: destinationIndex.row)
+        PersistenceManager.saveTasks()
+    }
+    
+    static func deleteTask(at index: IndexPath) {
+        TaskBank.prioritizedTasks[index.section].remove(at: index.row)
+        PersistenceManager.saveTasks()
+    }
+    
+    static func setCompletion(on task: TaskItem, complete: Bool) {
+        task.isCompleted = complete
+        PersistenceManager.saveTasks()
     }
     
     

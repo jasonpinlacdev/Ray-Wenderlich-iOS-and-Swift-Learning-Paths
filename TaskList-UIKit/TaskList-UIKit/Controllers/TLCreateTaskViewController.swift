@@ -75,8 +75,10 @@ class TLCreateTaskViewController: UIViewController {
     
     @objc func createButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
-//        let task = TaskItem(description: text)
-//        TaskBank.tasks.append(task)
+        let task = TaskItem(description: text, priority: .high)
+        
+        TaskBank.prioritizedTasks[task.priority.rawValue].insert(task, at: 0)
+        PersistenceManager.saveTasks()
         delegate?.didCreateTask()
         textField.resignFirstResponder()
         dismiss(animated: true)

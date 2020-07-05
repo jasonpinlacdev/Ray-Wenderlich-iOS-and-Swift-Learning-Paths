@@ -14,8 +14,10 @@ class TLTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PersistenceManager.retrieveTasks()
         configureTableView()
         configureUIBarButtonItems()
+        tableView.reloadData()
     }
     
     
@@ -56,8 +58,8 @@ class TLTableViewController: UITableViewController {
         if let selectedTaskIndexes = tableView.indexPathsForSelectedRows {
             // we have to remove in descending order because or else well get the index out of range error
             let descendingIndexes = selectedTaskIndexes.sorted { $0 > $1 }
-            descendingIndexes.forEach { index in
-                TaskBank.prioritizedTasks[index.section].remove(at: index.row)
+            descendingIndexes.forEach { indexPath in
+                TaskBank.deleteTask(at: indexPath)
             }
             tableView.beginUpdates()
             tableView.deleteRows(at: descendingIndexes, with: .fade)
@@ -138,14 +140,14 @@ extension TLTableViewController {
                 cell.textLabel?.attributedText = attributedString
                 
                 cell.iconImageView.image = IconImage.checkmark
-                task.isCompleted = true
+                TaskBank.setCompletion(on: task, complete: true)
             } else if task.isCompleted {
                 
                 cell.textLabel?.attributedText = nil
                 cell.textLabel?.text = task.textDescription
                 
                 cell.iconImageView.image = IconImage.rectangle
-                task.isCompleted = false
+                TaskBank.setCompletion(on: task, complete: false)
             }
             
             tableView.deselectRow(at: indexPath, animated: true)
@@ -165,7 +167,7 @@ extension TLTableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            TaskBank.prioritizedTasks[indexPath.section].remove(at: indexPath.row)
+            TaskBank.deleteTask(at: indexPath)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
@@ -174,8 +176,10 @@ extension TLTableViewController {
     
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard destinationIndexPath.section < TaskBank.prioritizedTasks.count else { return }
         // enables moving the rows in editing mode. We just have to provide the functionality for keeping the model in sync with the view
-        TaskBank.move(task: TaskBank.prioritizedTasks[sourceIndexPath.section][sourceIndexPath.row], to: destinationIndexPath.row, of: TaskPriority(rawValue: destinationIndexPath.section)!)
+        let task = TaskBank.prioritizedTasks[sourceIndexPath.section][sourceIndexPath.row]
+        TaskBank.move(task: task, from: sourceIndexPath, to: destinationIndexPath)
     }
     
 }

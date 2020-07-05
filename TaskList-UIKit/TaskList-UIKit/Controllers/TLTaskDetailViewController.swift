@@ -89,6 +89,7 @@ class TLTaskDetailViewController: UIViewController {
     @objc func editButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
         task.textDescription = text
+        PersistenceManager.saveTasks()
         delegate?.didEditTask()
         textField.resignFirstResponder()
         dismiss(animated: true)
