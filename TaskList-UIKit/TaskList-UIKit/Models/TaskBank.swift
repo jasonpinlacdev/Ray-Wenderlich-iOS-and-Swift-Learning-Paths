@@ -59,7 +59,15 @@ class TaskBank {
     static func move(task: TaskItem, from sourceIndex: IndexPath, to destinationIndex: IndexPath) {
         prioritizedTasks[sourceIndex.section].remove(at: sourceIndex.row)
         prioritizedTasks[destinationIndex.section].insert(task, at: destinationIndex.row)
-        PersistenceManager.saveTasks()
+        
+    }
+    
+    static func move(task: TaskItem, from sourcePriority: TaskPriority, to destinationPriority: TaskPriority) {
+        if let indexFound = prioritizedTasks[sourcePriority.rawValue].firstIndex(of: task) {
+            prioritizedTasks[sourcePriority.rawValue].remove(at: indexFound)
+            prioritizedTasks[destinationPriority.rawValue].insert(task, at: 0)
+            PersistenceManager.saveTasks()
+        }
     }
     
     static func deleteTask(at index: IndexPath) {

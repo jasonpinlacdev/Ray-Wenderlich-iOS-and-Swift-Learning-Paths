@@ -15,12 +15,20 @@ protocol TLTaskDetailViewControllerDelegate {
 
 class TLTaskDetailViewController: UIViewController {
     
+    var selectedPriority: TaskPriority!
+    
     var task: TaskItem
     var delegate: TLTaskDetailViewControllerDelegate?
     
     var containerView = TLContainerView(frame: .zero)
     var titleLabel = TLLabel(text: "Edit Task")
     var textField = TLTextField(frame: .zero)
+    
+    var picker: UIPickerView = {
+        let picker = UIPickerView(frame: .zero)
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
     
     var editButton: TLButton = {
         let button = TLButton(title: "Edit", titleColor: .lightGray, buttonColor: .darkGray)
@@ -58,6 +66,11 @@ class TLTaskDetailViewController: UIViewController {
         
         textField.delegate = self
         textField.returnKeyType = .done
+        
+        picker.delegate = self
+        picker.dataSource = self
+        picker.selectRow(task.priority.rawValue, inComponent: 0, animated: false)
+        selectedPriority = task.priority
     }
     
     
@@ -89,6 +102,9 @@ class TLTaskDetailViewController: UIViewController {
     @objc func editButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
         task.textDescription = text
+        let originalTaskPriority = task.priority
+        task.priority = selectedPriority
+        TaskBank.move(task: task, from: originalTaskPriority, to: selectedPriority)
         PersistenceManager.saveTasks()
         delegate?.didEditTask()
         textField.resignFirstResponder()
@@ -114,6 +130,7 @@ class TLTaskDetailViewController: UIViewController {
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(textField)
+        containerView.addSubview(picker)
         containerView.addSubview(editButton)
         containerView.addSubview(cancelButton)
         
@@ -127,6 +144,10 @@ class TLTaskDetailViewController: UIViewController {
             textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
             textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40),
             textField.heightAnchor.constraint(equalToConstant: 50),
+            
+            picker.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
+            picker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            picker.heightAnchor.constraint(equalToConstant: 100),
             
             editButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40),
             editButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
@@ -171,6 +192,29 @@ extension TLTaskDetailViewController: UITextFieldDelegate {
             editButton.setTitleColor(.darkGray, for: .normal)
         }
         return true
+    }
+    
+}
+
+
+extension TLTaskDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return TaskBank.prioritizedTasks.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return TaskPriority.getStringName(for: TaskPriority(rawValue: row)!)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedPriority = TaskPriority(rawValue: row)!
+        editButton.isEnabled = true
+        editButton.backgroundColor = .systemBlue
+        editButton.setTitleColor(.darkGray, for: .normal)
     }
     
 }

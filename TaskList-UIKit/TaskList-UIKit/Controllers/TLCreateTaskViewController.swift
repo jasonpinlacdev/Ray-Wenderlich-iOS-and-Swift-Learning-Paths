@@ -15,11 +15,19 @@ protocol TLCreateTaskViewControllerDelegate {
 
 class TLCreateTaskViewController: UIViewController {
     
+    var selectedPriority: TaskPriority = .high
+    
     var delegate: TLCreateTaskViewControllerDelegate?
     
     var containerView = TLContainerView(frame: .zero)
     var titleLabel = TLLabel(text: "Create Task")
     var textField = TLTextField(frame: .zero)
+    
+    var picker: UIPickerView = {
+        let picker = UIPickerView(frame: .zero)
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
     
     var createButton: TLButton = {
         let button = TLButton(title: "Create", titleColor: .lightGray, buttonColor: .darkGray)
@@ -45,6 +53,8 @@ class TLCreateTaskViewController: UIViewController {
         
         textField.delegate = self
         textField.returnKeyType = .done
+        picker.delegate = self
+        picker.dataSource = self
     }
     
     
@@ -75,7 +85,7 @@ class TLCreateTaskViewController: UIViewController {
     
     @objc func createButtonTapped(_ sender: TLButton?) {
         guard let text = textField.text, let empty = textField.text?.isEmpty, empty == false else { return }
-        let task = TaskItem(description: text, priority: .high)
+        let task = TaskItem(description: text, priority: selectedPriority)
         
         TaskBank.prioritizedTasks[task.priority.rawValue].insert(task, at: 0)
         PersistenceManager.saveTasks()
@@ -103,8 +113,10 @@ class TLCreateTaskViewController: UIViewController {
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(textField)
+        containerView.addSubview(picker)
         containerView.addSubview(createButton)
         containerView.addSubview(cancelButton)
+
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
@@ -117,6 +129,10 @@ class TLCreateTaskViewController: UIViewController {
             textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40),
             textField.heightAnchor.constraint(equalToConstant: 50),
             
+            picker.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
+            picker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            picker.heightAnchor.constraint(equalToConstant: 100),
+
             createButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40),
             createButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -40),
             createButton.widthAnchor.constraint(equalToConstant: 75),
@@ -164,4 +180,24 @@ extension TLCreateTaskViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+
+extension TLCreateTaskViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return TaskBank.prioritizedTasks.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return TaskPriority.getStringName(for: TaskPriority(rawValue: row)!)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedPriority = TaskPriority(rawValue: row)!
+    }
+
 }

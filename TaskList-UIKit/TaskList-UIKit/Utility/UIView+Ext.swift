@@ -18,7 +18,7 @@ extension UIView {
             let insets = self.safeAreaInsets
             topInset = insets.top
             bottomInset = insets.bottom
-
+            
             print("Top: \(topInset)")
             print("bottom: \(bottomInset)")
         }
@@ -49,6 +49,11 @@ extension UIView {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
         
+    }
+    
+    func turnOnDebuggingBorders() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.black.cgColor
     }
     
 }
