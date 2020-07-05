@@ -15,8 +15,6 @@ class TLTextField: UITextField {
         placeholder = "Enter a task description..."
         backgroundColor = .darkGray
         layer.cornerRadius = 10
-        //      layer.borderWidth = 1
-        //      layer.borderColor = UIColor.white.cgColor
         textColor = .lightGray
         font = UIFont.systemFont(ofSize: 20)
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))

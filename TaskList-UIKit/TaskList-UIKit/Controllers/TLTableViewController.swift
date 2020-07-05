@@ -68,6 +68,7 @@ class TLTableViewController: UITableViewController {
        
     }
     
+    
     @objc func editButtonTapped(_ sender: UIBarButtonItem) {
         // toggles on/off editing mode for the table view
         tableView.setEditing(!tableView.isEditing, animated: true)
@@ -122,7 +123,6 @@ extension TLTableViewController {
             cell.textLabel?.text = task.textDescription
             cell.iconImageView.image = IconImage.rectangle
         }
-        
         return cell
     }
     
@@ -149,7 +149,6 @@ extension TLTableViewController {
                 cell.iconImageView.image = IconImage.rectangle
                 TaskBank.setCompletion(on: task, complete: false)
             }
-            
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -186,12 +185,14 @@ extension TLTableViewController {
 
 
 extension TLTableViewController: TLTaskDetailViewControllerDelegate {
+    
     func didEditTask() {
         tableView.reloadData()
     }
 }
 
 extension TLTableViewController: TLCreateTaskViewControllerDelegate {
+    
     func didCreateTask() {
         tableView.reloadData()
     }

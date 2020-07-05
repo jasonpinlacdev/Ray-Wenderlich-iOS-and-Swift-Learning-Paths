@@ -16,7 +16,6 @@ class TLLabel: UILabel {
         self.text = text
         textColor = .darkGray
         backgroundColor = .systemBlue
-        //     layer.cornerRadius = 10
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title1)
     }

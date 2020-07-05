@@ -12,7 +12,6 @@ protocol TLCreateTaskViewControllerDelegate {
     func didCreateTask()
 }
 
-
 class TLCreateTaskViewController: UIViewController {
     
     var selectedPriority: TaskPriority = .high
@@ -117,7 +116,6 @@ class TLCreateTaskViewController: UIViewController {
         containerView.addSubview(createButton)
         containerView.addSubview(cancelButton)
 
-        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -143,8 +141,6 @@ class TLCreateTaskViewController: UIViewController {
             cancelButton.widthAnchor.constraint(equalToConstant: 75),
             cancelButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-        
-        
     }
     
     
@@ -184,17 +180,21 @@ extension TLCreateTaskViewController: UITextFieldDelegate {
 
 
 extension TLCreateTaskViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return TaskBank.prioritizedTasks.count
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return TaskPriority.getStringName(for: TaskPriority(rawValue: row)!)
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPriority = TaskPriority(rawValue: row)!

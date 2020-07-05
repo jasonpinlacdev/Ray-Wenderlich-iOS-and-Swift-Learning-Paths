@@ -198,17 +198,21 @@ extension TLTaskDetailViewController: UITextFieldDelegate {
 
 
 extension TLTaskDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return TaskBank.prioritizedTasks.count
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return TaskPriority.getStringName(for: TaskPriority(rawValue: row)!)
     }
+    
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPriority = TaskPriority(rawValue: row)!
