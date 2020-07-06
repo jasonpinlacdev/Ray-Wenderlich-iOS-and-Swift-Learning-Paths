@@ -11,6 +11,7 @@ import UIKit
 class TLTableViewController: UITableViewController {
     
     var deleteButton: UIBarButtonItem!
+    var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class TLTableViewController: UITableViewController {
         //        deleteButton = UIBarButtonItem(image: IconImage.delete, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
         deleteButton.isEnabled = false
         deleteButton.tintColor = .systemRed
-        let editButton = UIBarButtonItem(title: "Rearrange", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
+        editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         
         //        let editButton = UIBarButtonItem(image: IconImage.edit, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         
@@ -77,6 +78,12 @@ class TLTableViewController: UITableViewController {
         // toggles on/off editing mode for the table view
         tableView.setEditing(!tableView.isEditing, animated: true)
         deleteButton.isEnabled = tableView.isEditing
+        
+        if tableView.isEditing {
+            editButton.title = "Done"
+        } else {
+            editButton.title = "Edit"
+        }
     }
     
 }

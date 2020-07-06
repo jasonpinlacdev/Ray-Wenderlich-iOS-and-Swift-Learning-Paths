@@ -21,7 +21,7 @@ class TLTaskDetailViewController: UIViewController {
     var delegate: TLTaskDetailViewControllerDelegate?
     
     var containerView = TLContainerView(frame: .zero)
-    var titleLabel = TLLabel(text: "Edit Task")
+    var titleLabel = TLLabel(text: "Task Detail")
     var textField = TLTextField(frame: .zero)
     
     var picker: UIPickerView = {
