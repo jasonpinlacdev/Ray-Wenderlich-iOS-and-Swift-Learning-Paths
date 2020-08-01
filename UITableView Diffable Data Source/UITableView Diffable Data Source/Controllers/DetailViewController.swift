@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
         titleLabel.text = book.title
         authorLabel.text = book.author
         imageView.image = book.image
+        imageView.layer.cornerRadius = 16
     }
     
     

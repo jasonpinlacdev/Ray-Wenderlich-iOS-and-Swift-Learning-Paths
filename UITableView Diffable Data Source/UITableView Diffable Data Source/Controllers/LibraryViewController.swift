@@ -22,11 +22,9 @@ class LibraryViewController: UITableViewController {
     
 }
 
-
 extension LibraryViewController {
     
     // MARK: - TableView Delegate Methods -
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailViewController.book = Library.books[indexPath.row]
@@ -39,11 +37,14 @@ extension LibraryViewController {
         return Library.books.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as? BookCell else { fatalError() }
         let book = Library.books[indexPath.row]
-        cell.textLabel?.text = book.title
-        cell.detailTextLabel?.text = book.author
-        cell.imageView?.image = book.image
+        cell.titleLabel.text = book.title
+        cell.authorLabel.text = book.author
+        cell.bookThumbnail.image = book.image
+        cell.bookThumbnail.layer.cornerRadius = 12
+
+
         return cell
     }
 }
