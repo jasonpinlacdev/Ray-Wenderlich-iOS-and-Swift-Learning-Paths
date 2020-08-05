@@ -17,6 +17,7 @@
 		E1C00C6B24D4D6B4009D636C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C6A24D4D6B4009D636C /* DetailViewController.swift */; };
 		E1C00C6D24D4EC40009D636C /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C6C24D4EC40009D636C /* Library.swift */; };
 		E1C00C6F24D5385F009D636C /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C6E24D5385F009D636C /* BookCell.swift */; };
+		E1C00C7124DA3C77009D636C /* NewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C7024DA3C76009D636C /* NewBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E1C00C6A24D4D6B4009D636C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1C00C6C24D4EC40009D636C /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "../../../../../Downloads/P01E06 Reload Data materials/Library.swift"; sourceTree = "<group>"; };
 		E1C00C6E24D5385F009D636C /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		E1C00C7024DA3C76009D636C /* NewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				E1C00C4E24D3778A009D636C /* LibraryViewController.swift */,
 				E1C00C6A24D4D6B4009D636C /* DetailViewController.swift */,
+				E1C00C7024DA3C76009D636C /* NewBookViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				E1C00C6324D386B3009D636C /* Book.swift in Sources */,
 				E1C00C6D24D4EC40009D636C /* Library.swift in Sources */,
+				E1C00C7124DA3C77009D636C /* NewBookViewController.swift in Sources */,
 				E1C00C4F24D3778A009D636C /* LibraryViewController.swift in Sources */,
 				E1C00C6F24D5385F009D636C /* BookCell.swift in Sources */,
 				E1C00C6B24D4D6B4009D636C /* DetailViewController.swift in Sources */,

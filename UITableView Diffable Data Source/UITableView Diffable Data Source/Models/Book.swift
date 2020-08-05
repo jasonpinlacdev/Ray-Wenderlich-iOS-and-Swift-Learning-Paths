@@ -8,9 +8,10 @@
 
 import UIKit
 
-struct Book {
+struct Book: Equatable {
     let title: String
     let author: String
+    var review: String?
     var image: UIImage {
         return Library.loadImage(forBook: self) ?? LibrarySymbol.letterSquare(letter: title.first).image
     }
