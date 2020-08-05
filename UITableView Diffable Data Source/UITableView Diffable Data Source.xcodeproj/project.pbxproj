@@ -18,6 +18,8 @@
 		E1C00C6D24D4EC40009D636C /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C6C24D4EC40009D636C /* Library.swift */; };
 		E1C00C6F24D5385F009D636C /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C6E24D5385F009D636C /* BookCell.swift */; };
 		E1C00C7124DA3C77009D636C /* NewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C7024DA3C76009D636C /* NewBookViewController.swift */; };
+		E1C00C7324DB488C009D636C /* LibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C00C7224DB488C009D636C /* LibraryHeaderView.swift */; };
+		E1C00C7524DB48F4009D636C /* LibraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C00C7424DB48F4009D636C /* LibraryHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E1C00C6C24D4EC40009D636C /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "../../../../../Downloads/P01E06 Reload Data materials/Library.swift"; sourceTree = "<group>"; };
 		E1C00C6E24D5385F009D636C /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		E1C00C7024DA3C76009D636C /* NewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookViewController.swift; sourceTree = "<group>"; };
+		E1C00C7224DB488C009D636C /* LibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHeaderView.swift; sourceTree = "<group>"; };
+		E1C00C7424DB48F4009D636C /* LibraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				E1C00C4924D3778A009D636C /* UITableView Diffable Data Source */,
-				E1C00C4824D3778A009D636C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +64,7 @@
 				E1C00C4724D3778A009D636C /* UITableView Diffable Data Source.app */,
 			);
 			name = Products;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		E1C00C4924D3778A009D636C /* UITableView Diffable Data Source */ = {
@@ -70,6 +74,7 @@
 				E1C00C6024D37F70009D636C /* Views */,
 				E1C00C5F24D37F6A009D636C /* Models */,
 				E1C00C5024D3778A009D636C /* Main.storyboard */,
+				E1C00C7424DB48F4009D636C /* LibraryHeaderView.xib */,
 				E1C00C5824D3778E009D636C /* Info.plist */,
 				E1C00C5E24D37F48009D636C /* Support */,
 			);
@@ -92,6 +97,7 @@
 			children = (
 				E1C00C6C24D4EC40009D636C /* Library.swift */,
 				E1C00C6224D386B3009D636C /* Book.swift */,
+				E1C00C4824D3778A009D636C /* Products */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C00C6E24D5385F009D636C /* BookCell.swift */,
+				E1C00C7224DB488C009D636C /* LibraryHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +182,7 @@
 				E1C00C5724D3778E009D636C /* LaunchScreen.storyboard in Resources */,
 				E1C00C5424D3778D009D636C /* Assets.xcassets in Resources */,
 				E1C00C5224D3778A009D636C /* Main.storyboard in Resources */,
+				E1C00C7524DB48F4009D636C /* LibraryHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +199,7 @@
 				E1C00C4F24D3778A009D636C /* LibraryViewController.swift in Sources */,
 				E1C00C6F24D5385F009D636C /* BookCell.swift in Sources */,
 				E1C00C6B24D4D6B4009D636C /* DetailViewController.swift in Sources */,
+				E1C00C7324DB488C009D636C /* LibraryHeaderView.swift in Sources */,
 				E1C00C4B24D3778A009D636C /* AppDelegate.swift in Sources */,
 				E1C00C4D24D3778A009D636C /* SceneDelegate.swift in Sources */,
 			);
