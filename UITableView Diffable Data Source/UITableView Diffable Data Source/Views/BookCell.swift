@@ -15,5 +15,4 @@ class BookCell: UITableViewCell {
     @IBOutlet var reviewLabel: UILabel!
     @IBOutlet var bookThumbnail: UIImageView!
     @IBOutlet var readMeBookMark: UIImageView!
-    
 }

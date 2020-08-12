@@ -16,6 +16,15 @@ class DetailViewController: UITableViewController {
     @IBOutlet var authorLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var reviewTextView: UITextView!
+    @IBOutlet var readMeButton: UIButton!
+    
+    
+    @IBAction func toggleReadMe() {
+        book?.readMe.toggle()
+        let image = book!.readMe ? LibrarySymbol.bookmarkFill.image : LibrarySymbol.bookmark.image
+        readMeButton.setImage(image, for: .normal)
+    }
+    
     
     @IBAction func updateImage() {
         let imagePicker = UIImagePickerController()
@@ -24,6 +33,16 @@ class DetailViewController: UITableViewController {
         imagePicker.sourceType = UIImagePickerController.isSourceTypeAvailable(.camera) ? .camera : .photoLibrary
         present(imagePicker, animated: true)
     }
+    
+    
+    @objc func saveChanges(_ sender: UIBarButtonItem) {
+         if reviewTextView.text != "Add your review here..." {
+             book?.review = reviewTextView.text
+         }
+         Library.update(book: book!)
+         navigationController?.popViewController(animated: true)
+     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,32 +53,20 @@ class DetailViewController: UITableViewController {
         tap.cancelsTouchesInView = true
         view.addGestureRecognizer(tap)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChanges(_:)))
     }
     
-    @objc func dismissKeyboardOnTap() {
-        view.endEditing(true)
-    }
     
     private func configureLayoutForBook() {
         guard let book = book else { return }
         titleLabel.text = book.title
         authorLabel.text = book.author
-        imageView.image = book.image
+        reviewTextView.text = book.review ?? "Add your review here..."
         
-        if let reviewText = book.review {
-            reviewTextView.text = reviewText
-        }
-        
+        imageView.image = book.image ?? LibrarySymbol.letterSquare(letter: book.title.first).image
         imageView.layer.cornerRadius = 16
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let book = book else { return }
-        guard let indexFound = Library.books.firstIndex(of: book) else { return }
-        if reviewTextView.text != "Review..." {
-            Library.books[indexFound].review = reviewTextView.text
-        }
+        let image = book.readMe ? LibrarySymbol.bookmarkFill.image : LibrarySymbol.bookmark.image
+        readMeButton.setImage(image, for: .normal)
     }
     
 }
@@ -70,12 +77,27 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         imageView.image = selectedImage
-        Library.saveImage(selectedImage, forBook: book!)
+        book?.image = selectedImage
         dismiss(animated: true)
     }
 }
 
+
+extension DetailViewController: UITextViewDelegate {
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+    }
+    
+    
+    @objc func dismissKeyboardOnTap() {
+        view.endEditing(true)
+    }
+}
+
+
 extension UITextView {
+    
     func addDoneButton() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()

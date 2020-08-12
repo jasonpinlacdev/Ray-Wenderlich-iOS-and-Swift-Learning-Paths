@@ -9,6 +9,7 @@
 import UIKit
 
 class LibraryHeaderView: UITableViewHeaderFooterView {
+    
     static let reuseIdentifier = "\(LibraryHeaderView.self)"
     @IBOutlet var titleLabel: UILabel!
 }
