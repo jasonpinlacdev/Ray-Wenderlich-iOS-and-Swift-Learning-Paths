@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D624F3419700089393 /* AppDelegate.swift */; };
+		E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D824F3419700089393 /* SceneDelegate.swift */; };
+		E1DFF7DB24F3419700089393 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7DA24F3419700089393 /* RMTableViewController.swift */; };
+		E1DFF7E024F3419900089393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1DFF7DF24F3419900089393 /* Assets.xcassets */; };
+		E1DFF7E324F3419900089393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DFF7E124F3419900089393 /* LaunchScreen.storyboard */; };
+		E1DFF7F024F3476A00089393 /* RMBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7EF24F3476A00089393 /* RMBookTableViewCell.swift */; };
+		E1DFF7FA24F353CA00089393 /* RMBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7F924F353CA00089393 /* RMBook.swift */; };
+		E1DFF80C24F6F0A300089393 /* RMLibrarySymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80B24F6F0A300089393 /* RMLibrarySymbolImage.swift */; };
+		E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80D24F6F0F900089393 /* RMLibrary.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E1DFF7D324F3419700089393 /* Read Me App Programmatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Read Me App Programmatically.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1DFF7D624F3419700089393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1DFF7D824F3419700089393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E1DFF7DA24F3419700089393 /* RMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
+		E1DFF7DF24F3419900089393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1DFF7E224F3419900089393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1DFF7E424F3419900089393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1DFF7EF24F3476A00089393 /* RMBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookTableViewCell.swift; sourceTree = "<group>"; };
+		E1DFF7F924F353CA00089393 /* RMBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBook.swift; sourceTree = "<group>"; };
+		E1DFF80B24F6F0A300089393 /* RMLibrarySymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibrarySymbolImage.swift; sourceTree = "<group>"; };
+		E1DFF80D24F6F0F900089393 /* RMLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibrary.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1DFF7D024F3419700089393 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1DFF7CA24F3419700089393 = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7D524F3419700089393 /* Read Me App Programmatically */,
+				E1DFF7D424F3419700089393 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1DFF7D424F3419700089393 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7D324F3419700089393 /* Read Me App Programmatically.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1DFF7D524F3419700089393 /* Read Me App Programmatically */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF80024F6F04400089393 /* Utility */,
+				E1DFF7ED24F3448E00089393 /* Models */,
+				E1DFF7EC24F3448900089393 /* VIews */,
+				E1DFF7EB24F3447D00089393 /* Controllers */,
+				E1DFF7EA24F3439200089393 /* Support */,
+				E1DFF7E424F3419900089393 /* Info.plist */,
+			);
+			path = "Read Me App Programmatically";
+			sourceTree = "<group>";
+		};
+		E1DFF7EA24F3439200089393 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7D624F3419700089393 /* AppDelegate.swift */,
+				E1DFF7D824F3419700089393 /* SceneDelegate.swift */,
+				E1DFF7DF24F3419900089393 /* Assets.xcassets */,
+				E1DFF7E124F3419900089393 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E1DFF7EB24F3447D00089393 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7DA24F3419700089393 /* RMTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1DFF7EC24F3448900089393 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7EE24F3475400089393 /* Cells */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
+		E1DFF7ED24F3448E00089393 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7F924F353CA00089393 /* RMBook.swift */,
+				E1DFF80D24F6F0F900089393 /* RMLibrary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E1DFF7EE24F3475400089393 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF7EF24F3476A00089393 /* RMBookTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E1DFF80024F6F04400089393 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E1DFF80B24F6F0A300089393 /* RMLibrarySymbolImage.swift */,
+			);
+			name = Utility;
+			path = "../../ReadMe App Storyboard/ReadMe App Storyboard/Utility";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1DFF7D224F3419700089393 /* Read Me App Programmatically */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1DFF7E724F3419900089393 /* Build configuration list for PBXNativeTarget "Read Me App Programmatically" */;
+			buildPhases = (
+				E1DFF7CF24F3419700089393 /* Sources */,
+				E1DFF7D024F3419700089393 /* Frameworks */,
+				E1DFF7D124F3419700089393 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Read Me App Programmatically";
+			productName = "Read Me App Programmatically";
+			productReference = E1DFF7D324F3419700089393 /* Read Me App Programmatically.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1DFF7CB24F3419700089393 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Jason Pinlac";
+				TargetAttributes = {
+					E1DFF7D224F3419700089393 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = E1DFF7CE24F3419700089393 /* Build configuration list for PBXProject "Read Me App Programmatically" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1DFF7CA24F3419700089393;
+			productRefGroup = E1DFF7D424F3419700089393 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1DFF7D224F3419700089393 /* Read Me App Programmatically */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1DFF7D124F3419700089393 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1DFF7E324F3419900089393 /* LaunchScreen.storyboard in Resources */,
+				E1DFF7E024F3419900089393 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1DFF7CF24F3419700089393 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1DFF7DB24F3419700089393 /* RMTableViewController.swift in Sources */,
+				E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */,
+				E1DFF7F024F3476A00089393 /* RMBookTableViewCell.swift in Sources */,
+				E1DFF80C24F6F0A300089393 /* RMLibrarySymbolImage.swift in Sources */,
+				E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */,
+				E1DFF7FA24F353CA00089393 /* RMBook.swift in Sources */,
+				E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1DFF7E124F3419900089393 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1DFF7E224F3419900089393 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1DFF7E524F3419900089393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E1DFF7E624F3419900089393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1DFF7E824F3419900089393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "Read Me App Programmatically/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Read-Me-App-Programmatically";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E1DFF7E924F3419900089393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "Read Me App Programmatically/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.Read-Me-App-Programmatically";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1DFF7CE24F3419700089393 /* Build configuration list for PBXProject "Read Me App Programmatically" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1DFF7E524F3419900089393 /* Debug */,
+				E1DFF7E624F3419900089393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1DFF7E724F3419900089393 /* Build configuration list for PBXNativeTarget "Read Me App Programmatically" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1DFF7E824F3419900089393 /* Debug */,
+				E1DFF7E924F3419900089393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1DFF7CB24F3419700089393 /* Project object */;
+}
