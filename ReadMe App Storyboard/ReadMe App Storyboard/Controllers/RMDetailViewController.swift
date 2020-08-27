@@ -42,7 +42,7 @@ class RMDetailViewController: UIViewController {
         titleLabel.text = book.title
         authorLabel.text = book.author
         bookThumbnailImageView.image = book.image
-        bookThumbnailImageView.turnOnRedBorder()
+        bookThumbnailImageView.layer.cornerRadius = 16
     }
 
 }

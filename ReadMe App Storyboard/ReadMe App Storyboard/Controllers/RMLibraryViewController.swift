@@ -38,11 +38,12 @@ extension RMLibraryViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RMBookTableViewCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RMBookTableViewCell.self)", for: indexPath) as? RMBookTableViewCell else { fatalError("Could not dequeue a reusable RMTableViewCell.") }
         let book = RMLibrary.books[indexPath.row]
         
-        cell.textLabel?.text = book.title
-        cell.imageView?.image = book.image
+        cell.titleLabel?.text = book.title
+        cell.authorLabel?.text = book.author
+        cell.bookThumbnailImageView?.image = book.image
     
         return cell
     }

@@ -18,6 +18,7 @@
 		E1DFF80A24F6F08900089393 /* RMLibrarySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80924F6F08900089393 /* RMLibrarySymbol.swift */; };
 		E1FA8D7824F726560018EE7D /* RMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7724F726560018EE7D /* RMDetailViewController.swift */; };
 		E1FA8D7A24F781240018EE7D /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7924F781240018EE7D /* UIView+EXT.swift */; };
+		E1FA8D7D24F8552C0018EE7D /* RMBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7C24F8552C0018EE7D /* RMBookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E1DFF80924F6F08900089393 /* RMLibrarySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibrarySymbol.swift; sourceTree = "<group>"; };
 		E1FA8D7724F726560018EE7D /* RMDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailViewController.swift; sourceTree = "<group>"; };
 		E1FA8D7924F781240018EE7D /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
+		E1FA8D7C24F8552C0018EE7D /* RMBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		E1DFF7F524F34E6800089393 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E1FA8D7B24F855140018EE7D /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +123,14 @@
 				E1DFF80924F6F08900089393 /* RMLibrarySymbol.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		E1FA8D7B24F855140018EE7D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1FA8D7C24F8552C0018EE7D /* RMBookTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				E1DFF7F824F34E9800089393 /* RMBook.swift in Sources */,
 				E1DFF80A24F6F08900089393 /* RMLibrarySymbol.swift in Sources */,
 				E1DFF7FC24F6E1CB00089393 /* RMLibrary.swift in Sources */,
+				E1FA8D7D24F8552C0018EE7D /* RMBookTableViewCell.swift in Sources */,
 				E1FA8D7824F726560018EE7D /* RMDetailViewController.swift in Sources */,
 				E1DFF7B724F3318B00089393 /* AppDelegate.swift in Sources */,
 				E1DFF7B924F3318B00089393 /* SceneDelegate.swift in Sources */,
