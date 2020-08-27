@@ -8,11 +8,16 @@
 
 import UIKit
 
-class RMTableViewController: UITableViewController {
+class RMLibraryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     private func configure() {
@@ -23,9 +28,16 @@ class RMTableViewController: UITableViewController {
 }
 
 
-extension RMTableViewController {
+extension RMLibraryViewController {
     
-    // MARK: - DATASOURCE METHODS -
+    // MARK: - UITableViewDelegate Methods -
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = RMDetailViewController(book: RMLibrary.books[indexPath.row])
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    // MARK: - UITableViewDatasource Methods -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         RMLibrary.books.count

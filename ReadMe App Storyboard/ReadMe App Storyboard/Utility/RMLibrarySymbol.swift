@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum RMLibrarySymbolImage {
+enum RMLibrarySymbol {
     case book
     case bookmark
     case bookmarkFill

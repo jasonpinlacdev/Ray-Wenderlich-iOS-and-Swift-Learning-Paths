@@ -15,6 +15,17 @@ class RMLibraryViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Nothing selected!") }
+        let book = RMLibrary.books[indexPath.row]
+        return RMDetailViewController(coder: coder, book: book)
+    }
+    
     
 }
 
@@ -28,13 +39,11 @@ extension RMLibraryViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RMBookTableViewCell", for: indexPath)
-        var book = RMLibrary.books[indexPath.row]
-        print(book)
+        let book = RMLibrary.books[indexPath.row]
         
         cell.textLabel?.text = book.title
         cell.imageView?.image = book.image
-        
-        
+    
         return cell
     }
 }
