@@ -43,9 +43,10 @@ class RMDetailViewController: UIViewController {
     
     let bookThumbnailImageView: UIImageView = {
         let bookThumbnailImageView = UIImageView(image: RMLibrarySymbol.book.image)
-        bookThumbnailImageView.turnOnRedBorder()
         bookThumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
         bookThumbnailImageView.contentMode = .scaleAspectFit
+        bookThumbnailImageView.layer.cornerRadius = 16.0
+        bookThumbnailImageView.clipsToBounds = true
         return bookThumbnailImageView
     }()
     
@@ -96,7 +97,7 @@ class RMDetailViewController: UIViewController {
         view.addSubview(verticalStack)
     
         NSLayoutConstraint.activate([
-            bookThumbnailImageView.heightAnchor.constraint(equalTo: bookThumbnailImageView.widthAnchor, multiplier: 43.0/80.0),
+            bookThumbnailImageView.heightAnchor.constraint(equalTo: bookThumbnailImageView.widthAnchor),
             verticalStack.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             verticalStack.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             verticalStack.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.8),

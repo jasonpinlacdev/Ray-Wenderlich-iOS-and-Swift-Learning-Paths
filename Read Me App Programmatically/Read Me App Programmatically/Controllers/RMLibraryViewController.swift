@@ -22,6 +22,7 @@ class RMLibraryViewController: UITableViewController {
     
     private func configure() {
         title = "Read Me Programmatically"
+        tableView.rowHeight = 100
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
     }
     
@@ -46,11 +47,11 @@ extension RMLibraryViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError() }
         
-        var book = RMLibrary.books[indexPath.row]
+        let book = RMLibrary.books[indexPath.row]
         
-        cell.textLabel?.text = book.title
-        cell.imageView?.image = book.image
-        
+        cell.titleLabel.text = book.title
+        cell.authorLabel.text = book.author
+        cell.bookThumbnailImageView.image = book.image
         return cell
     }
 }
