@@ -18,6 +18,7 @@
 		E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80D24F6F0F900089393 /* RMLibrary.swift */; };
 		E1DFF81024F70A3500089393 /* RMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */; };
 		E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */; };
+		E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E1DFF80D24F6F0F900089393 /* RMLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibrary.swift; sourceTree = "<group>"; };
 		E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailViewController.swift; sourceTree = "<group>"; };
 		E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
+		E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAddNewBookTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				E1DFF7EF24F3476A00089393 /* RMBookTableViewCell.swift */,
+				E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				E1DFF81024F70A3500089393 /* RMDetailViewController.swift in Sources */,
 				E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */,
+				E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */,
 				E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */,
 				E1DFF7F024F3476A00089393 /* RMBookTableViewCell.swift in Sources */,
 				E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */,

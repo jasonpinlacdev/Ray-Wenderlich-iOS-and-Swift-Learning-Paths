@@ -23,6 +23,7 @@ class RMLibraryViewController: UITableViewController {
     private func configure() {
         title = "Read Me Programmatically"
         tableView.rowHeight = 100
+        tableView.register(RMAddNewBookTableViewCell.self, forCellReuseIdentifier: RMAddNewBookTableViewCell.reuseId)
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
     }
     
@@ -34,24 +35,32 @@ extension RMLibraryViewController {
     // MARK: - UITableViewDelegate Methods -
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailViewController = RMDetailViewController(book: RMLibrary.books[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath == IndexPath(row: 0, section: 0) { return }
+        let detailViewController = RMDetailViewController(book: RMLibrary.books[indexPath.row - 1])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: - UITableViewDatasource Methods -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        RMLibrary.books.count
+        RMLibrary.books.count + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError() }
+        if indexPath == IndexPath(row: 0, section: 0) {
+            return tableView.dequeueReusableCell(withIdentifier: RMAddNewBookTableViewCell.reuseId, for: indexPath)
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError("Failed to dequeue reusable cell of type RMBookTableViewCell.") }
+            
+            let book = RMLibrary.books[indexPath.row - 1]
+            
+            cell.titleLabel.text = book.title
+            cell.authorLabel.text = book.author
+            cell.bookThumbnailImageView.image = book.image
+            return cell
+        }
         
-        let book = RMLibrary.books[indexPath.row]
         
-        cell.titleLabel.text = book.title
-        cell.authorLabel.text = book.author
-        cell.bookThumbnailImageView.image = book.image
-        return cell
     }
 }

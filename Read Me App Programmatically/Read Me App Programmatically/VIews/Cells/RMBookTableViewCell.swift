@@ -10,7 +10,7 @@ import UIKit
 
 class RMBookTableViewCell: UITableViewCell {
     
-    static let reuseId = String(describing: self)
+    static let reuseId = String(describing: RMBookTableViewCell.self)
     
     let horizontalStackView: UIStackView = {
         let horizontalStackView = UIStackView()
