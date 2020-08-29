@@ -19,6 +19,7 @@
 		E1DFF81024F70A3500089393 /* RMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */; };
 		E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */; };
 		E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */; };
+		E1FA8D8124F9EF320018EE7D /* RMDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailViewController.swift; sourceTree = "<group>"; };
 		E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
 		E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAddNewBookTableViewCell.swift; sourceTree = "<group>"; };
+		E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				E1DFF7DA24F3419700089393 /* RMLibraryViewController.swift */,
 				E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */,
+				E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */,
 				E1DFF80C24F6F0A300089393 /* RMLibrarySymbol.swift in Sources */,
 				E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */,
+				E1FA8D8124F9EF320018EE7D /* RMDetailTableViewController.swift in Sources */,
 				E1DFF7FA24F353CA00089393 /* RMBook.swift in Sources */,
 				E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */,
 			);

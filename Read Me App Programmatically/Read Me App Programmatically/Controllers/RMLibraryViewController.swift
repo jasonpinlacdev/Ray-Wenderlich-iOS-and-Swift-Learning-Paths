@@ -27,6 +27,7 @@ class RMLibraryViewController: UITableViewController {
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
     }
     
+    
 }
 
 
@@ -37,7 +38,7 @@ extension RMLibraryViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath == IndexPath(row: 0, section: 0) { return }
-        let detailViewController = RMDetailViewController(book: RMLibrary.books[indexPath.row - 1])
+        let detailViewController = RMDetailTableViewController(book: RMLibrary.books[indexPath.row - 1])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     

@@ -11,6 +11,7 @@ import UIKit
 struct RMBook {
     var title: String
     var author: String
+    var review: String?
     var image: UIImage {
         return RMLibrary.loadImage(forBook: self) ?? RMLibrarySymbol.letterSquare(letter: title.first).image
     }
