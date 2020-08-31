@@ -19,7 +19,11 @@
 		E1DFF81024F70A3500089393 /* RMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */; };
 		E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */; };
 		E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */; };
-		E1FA8D8124F9EF320018EE7D /* RMDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */; };
+		E1FA8DAE24FB28A00018EE7D /* RMDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DAD24FB28A00018EE7D /* RMDetailTableViewController.swift */; };
+		E1FA8DB024FB356D0018EE7D /* RMFirstDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DAF24FB356D0018EE7D /* RMFirstDetailTableViewCell.swift */; };
+		E1FA8DB224FB35790018EE7D /* RMSecondDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DB124FB35790018EE7D /* RMSecondDetailTableViewCell.swift */; };
+		E1FA8DB424FB35810018EE7D /* RMThirdDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DB324FB35810018EE7D /* RMThirdDetailTableViewCell.swift */; };
+		E1FA8DB624FC86F70018EE7D /* UITextView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DB524FC86F70018EE7D /* UITextView+EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +41,11 @@
 		E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailViewController.swift; sourceTree = "<group>"; };
 		E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
 		E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAddNewBookTableViewCell.swift; sourceTree = "<group>"; };
-		E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailTableViewController.swift; sourceTree = "<group>"; };
+		E1FA8DAD24FB28A00018EE7D /* RMDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDetailTableViewController.swift; sourceTree = "<group>"; };
+		E1FA8DAF24FB356D0018EE7D /* RMFirstDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFirstDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E1FA8DB124FB35790018EE7D /* RMSecondDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSecondDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E1FA8DB324FB35810018EE7D /* RMThirdDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMThirdDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E1FA8DB524FC86F70018EE7D /* UITextView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+EXT.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +104,7 @@
 			children = (
 				E1DFF7DA24F3419700089393 /* RMLibraryViewController.swift */,
 				E1DFF80F24F70A3500089393 /* RMDetailViewController.swift */,
-				E1FA8D8024F9EF320018EE7D /* RMDetailTableViewController.swift */,
+				E1FA8DAD24FB28A00018EE7D /* RMDetailTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -123,6 +131,9 @@
 			children = (
 				E1DFF7EF24F3476A00089393 /* RMBookTableViewCell.swift */,
 				E1FA8D7E24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift */,
+				E1FA8DAF24FB356D0018EE7D /* RMFirstDetailTableViewCell.swift */,
+				E1FA8DB124FB35790018EE7D /* RMSecondDetailTableViewCell.swift */,
+				E1FA8DB324FB35810018EE7D /* RMThirdDetailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */,
+				E1FA8DB524FC86F70018EE7D /* UITextView+EXT.swift */,
 				E1DFF80B24F6F0A300089393 /* RMLibrarySymbol.swift */,
 			);
 			name = Utility;
@@ -211,13 +223,17 @@
 				E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */,
 				E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */,
 				E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */,
+				E1FA8DB424FB35810018EE7D /* RMThirdDetailTableViewCell.swift in Sources */,
 				E1DFF7F024F3476A00089393 /* RMBookTableViewCell.swift in Sources */,
 				E1FA8D7624F7236F0018EE7D /* UIView+EXT.swift in Sources */,
 				E1DFF80C24F6F0A300089393 /* RMLibrarySymbol.swift in Sources */,
 				E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */,
-				E1FA8D8124F9EF320018EE7D /* RMDetailTableViewController.swift in Sources */,
+				E1FA8DB024FB356D0018EE7D /* RMFirstDetailTableViewCell.swift in Sources */,
+				E1FA8DAE24FB28A00018EE7D /* RMDetailTableViewController.swift in Sources */,
 				E1DFF7FA24F353CA00089393 /* RMBook.swift in Sources */,
+				E1FA8DB624FC86F70018EE7D /* UITextView+EXT.swift in Sources */,
 				E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */,
+				E1FA8DB224FB35790018EE7D /* RMSecondDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

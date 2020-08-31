@@ -2,7 +2,7 @@
 //  RMDetailTableViewController.swift
 //  Read Me App Programmatically
 //
-//  Created by Jason Pinlac on 8/28/20.
+//  Created by Jason Pinlac on 8/29/20.
 //  Copyright © 2020 Jason Pinlac. All rights reserved.
 //
 
@@ -10,91 +10,45 @@ import UIKit
 
 class RMDetailTableViewController: UITableViewController {
     
-    var book: RMBook
+    let book: RMBook
     
-    let cell1 = UITableViewCell(style: .default, reuseIdentifier: <#T##String?#>)
-    let cell2 = UITableViewCell(style: .default, reuseIdentifier: <#T##String?#>)
-    let cell3 = UITableViewCell(style: .default, reuseIdentifier: <#T##String?#>)
-    
-    
-    let horizontalStackView: UIStackView = {
-        let horizontalStackView = UIStackView()
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.alignment = .center
-        horizontalStackView.distribution = .fill
-        horizontalStackView.spacing = 10.0
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        return horizontalStackView
+    lazy var firstCell: RMFirstDetailTableViewCell = {
+        let firstCell = RMFirstDetailTableViewCell(style: .default, reuseIdentifier: nil)
+        firstCell.titleLabel.text = book.title
+        firstCell.authorLabel.text = book.author
+        return firstCell
     }()
     
-    let verticalStackView: UIStackView = {
-        let verticalStackView = UIStackView()
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fill
-        verticalStackView.alignment = .fill
-        return verticalStackView
+    lazy var secondCell: RMSecondDetailTableViewCell = {
+        let secondCell = RMSecondDetailTableViewCell(style: .default, reuseIdentifier: nil)
+        secondCell.bookThumbnailImageView.image = book.image
+        secondCell.updateImageButton.addTarget(self, action: #selector(updateImage), for: .touchUpInside)
+        return secondCell
     }()
     
-    let bookmarkButton: UIButton = {
-        let bookmarkButton = UIButton()
-        return bookmarkButton
-    }()
-    
-    let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Title"
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
-    
-    let authorLabel: UILabel = {
-        let authorLabel = UILabel()
-        authorLabel.text = "Title"
-        authorLabel.textColor = .secondaryLabel
-        authorLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        authorLabel.numberOfLines = 0
-        authorLabel.translatesAutoresizingMaskIntoConstraints = false
-        return authorLabel
-    }()
-    
-    let bookThumbnailImageView: UIImageView = {
-        let bookThumbnailImageView = UIImageView(image: RMLibrarySymbol.book.image)
-        bookThumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
-        bookThumbnailImageView.contentMode = .scaleAspectFit
-        bookThumbnailImageView.layer.cornerRadius = 16.0
-        bookThumbnailImageView.clipsToBounds = true
-        return bookThumbnailImageView
-    }()
-    
-    let updateImageButton: UIButton = {
-        let updateImageButton = UIButton(type: .system)
-        updateImageButton.setTitle("Update Image", for: .normal)
-        updateImageButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        updateImageButton.translatesAutoresizingMaskIntoConstraints = false
-        updateImageButton.addTarget(self, action: #selector(updateImage), for: .touchUpInside)
-        return updateImageButton
-    }()
-    
-    let reviewTextView: UITextView = {
-        let reviewTextView = UITextView()
-        return reviewTextView
+    lazy var thirdCell: RMThirdDetailTableViewCell = {
+        let thirdCell = RMThirdDetailTableViewCell()
+        if let review = book.review {
+            thirdCell.reviewTextView.text = review
+        }
+        return thirdCell
     }()
     
     init(book: RMBook) {
         self.book = book
         super.init(nibName: nil, bundle: nil)
-        print("RMDetailTableViewController")
+        configureTableView()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tableView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        tableView.endEditing(true)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUIElements()
     }
     
     @objc func updateImage() {
@@ -105,26 +59,43 @@ class RMDetailTableViewController: UITableViewController {
         present(picker, animated: true)
     }
     
-    private func configureUIElements() {
-        view.backgroundColor = .systemBackground
+    private func configureTableView() {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
-        
-        titleLabel.text = self.book.title
-        authorLabel.text = self.book.author
-        bookThumbnailImageView.image = self.book.image
     }
     
-    private func configureUILayout() {
-        
+    
+    
+}
+
+extension RMDetailTableViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0: return 100
+        case 1: return 350
+        case 2: return 200
+        default: fatalError("Unknown height for unknown row.")
+        }
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0: return firstCell
+        case 1: return secondCell
+        case 2: return thirdCell
+        default: fatalError("Unknown cell for unknown row.")
+        }
+    }
 }
 
 extension RMDetailTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        bookThumbnailImageView.image = selectedImage
+        secondCell.bookThumbnailImageView.image = selectedImage
         RMLibrary.saveImage(selectedImage, forBook: self.book)
         dismiss(animated: true)
     }
