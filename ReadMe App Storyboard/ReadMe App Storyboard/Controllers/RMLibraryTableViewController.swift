@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RMLibraryViewController: UITableViewController {
+class RMLibraryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +20,16 @@ class RMLibraryViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailViewController? {
+    @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailTableViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Nothing selected!") }
         let book = RMLibrary.books[indexPath.row - 1]
-        return RMDetailViewController(coder: coder, book: book)
+        return RMDetailTableViewController(coder: coder, book: book)
     }
     
     
 }
 
-extension RMLibraryViewController {
+extension RMLibraryTableViewController {
     
     // MARK: - DATASOURCE METHODS -
     
