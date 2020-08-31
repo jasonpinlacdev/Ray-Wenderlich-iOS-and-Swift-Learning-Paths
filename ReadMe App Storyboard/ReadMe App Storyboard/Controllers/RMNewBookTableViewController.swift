@@ -40,10 +40,6 @@ class RMNewBookTableViewController: UITableViewController {
         tableView.endEditing(true)
     }
     
-    
-    
-    
-
 }
 
 extension RMNewBookTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

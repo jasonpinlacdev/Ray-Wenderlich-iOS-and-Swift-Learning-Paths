@@ -37,9 +37,13 @@ extension RMLibraryViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath == IndexPath(row: 0, section: 0) { return }
-        let detailViewController = RMDetailTableViewController(book: RMLibrary.books[indexPath.row - 1])
-        navigationController?.pushViewController(detailViewController, animated: true)
+        if indexPath == IndexPath(row: 0, section: 0) {
+            let newBookTableViewController = RMNewBookTableViewController()
+            navigationController?.pushViewController(newBookTableViewController, animated: true)
+            return
+        }
+        let detailTableViewController = RMDetailTableViewController(book: RMLibrary.books[indexPath.row - 1])
+        navigationController?.pushViewController(detailTableViewController, animated: true)
     }
     
     // MARK: - UITableViewDatasource Methods -

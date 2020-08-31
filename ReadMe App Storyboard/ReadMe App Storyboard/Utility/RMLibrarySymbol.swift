@@ -10,6 +10,7 @@ import UIKit
 
 enum RMLibrarySymbol {
     case book
+    case bookCircle
     case bookmark
     case bookmarkFill
     case letterSquare(letter: Character?)
@@ -20,6 +21,8 @@ enum RMLibrarySymbol {
         switch self {
         case .book:
             imageName = "book"
+        case .bookCircle:
+            imageName = "book.circle"
         case .bookmark:
             imageName = "bookmark"
         case .bookmarkFill:

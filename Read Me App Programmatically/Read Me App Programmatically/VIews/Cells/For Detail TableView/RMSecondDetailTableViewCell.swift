@@ -16,11 +16,12 @@ class RMSecondDetailTableViewCell: UITableViewCell {
         verticalStackView.alignment = .center
         verticalStackView.distribution = .fill
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.spacing = 10
         return verticalStackView
     }()
     
     var bookThumbnailImageView: UIImageView = {
-        let bookThumbnailImageView = UIImageView(image: RMLibrarySymbol.book.image)
+        let bookThumbnailImageView = UIImageView(image: RMLibrarySymbol.bookCircle.image)
         bookThumbnailImageView.contentMode = .scaleAspectFill
         bookThumbnailImageView.layer.cornerRadius = 16.0
         bookThumbnailImageView.clipsToBounds = true
@@ -52,9 +53,9 @@ class RMSecondDetailTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             verticalStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             verticalStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            verticalStackView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            verticalStackView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
             
-            bookThumbnailImageView.heightAnchor.constraint(equalTo: verticalStackView.heightAnchor, multiplier: 0.85),
+            bookThumbnailImageView.heightAnchor.constraint(equalTo: verticalStackView.heightAnchor, multiplier: 0.9),
             bookThumbnailImageView.widthAnchor.constraint(equalTo: bookThumbnailImageView.heightAnchor),
             
         ])

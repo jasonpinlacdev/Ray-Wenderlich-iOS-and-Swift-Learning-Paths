@@ -38,17 +38,17 @@ class RMDetailTableViewController: UITableViewController {
         self.book = book
         super.init(nibName: nil, bundle: nil)
         configureTableView()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tableView.addGestureRecognizer(tapGesture)
+
     }
-    
-    @objc func dismissKeyboard() {
-        tableView.endEditing(true)
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureTableView() {
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
+        tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap)))
     }
     
     @objc func updateImage() {
@@ -59,12 +59,9 @@ class RMDetailTableViewController: UITableViewController {
         present(picker, animated: true)
     }
     
-    private func configureTableView() {
-        tableView.allowsSelection = false
-        tableView.separatorStyle = .none
+    @objc func dismissKeyboardOnTap() {
+        tableView.endEditing(true)
     }
-    
-    
     
 }
 
