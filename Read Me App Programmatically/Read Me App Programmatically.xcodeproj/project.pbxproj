@@ -28,6 +28,7 @@
 		E1FA8DBC24FD57360018EE7D /* RMFirstNewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DBB24FD57360018EE7D /* RMFirstNewBookTableViewCell.swift */; };
 		E1FA8DBE24FD574A0018EE7D /* RMSecondNewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DBD24FD574A0018EE7D /* RMSecondNewBookTableViewCell.swift */; };
 		E1FA8DC324FD7CEF0018EE7D /* UITextField+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DC224FD7CEF0018EE7D /* UITextField+EXT.swift */; };
+		E1FA8DCC24FE039C0018EE7D /* RMLibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA8DCB24FE039C0018EE7D /* RMLibraryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E1FA8DBB24FD57360018EE7D /* RMFirstNewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFirstNewBookTableViewCell.swift; sourceTree = "<group>"; };
 		E1FA8DBD24FD574A0018EE7D /* RMSecondNewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSecondNewBookTableViewCell.swift; sourceTree = "<group>"; };
 		E1FA8DC224FD7CEF0018EE7D /* UITextField+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+EXT.swift"; sourceTree = "<group>"; };
+		E1FA8DCB24FE039C0018EE7D /* RMLibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibraryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		E1DFF7EC24F3448900089393 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				E1FA8DCA24FE03570018EE7D /* Headers */,
 				E1DFF7EE24F3475400089393 /* Cells */,
 			);
 			path = VIews;
@@ -183,6 +186,14 @@
 				E1FA8DBD24FD574A0018EE7D /* RMSecondNewBookTableViewCell.swift */,
 			);
 			path = "For New Book TableView";
+			sourceTree = "<group>";
+		};
+		E1FA8DCA24FE03570018EE7D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E1FA8DCB24FE039C0018EE7D /* RMLibraryHeaderView.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 				E1FA8DB024FB356D0018EE7D /* RMFirstDetailTableViewCell.swift in Sources */,
 				E1FA8DAE24FB28A00018EE7D /* RMDetailTableViewController.swift in Sources */,
 				E1DFF7FA24F353CA00089393 /* RMBook.swift in Sources */,
+				E1FA8DCC24FE039C0018EE7D /* RMLibraryHeaderView.swift in Sources */,
 				E1FA8DB624FC86F70018EE7D /* UITextView+EXT.swift in Sources */,
 				E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */,
 				E1FA8DB224FB35790018EE7D /* RMSecondDetailTableViewCell.swift in Sources */,
