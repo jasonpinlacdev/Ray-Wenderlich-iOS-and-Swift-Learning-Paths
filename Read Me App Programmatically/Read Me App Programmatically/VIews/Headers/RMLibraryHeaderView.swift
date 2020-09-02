@@ -10,6 +10,8 @@ import UIKit
 
 class RMLibraryHeaderView: UITableViewHeaderFooterView {
     
+    static let reuseId = String(describing: RMLibraryHeaderView.self)
+    
     let backgroundImageView: UIImageView = {
         let backgroundImageView = UIImageView(image: UIImage(named: "BookTexture"))
         backgroundImageView.contentMode = .scaleAspectFill

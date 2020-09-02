@@ -48,7 +48,7 @@ class RMDetailTableViewController: UITableViewController {
         }
         reviewTextView.delegate = self
         reviewTextView.addDoneButton()
-        bookThumbnailImageView.image = book.image
+        bookThumbnailImageView.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
         bookThumbnailImageView.layer.cornerRadius = 16
     }
 
@@ -69,15 +69,4 @@ extension RMDetailTableViewController: UITextViewDelegate {
     }
 }
 
-extension UITextView {
-    func addDoneButton() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        toolBar.items = [
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.resignFirstResponder))
-        ]
-        self.inputAccessoryView = toolBar
-    }
-}
 

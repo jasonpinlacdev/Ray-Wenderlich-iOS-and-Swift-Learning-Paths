@@ -25,6 +25,7 @@ class RMLibraryViewController: UITableViewController {
         tableView.rowHeight = 100
         tableView.register(RMAddNewBookTableViewCell.self, forCellReuseIdentifier: RMAddNewBookTableViewCell.reuseId)
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
+        tableView.register(RMLibraryHeaderView.self, forHeaderFooterViewReuseIdentifier: RMLibraryHeaderView.reuseId)
     }
     
     
@@ -46,7 +47,7 @@ extension RMLibraryViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0: return nil
-        case 1: return RMLibraryHeaderView(reuseIdentifier: nil)
+        case 1: return tableView.dequeueReusableHeaderFooterView(withIdentifier: RMLibraryHeaderView.reuseId)
         default: fatalError("Uknown header view for unknow section.")
         }
     }

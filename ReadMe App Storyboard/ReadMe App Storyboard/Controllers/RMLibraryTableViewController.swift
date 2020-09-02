@@ -8,21 +8,30 @@
 
 import UIKit
 
+enum RMLibrarySection: String, CaseIterable {
+    case addNew
+    case readMe = "Read Me!"
+    case finished = "Finished!"
+}
+
 class RMLibraryTableViewController: UITableViewController {
+    
+    var diffableDataSource: UITableViewDiffableDataSource<RMLibrarySection, RMBook>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureDiffableDataSource()
+        updateDiffableDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        updateDiffableDataSource()
     }
     
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailTableViewController? {
-        guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Nothing selected!") }
-        let book = RMLibrary.books[indexPath.row]
+        guard let indexPath = tableView.indexPathForSelectedRow, let book = diffableDataSource.itemIdentifier(for: indexPath) else { fatalError("Nothing selected!") }
         return RMDetailTableViewController(coder: coder, book: book)
     }
     
@@ -37,46 +46,59 @@ extension RMLibraryTableViewController {
     
     // MARK: - DELEGATE METHODS -
     
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return section == 0 ? nil : "Read Me!"
-//    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 { return nil }
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMLibraryHeaderView.reuseId) as? RMLibraryHeaderView else { return nil }
-        headerView.titleLabel?.text = "Read Me!"
-        return headerView
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 1 ? 60.0 : 0.0
-    }
-
-    
-    // MARK: - DATASOURCE METHODS -
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : RMLibrary.books.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath == IndexPath(row: 0, section: 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RMAddNewBookTableViewCell", for: indexPath)
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RMBookTableViewCell.self)", for: indexPath) as? RMBookTableViewCell else { fatalError("Could not dequeue a reusable RMTableViewCell.") }
-            let book = RMLibrary.books[indexPath.row]
-            cell.titleLabel?.text = book.title
-            cell.authorLabel?.text = book.author
-            cell.bookThumbnailImageView?.image = book.image
-            return cell
+        switch section {
+        case 0 : return nil
+        case 1:
+            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMLibraryHeaderView.reuseId) as? RMLibraryHeaderView else { return nil }
+            headerView.titleLabel?.text = "Read Me!"
+            return headerView
+        case 2:
+            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: RMLibraryHeaderView.reuseId) as? RMLibraryHeaderView else { return nil }
+            headerView.titleLabel?.text =  "Finished!"
+            return headerView
+        default: return nil
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ?  0.0 : 60.0
+    }
+    
+    
+    // MARK: - DATASOURCE METHODS -
+    
+    func configureDiffableDataSource() {
+        diffableDataSource = UITableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, book) -> UITableViewCell? in
+            if indexPath == IndexPath(row: 0, section: 0) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RMAddNewBookTableViewCell", for: indexPath)
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(RMBookTableViewCell.self)", for: indexPath) as? RMBookTableViewCell else { fatalError("Could not dequeue a reusable RMTableViewCell.") }
+                cell.titleLabel?.text = book.title
+                cell.authorLabel?.text = book.author
+                cell.bookThumbnailImageView?.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
+                return cell
+            }
+        }
+    }
+    
+    func updateDiffableDataSource() {
+        var newSnapshot = NSDiffableDataSourceSnapshot<RMLibrarySection, RMBook>()
+        newSnapshot.appendSections(RMLibrarySection.allCases)
+        
+        let booksToRead = RMLibrary.books.compactMap { book in
+            return book.readMe ? book : nil
+        }
+        let booksFinishedReading = RMLibrary.books.compactMap { book in
+            return !book.readMe ? book : nil
+        }
+        
+        newSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
+        newSnapshot.appendItems(booksToRead, toSection: .readMe)
+        newSnapshot.appendItems(booksFinishedReading, toSection: .finished)
+        diffableDataSource.apply(newSnapshot, animatingDifferences: true)
+    }
     
 }
 

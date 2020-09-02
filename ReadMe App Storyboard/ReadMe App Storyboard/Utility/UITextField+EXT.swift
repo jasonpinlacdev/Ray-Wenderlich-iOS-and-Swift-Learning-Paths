@@ -1,8 +1,8 @@
 //
 //  UITextField+EXT.swift
-//  Read Me App Programmatically
+//  ReadMe App Storyboard
 //
-//  Created by Jason Pinlac on 8/31/20.
+//  Created by Jason Pinlac on 9/1/20.
 //  Copyright © 2020 Jason Pinlac. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ extension UITextField {
         toolbar.sizeToFit()
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resignFirstResponder))
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.resignFirstResponder))
         ]
         self.inputAccessoryView = toolbar
     }
