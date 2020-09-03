@@ -23,7 +23,7 @@ class RMLibraryHeaderView: UITableViewHeaderFooterView {
     let headerLabel: UILabel = {
         let headerLabel = UILabel()
         headerLabel.textAlignment = .center
-        headerLabel.text = "Section Title"
+        headerLabel.text = "Read Me!"
         headerLabel.font = UIFont(name: "American Typewriter", size: 24.0)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel

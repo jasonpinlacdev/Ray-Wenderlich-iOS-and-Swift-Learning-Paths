@@ -8,11 +8,22 @@
 
 import UIKit
 
-struct RMBook {
+struct RMBook: Equatable, Hashable {
+    
+    static var mockBook = RMBook(title: "", author: "", review: "", readMe: false, image: nil)
+    
     var title: String
     var author: String
     var review: String?
-    var image: UIImage {
-        return RMLibrary.loadImage(forBook: self) ?? RMLibrarySymbol.letterSquare(letter: self.title.first).image
+    var readMe: Bool
+    var image: UIImage?
+}
+
+extension RMBook: Codable {
+    enum CodingKeys: String, CodingKey {
+        case title
+        case author
+        case review
+        case readMe
     }
 }

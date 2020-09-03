@@ -25,8 +25,7 @@ enum RMLibrary {
       
       static var books: [RMBook] = loadBooks()
       
-      private static let booksJSONURL = URL(fileURLWithPath: "Books",
-                                    relativeTo: FileManager.documentDirectoryURL).appendingPathExtension("json")
+      private static let booksJSONURL = URL(fileURLWithPath: "Books", relativeTo: FileManager.documentDirectoryURL).appendingPathExtension("json")
       
       
       /// This method loads all existing data from the `booksJSONURL`, if available. If not, it will fall back to using `starterData`

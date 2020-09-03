@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E163824725007DEC004905DA /* RMLibrarySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163824625007DEC004905DA /* RMLibrarySymbol.swift */; };
+		E163824925007E28004905DA /* RMLibrarySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163824825007E28004905DA /* RMLibrarySymbol.swift */; };
 		E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D624F3419700089393 /* AppDelegate.swift */; };
 		E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D824F3419700089393 /* SceneDelegate.swift */; };
 		E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7DA24F3419700089393 /* RMLibraryViewController.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E163824625007DEC004905DA /* RMLibrarySymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLibrarySymbol.swift; sourceTree = "<group>"; };
+		E163824825007E28004905DA /* RMLibrarySymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLibrarySymbol.swift; sourceTree = "<group>"; };
 		E1DFF7D324F3419700089393 /* Read Me App Programmatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Read Me App Programmatically.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DFF7D624F3419700089393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1DFF7D824F3419700089393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		E1DFF7ED24F3448E00089393 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E163824625007DEC004905DA /* RMLibrarySymbol.swift */,
+				E163824825007E28004905DA /* RMLibrarySymbol.swift */,
 				E1DFF7F924F353CA00089393 /* RMBook.swift */,
 				E1DFF80D24F6F0F900089393 /* RMLibrary.swift */,
 			);
@@ -272,7 +272,7 @@
 				E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */,
 				E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */,
 				E1FA8DBA24FD565C0018EE7D /* RMNewBookTableViewController.swift in Sources */,
-				E163824725007DEC004905DA /* RMLibrarySymbol.swift in Sources */,
+				E163824925007E28004905DA /* RMLibrarySymbol.swift in Sources */,
 				E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */,
 				E1FA8DB424FB35810018EE7D /* RMThirdDetailTableViewCell.swift in Sources */,
 				E1DFF7F024F3476A00089393 /* RMBookTableViewCell.swift in Sources */,

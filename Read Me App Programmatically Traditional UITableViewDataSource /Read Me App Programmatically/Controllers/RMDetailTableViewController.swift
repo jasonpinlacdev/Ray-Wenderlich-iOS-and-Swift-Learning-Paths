@@ -21,7 +21,7 @@ class RMDetailTableViewController: UITableViewController {
     
     lazy var secondCell: RMSecondDetailTableViewCell = {
         let secondCell = RMSecondDetailTableViewCell(style: .default, reuseIdentifier: nil)
-        secondCell.bookThumbnailImageView.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
+        secondCell.bookThumbnailImageView.image = book.image
         secondCell.updateImageButton.addTarget(self, action: #selector(updateImage), for: .touchUpInside)
         return secondCell
     }()
