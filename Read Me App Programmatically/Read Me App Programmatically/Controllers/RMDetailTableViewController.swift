@@ -10,7 +10,7 @@ import UIKit
 
 class RMDetailTableViewController: UITableViewController {
     
-    let book: RMBook
+    var book: RMBook
     
     lazy var firstCell: RMFirstDetailTableViewCell = {
         let firstCell = RMFirstDetailTableViewCell(style: .default, reuseIdentifier: nil)
@@ -38,9 +38,9 @@ class RMDetailTableViewController: UITableViewController {
         self.book = book
         super.init(nibName: nil, bundle: nil)
         configureTableView()
-
+        configureUIElements()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,6 +49,23 @@ class RMDetailTableViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap)))
+    }
+    
+    private func configureUIElements() {
+        thirdCell.reviewTextView.delegate = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+         firstCell.bookmarkButton.setImage(book.readMe ? RMLibrarySymbol.bookmarkFill.image : RMLibrarySymbol.bookmark.image, for: .normal)
+        firstCell.bookmarkButton.addTarget(self, action: #selector(toggleReadMeBookmark), for: .touchUpInside)
+    }
+    
+    @objc func saveTapped() {
+        RMLibrary.update(book: book)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func toggleReadMeBookmark() {
+        book.readMe.toggle()
+        firstCell.bookmarkButton.setImage(book.readMe ? RMLibrarySymbol.bookmarkFill.image : RMLibrarySymbol.bookmark.image, for: .normal)
     }
     
     @objc func updateImage() {
@@ -93,7 +110,13 @@ extension RMDetailTableViewController: UIImagePickerControllerDelegate, UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         secondCell.bookThumbnailImageView.image = selectedImage
-        RMLibrary.saveImage(selectedImage, forBook: self.book)
+        book.image = selectedImage
         dismiss(animated: true)
+    }
+}
+
+extension RMDetailTableViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        book.review = thirdCell.reviewTextView.text
     }
 }

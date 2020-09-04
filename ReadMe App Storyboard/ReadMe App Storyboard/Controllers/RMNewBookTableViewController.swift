@@ -14,6 +14,18 @@ class RMNewBookTableViewController: UITableViewController {
     @IBOutlet var authorTextField: UITextField!
     @IBOutlet var bookThumbnailImageView: UIImageView!
     
+    @IBAction func cancelNewBook() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveNewBook() {
+        guard let title = titleTextField?.text, let author = authorTextField?.text, !title.isEmpty, !author.isEmpty else { return }
+        RMLibrary.addNew(book: RMBook(title: title, author: author, review: nil, readMe: true, image: newBookImage))
+        navigationController?.popViewController(animated: true)
+    }
+    
+    var newBookImage: UIImage?
+    
     @IBAction func addImage(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -46,6 +58,7 @@ extension RMNewBookTableViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         bookThumbnailImageView?.image = selectedImage
+        newBookImage = selectedImage
         dismiss(animated: true)
     }
 }

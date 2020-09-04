@@ -86,11 +86,15 @@ extension RMLibraryViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError("Failed to dequeue a RMBookTableViewCell") }
                 cell.titleLabel.text = book.title
                 cell.authorLabel.text = book.author
+               
                 if let review = book.review {
                     cell.reviewLabel.text = review
                     cell.reviewLabel.isHidden = false
+                } else {
+                    cell.reviewLabel.isHidden = true
                 }
-                cell.bookmarkImageView.isHidden = !book.readMe
+                
+                cell.bookmarkImageView.isHidden = book.readMe ?  false : true
                 cell.bookThumbnailImageView.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
                 return cell
             }

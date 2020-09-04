@@ -164,6 +164,9 @@
                                                             <state key="normal" image="bookmark.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="toggleReadMeBookmarkButton:" destination="jp1-TD-7W9" eventType="touchUpInside" id="AII-Kd-PQc"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbB-bo-DcO">
                                                             <rect key="frame" x="38.5" y="0.0" width="335.5" height="35"/>
@@ -278,10 +281,17 @@
                             <outlet property="delegate" destination="jp1-TD-7W9" id="nyg-46-n6q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Book Detail" id="zfJ-AS-H6S"/>
+                    <navigationItem key="navigationItem" title="Book Detail" id="zfJ-AS-H6S">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HeZ-ad-9Eg">
+                            <connections>
+                                <action selector="saveBookChanges" destination="jp1-TD-7W9" id="qgz-WX-Wdl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="uTX-zP-u8j" id="HBr-i5-bsU"/>
                         <outlet property="bookThumbnailImageView" destination="RJK-cp-OJx" id="w3a-1k-o12"/>
+                        <outlet property="bookmarkButton" destination="Q2x-Vx-gqJ" id="hs8-c4-0qx"/>
                         <outlet property="reviewTextView" destination="Vmg-mt-AFV" id="2Qr-eV-WGV"/>
                         <outlet property="titleLabel" destination="HG0-LW-ly7" id="SQS-8v-Se8"/>
                     </connections>
@@ -415,7 +425,18 @@
                             <outlet property="delegate" destination="z5l-Ma-ek8" id="FIc-iP-AGp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Book" id="Kpp-aQ-k8W"/>
+                    <navigationItem key="navigationItem" title="New Book" id="Kpp-aQ-k8W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="t7G-Yf-1ev">
+                            <connections>
+                                <action selector="cancelNewBook" destination="z5l-Ma-ek8" id="qfW-kg-VoW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ITB-1f-fjb">
+                            <connections>
+                                <action selector="saveNewBook" destination="z5l-Ma-ek8" id="bW0-b3-Arn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="IVU-vQ-Yba" id="Bxr-rK-ReR"/>
                         <outlet property="bookThumbnailImageView" destination="Ha8-Au-6Y0" id="s2r-lk-VOI"/>

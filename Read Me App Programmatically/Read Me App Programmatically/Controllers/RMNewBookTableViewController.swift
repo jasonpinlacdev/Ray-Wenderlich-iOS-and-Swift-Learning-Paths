@@ -12,13 +12,14 @@ class RMNewBookTableViewController: UITableViewController {
     
     let firstCell = RMFirstNewBookTableViewCell(style: .default, reuseIdentifier: nil)
     let secondCell = RMSecondNewBookTableViewCell(style: .default, reuseIdentifier: nil)
-
+    var newBookImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         configureUIElements()
     }
-
+    
     private func configureTableView() {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
@@ -26,6 +27,12 @@ class RMNewBookTableViewController: UITableViewController {
     }
     
     private func configureUIElements() {
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = saveButton
+        
         firstCell.titleTextField.addDoneButton()
         firstCell.authorTextField.addDoneButton()
         firstCell.titleTextField.delegate = self
@@ -44,6 +51,17 @@ class RMNewBookTableViewController: UITableViewController {
     @objc func dismissKeyboardOnTap() {
         tableView.endEditing(true)
     }
+    
+    @objc func saveTapped() {
+        guard let title = firstCell.titleTextField.text, let author = firstCell.authorTextField.text, !title.isEmpty, !author.isEmpty else { return }
+        RMLibrary.addNew(book: RMBook(title: title, author: author, review: nil, readMe: true, image: newBookImage))
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func cancelTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
 }
 
@@ -74,6 +92,7 @@ extension RMNewBookTableViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         secondCell.bookThumbnailImageView.image = selectedImage
+        newBookImage = selectedImage
         dismiss(animated: true)
     }
 }
