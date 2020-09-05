@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E163824725007DEC004905DA /* RMLibrarySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163824625007DEC004905DA /* RMLibrarySymbol.swift */; };
+		E163825025044BDB004905DA /* RMLibraryDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163824F25044BDB004905DA /* RMLibraryDiffableDataSource.swift */; };
 		E1DFF7D724F3419700089393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D624F3419700089393 /* AppDelegate.swift */; };
 		E1DFF7D924F3419700089393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7D824F3419700089393 /* SceneDelegate.swift */; };
 		E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF7DA24F3419700089393 /* RMLibraryViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		E163824625007DEC004905DA /* RMLibrarySymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLibrarySymbol.swift; sourceTree = "<group>"; };
+		E163824F25044BDB004905DA /* RMLibraryDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RMLibraryDiffableDataSource.swift; path = "../../../Read Me App Programmatically/Read Me App Programmatically/Models/RMLibraryDiffableDataSource.swift"; sourceTree = "<group>"; };
 		E1DFF7D324F3419700089393 /* Read Me App Programmatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Read Me App Programmatically.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DFF7D624F3419700089393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1DFF7D824F3419700089393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				E1FA8D7524F7236F0018EE7D /* UIView+EXT.swift */,
 				E1FA8DB524FC86F70018EE7D /* UITextView+EXT.swift */,
 				E1FA8DC224FD7CEF0018EE7D /* UITextField+EXT.swift */,
+				E163824F25044BDB004905DA /* RMLibraryDiffableDataSource.swift */,
 			);
 			name = Utility;
 			path = "../../ReadMe App Storyboard/ReadMe App Storyboard/Utility";
@@ -272,6 +275,7 @@
 				E1DFF7DB24F3419700089393 /* RMLibraryViewController.swift in Sources */,
 				E1FA8D7F24F8A0100018EE7D /* RMAddNewBookTableViewCell.swift in Sources */,
 				E1FA8DBA24FD565C0018EE7D /* RMNewBookTableViewController.swift in Sources */,
+				E163825025044BDB004905DA /* RMLibraryDiffableDataSource.swift in Sources */,
 				E163824725007DEC004905DA /* RMLibrarySymbol.swift in Sources */,
 				E1DFF80E24F6F0F900089393 /* RMLibrary.swift in Sources */,
 				E1FA8DB424FB35810018EE7D /* RMThirdDetailTableViewCell.swift in Sources */,

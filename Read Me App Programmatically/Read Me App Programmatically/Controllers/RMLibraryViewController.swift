@@ -16,18 +16,18 @@ enum RMLibrarySection: String, CaseIterable {
 
 class RMLibraryViewController: UITableViewController {
     
-    var diffableDataSource: UITableViewDiffableDataSource<RMLibrarySection, RMBook>!
+    var diffableDataSource: RMLibraryDiffableDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         configureDiffableDataSource()
-        updateDiffableDataSource()
+        diffableDataSource.update()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateDiffableDataSource()
+        diffableDataSource.update()
     }
     
     private func configureTableView() {
@@ -36,6 +36,7 @@ class RMLibraryViewController: UITableViewController {
         tableView.register(RMAddNewBookTableViewCell.self, forCellReuseIdentifier: RMAddNewBookTableViewCell.reuseId)
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
         tableView.register(RMLibraryHeaderView.self, forHeaderFooterViewReuseIdentifier: RMLibraryHeaderView.reuseId)
+        navigationItem.rightBarButtonItem = editButtonItem
     }
     
 }
@@ -78,7 +79,7 @@ extension RMLibraryViewController {
     // MARK: - UITableViewDatasource Methods -
     
     func configureDiffableDataSource() {
-        diffableDataSource = UITableViewDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
+        diffableDataSource = RMLibraryDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
             // this closure function is exactly the same as cellForRowAt
             if indexPath.section == 0 {
                 return tableView.dequeueReusableCell(withIdentifier: RMAddNewBookTableViewCell.reuseId, for: indexPath)
@@ -101,21 +102,4 @@ extension RMLibraryViewController {
         })
     }
     
-    func updateDiffableDataSource() {
-        var newSnapshot = NSDiffableDataSourceSnapshot<RMLibrarySection, RMBook>()
-        newSnapshot.appendSections(RMLibrarySection.allCases)
-        
-        let booksToRead = RMLibrary.books.compactMap { book in
-            return book.readMe ? book : nil
-        }
-        
-        let finishedBooks = RMLibrary.books.compactMap { book in
-            return !book.readMe ? book : nil
-        }
-            
-        newSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
-        newSnapshot.appendItems(booksToRead, toSection: .readMe)
-        newSnapshot.appendItems(finishedBooks, toSection: .finished)
-        diffableDataSource.apply(newSnapshot)
-    }
 }

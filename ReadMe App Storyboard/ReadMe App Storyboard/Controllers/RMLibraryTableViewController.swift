@@ -16,18 +16,18 @@ enum RMLibrarySection: String, CaseIterable {
 
 class RMLibraryTableViewController: UITableViewController {
     
-    var diffableDataSource: UITableViewDiffableDataSource<RMLibrarySection, RMBook>!
+    var diffableDataSource: RMLibraryDiffableDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         configureDiffableDataSource()
-        updateDiffableDataSource()
+        diffableDataSource.update()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateDiffableDataSource()
+        diffableDataSource.update()
     }
     
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailTableViewController? {
@@ -36,6 +36,7 @@ class RMLibraryTableViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        self.navigationItem.rightBarButtonItem = editButtonItem
         tableView.register(UINib(nibName: String(describing: RMLibraryHeaderView.self), bundle: nil), forHeaderFooterViewReuseIdentifier: RMLibraryHeaderView.reuseId)
     }
     
@@ -69,7 +70,7 @@ extension RMLibraryTableViewController {
     // MARK: - DATASOURCE METHODS -
     
     func configureDiffableDataSource() {
-        diffableDataSource = UITableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, book) -> UITableViewCell? in
+        diffableDataSource = RMLibraryDiffableDataSource(tableView: tableView) { (tableView, indexPath, book) -> UITableViewCell? in
             if indexPath == IndexPath(row: 0, section: 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RMAddNewBookTableViewCell", for: indexPath)
                 return cell
@@ -91,23 +92,6 @@ extension RMLibraryTableViewController {
             }
         }
     }
-    
-    func updateDiffableDataSource() {
-        var newSnapshot = NSDiffableDataSourceSnapshot<RMLibrarySection, RMBook>()
-        newSnapshot.appendSections(RMLibrarySection.allCases)
-        
-        let booksToRead = RMLibrary.books.compactMap { book in
-            return book.readMe ? book : nil
-        }
-        let booksFinishedReading = RMLibrary.books.compactMap { book in
-            return !book.readMe ? book : nil
-        }
-        
-        newSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
-        newSnapshot.appendItems(booksToRead, toSection: .readMe)
-        newSnapshot.appendItems(booksFinishedReading, toSection: .finished)
-        diffableDataSource.apply(newSnapshot, animatingDifferences: true)
-    }
-    
+
 }
 
