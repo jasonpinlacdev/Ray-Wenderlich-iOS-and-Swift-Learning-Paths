@@ -21,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.tintColor = UIColor(named: "ReadMe Tint Color")
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: RMLibraryViewController())
+        let navigationController = UINavigationController(rootViewController: RMLibraryViewController())
+        navigationController.isToolbarHidden = false
+        window?.rootViewController = navigationController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

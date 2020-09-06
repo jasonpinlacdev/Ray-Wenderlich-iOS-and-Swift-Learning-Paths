@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum RMSortStyle {
+    case title
+    case author
+    case none
+}
+
 enum RMLibrarySection: String, CaseIterable {
     case addNew
     case readMe = "Read Me!"
@@ -22,12 +28,12 @@ class RMLibraryViewController: UITableViewController {
         super.viewDidLoad()
         configureTableView()
         configureDiffableDataSource()
-        diffableDataSource.update()
+        diffableDataSource.update(sortStyle: diffableDataSource.currentSortStyle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        diffableDataSource.update()
+        diffableDataSource.update(sortStyle: diffableDataSource.currentSortStyle)
     }
     
     private func configureTableView() {
@@ -37,6 +43,43 @@ class RMLibraryViewController: UITableViewController {
         tableView.register(RMBookTableViewCell.self, forCellReuseIdentifier: RMBookTableViewCell.reuseId)
         tableView.register(RMLibraryHeaderView.self, forHeaderFooterViewReuseIdentifier: RMLibraryHeaderView.reuseId)
         navigationItem.rightBarButtonItem = editButtonItem
+        
+        let sortByTitleBarButtonItem = UIBarButtonItem(title: "Title", style: .plain, target: self, action: #selector(sortByTitleTapped(_:)))
+        sortByTitleBarButtonItem.tintColor = .secondaryLabel
+        let sortByAuthorBarButtonItem = UIBarButtonItem(title: "Author", style: .plain, target: self, action: #selector(sortByAuthorTapped(_:)))
+        sortByAuthorBarButtonItem.tintColor = .secondaryLabel
+        let sortByNoneButtonItem = UIBarButtonItem(title: "None", style: .plain, target: self, action: #selector(sortByNoneTapped(_:)))
+        sortByNoneButtonItem.tintColor = UIColor(named: "ReadMe Tint Color")
+        
+        setToolbarItems([
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            sortByTitleBarButtonItem,
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            sortByAuthorBarButtonItem,
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            sortByNoneButtonItem,
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            
+        ], animated: false)
+    }
+    
+    @objc func sortByTitleTapped(_ sender: UIBarButtonItem) {
+        toolbarItems?.forEach { button in
+            button.tintColor = (button == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        diffableDataSource.update(sortStyle: .title)
+    }
+    @objc func sortByAuthorTapped(_ sender: UIBarButtonItem) {
+        toolbarItems?.forEach { button in
+            button.tintColor = (button == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        diffableDataSource.update(sortStyle: .author)
+    }
+    @objc func sortByNoneTapped(_ sender: UIBarButtonItem) {
+        toolbarItems?.forEach { button in
+            button.tintColor = (button == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        diffableDataSource.update(sortStyle: .none)
     }
     
 }
@@ -48,7 +91,7 @@ extension RMLibraryViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 0.0 : 60.0
     }
-
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0: return nil
@@ -87,7 +130,7 @@ extension RMLibraryViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError("Failed to dequeue a RMBookTableViewCell") }
                 cell.titleLabel.text = book.title
                 cell.authorLabel.text = book.author
-               
+                
                 if let review = book.review {
                     cell.reviewLabel.text = review
                     cell.reviewLabel.isHidden = false
@@ -105,7 +148,50 @@ extension RMLibraryViewController {
 }
 
 class RMLibraryDiffableDataSource: UITableViewDiffableDataSource<RMLibrarySection, RMBook> {
-
+    
+    var currentSortStyle: RMSortStyle = .none
+    
+    func update(sortStyle: RMSortStyle, animatingDifferences: Bool = true) {
+        currentSortStyle = sortStyle
+        var newSnapshot = NSDiffableDataSourceSnapshot<RMLibrarySection, RMBook>()
+        newSnapshot.appendSections(RMLibrarySection.allCases)
+        
+        let booksToRead = RMLibrary.books.compactMap { book in
+            return book.readMe ? book : nil
+        }
+        
+        let finishedBooks = RMLibrary.books.compactMap { book in
+            return !book.readMe ? book : nil
+        }
+        
+        let sortedBooksToRead: [RMBook]
+        let sortedFinishedBooks: [RMBook]
+        switch currentSortStyle {
+        case .title:
+            sortedBooksToRead = booksToRead.sorted { aBook, bBook in
+                aBook.title.localizedCaseInsensitiveCompare(bBook.title) == .orderedAscending
+            }
+            sortedFinishedBooks = finishedBooks.sorted { aBook, bBook in
+                aBook.title.localizedCaseInsensitiveCompare(bBook.title) == .orderedAscending
+            }
+        case .author:
+            sortedBooksToRead = booksToRead.sorted { aBook, bBook in
+                aBook.author.localizedCaseInsensitiveCompare(bBook.author) == .orderedAscending
+            }
+            sortedFinishedBooks = finishedBooks.sorted { aBook, bBook in
+                aBook.author.localizedCaseInsensitiveCompare(bBook.author) == .orderedAscending
+            }
+        case .none:
+            sortedBooksToRead = booksToRead
+            sortedFinishedBooks = finishedBooks
+        }
+        
+        newSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
+        newSnapshot.appendItems(sortedBooksToRead, toSection: .readMe)
+        newSnapshot.appendItems(sortedFinishedBooks, toSection: .finished)
+        self.apply(newSnapshot)
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == snapshot().indexOfSection(.addNew) ? false : true
     }
@@ -114,7 +200,7 @@ class RMLibraryDiffableDataSource: UITableViewDiffableDataSource<RMLibrarySectio
         if editingStyle == .delete {
             guard let book = self.itemIdentifier(for: indexPath) else { return }
             RMLibrary.delete(book: book)
-            self.update()
+            self.update(sortStyle: currentSortStyle)
         }
     }
     
@@ -125,32 +211,14 @@ class RMLibraryDiffableDataSource: UITableViewDiffableDataSource<RMLibrarySectio
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         guard sourceIndexPath != destinationIndexPath,
             sourceIndexPath.section == destinationIndexPath.section,
-        let bookAtSourceIndexPath = itemIdentifier(for: sourceIndexPath),
-        let bookAtDestinationIndexPath = itemIdentifier(for: destinationIndexPath)
+            let bookAtSourceIndexPath = itemIdentifier(for: sourceIndexPath),
+            let bookAtDestinationIndexPath = itemIdentifier(for: destinationIndexPath)
             else {
                 apply(snapshot(), animatingDifferences: false)
                 return
         }
         RMLibrary.reorderBooks(bookToMove: bookAtSourceIndexPath, bookAtDestination: bookAtDestinationIndexPath)
-        update(animatingDifferences: false)
+        self.update(sortStyle: currentSortStyle)
     }
     
-    
-    func update(animatingDifferences: Bool = true) {
-          var newSnapshot = NSDiffableDataSourceSnapshot<RMLibrarySection, RMBook>()
-          newSnapshot.appendSections(RMLibrarySection.allCases)
-          
-          let booksToRead = RMLibrary.books.compactMap { book in
-              return book.readMe ? book : nil
-          }
-          
-          let finishedBooks = RMLibrary.books.compactMap { book in
-              return !book.readMe ? book : nil
-          }
-              
-          newSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
-          newSnapshot.appendItems(booksToRead, toSection: .readMe)
-          newSnapshot.appendItems(finishedBooks, toSection: .finished)
-          self.apply(newSnapshot)
-      }
 }

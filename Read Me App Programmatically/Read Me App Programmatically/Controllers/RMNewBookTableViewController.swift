@@ -21,6 +21,7 @@ class RMNewBookTableViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        hidesBottomBarWhenPushed = true
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap)))
