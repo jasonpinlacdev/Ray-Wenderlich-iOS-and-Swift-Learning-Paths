@@ -39,4 +39,9 @@ class Emoji {
     let randomIndex = Int.random(in: 0..<extraEmoji.count)
     return (.smileysAndPeople, extraEmoji[randomIndex])
   }
+    
+    func getEmoji(at indexPath: IndexPath) -> String? {
+        let categoryKey = sections[indexPath.section]
+        return data[categoryKey]?[indexPath.row]
+    }
 }

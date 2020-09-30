@@ -22,13 +22,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3qg-5c-M24">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmojiCell" id="kA8-jz-Dx1" customClass="EmojiCell" customModule="EmojiLibrary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7lF-PS-9Yd">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -49,9 +49,32 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="emojiLabel" destination="w1f-Ay-rDw" id="ZoC-fh-ayu"/>
+                                            <segue destination="iAZ-nV-SpH" kind="show" identifier="ShowEmojiDetail" id="jRf-yd-6Nv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="EmojiSectionHeaderCollectionReusableView" id="Fzb-nh-tmr" customClass="EmojiSectionHeaderCollectionReusableView" customModule="EmojiLibrary" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwM-Zg-qk9">
+                                            <rect key="frame" x="8" y="0.0" width="398" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jwM-Zg-qk9" firstAttribute="centerY" secondItem="Fzb-nh-tmr" secondAttribute="centerY" id="0Mv-eb-fB3"/>
+                                        <constraint firstAttribute="bottom" secondItem="jwM-Zg-qk9" secondAttribute="bottom" id="8DZ-Ov-egZ"/>
+                                        <constraint firstItem="jwM-Zg-qk9" firstAttribute="leading" secondItem="Fzb-nh-tmr" secondAttribute="leading" constant="8" id="9gY-ED-fOh"/>
+                                        <constraint firstAttribute="trailing" secondItem="jwM-Zg-qk9" secondAttribute="trailing" constant="8" id="JTb-kO-UGX"/>
+                                        <constraint firstItem="jwM-Zg-qk9" firstAttribute="top" secondItem="Fzb-nh-tmr" secondAttribute="top" id="KTD-i4-9DE"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionLabel" destination="jwM-Zg-qk9" id="e0J-uE-fBp"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -71,6 +94,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Emoji Detail Controller-->
+        <scene sceneID="sQu-kM-QBC">
+            <objects>
+                <viewController storyboardIdentifier="EmojiDetail" id="iAZ-nV-SpH" customClass="EmojiDetailController" customModule="EmojiLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zJj-u0-chS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDU-8a-NwL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8hs-L2-yvn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TDU-8a-NwL" firstAttribute="leading" secondItem="8hs-L2-yvn" secondAttribute="leading" id="5DC-zb-ag8"/>
+                            <constraint firstItem="8hs-L2-yvn" firstAttribute="bottom" secondItem="TDU-8a-NwL" secondAttribute="bottom" id="6Nx-YA-oqI"/>
+                            <constraint firstItem="TDU-8a-NwL" firstAttribute="centerY" secondItem="8hs-L2-yvn" secondAttribute="centerY" id="OeV-XS-FG8"/>
+                            <constraint firstItem="TDU-8a-NwL" firstAttribute="top" secondItem="8hs-L2-yvn" secondAttribute="top" id="eZr-HC-MKL"/>
+                            <constraint firstItem="TDU-8a-NwL" firstAttribute="centerX" secondItem="8hs-L2-yvn" secondAttribute="centerX" id="mtG-tS-nM4"/>
+                            <constraint firstItem="8hs-L2-yvn" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="TDU-8a-NwL" secondAttribute="trailing" id="vMM-7S-nFl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RvE-Vt-jJD"/>
+                    <connections>
+                        <outlet property="label" destination="TDU-8a-NwL" id="nJ2-dN-otP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88u-fa-esA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nPc-aX-RwT">

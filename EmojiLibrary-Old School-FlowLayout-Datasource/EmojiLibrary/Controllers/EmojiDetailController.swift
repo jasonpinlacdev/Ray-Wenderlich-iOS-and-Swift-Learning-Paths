@@ -1,22 +1,29 @@
 import UIKit
 
 class EmojiDetailController: UIViewController {
-  
-  var emoji: String? {
-    // didSet does not get called when the variable is initailized.
-    didSet {
-      if let label = label {
-        print("didset block of code executed")
-        label.text = emoji
-      }
+    
+    @IBOutlet weak var label: UILabel!
+    
+    var emoji: String? {
+        didSet {
+            if let label = label {
+                label.text = emoji
+            }
+        }
     }
-  }
-  
-  @IBOutlet weak var label: UILabel!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    label.text = emoji
-  }
+    
+//    init?(coder: NSCoder, emoji: String) {
+//        self.emoji = emoji
+//        super.init(coder: coder)
+//    }
+    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        label.text = emoji
+    }
     
 }

@@ -23,10 +23,18 @@ extension EmojiCollectionViewDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else { fatalError() }
-        let categoryKey = Emoji.shared.sections[indexPath.section]
-        let emoji = Emoji.shared.data[categoryKey]?[indexPath.item]
-        cell.emojiLabel.text = emoji
+        cell.emojiLabel.text = Emoji.shared.getEmoji(at: indexPath)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmojiSectionHeaderCollectionReusableView.reuseIdentifier, for: indexPath) as? EmojiSectionHeaderCollectionReusableView else { fatalError("Failed to dequeue EmojiSectionheaderCollectionReusableView.") }
+        sectionView.sectionLabel.text = Emoji.shared.sections[indexPath.section].rawValue
+        return sectionView
+        
+    }
+    
+    
+    
     
 }

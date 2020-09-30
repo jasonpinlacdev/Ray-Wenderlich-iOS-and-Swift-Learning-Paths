@@ -16,8 +16,9 @@
 		97D303F723556EF900307413 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D303F623556EF900307413 /* Emoji.swift */; };
 		97D303F923557C8700307413 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D303F823557C8700307413 /* EmojiCell.swift */; };
 		97D304032360C0F900307413 /* EmojiDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D304022360C0F800307413 /* EmojiDetailController.swift */; };
-		E187146B25211AD600C8E5AD /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187146A25211AD500C8E5AD /* DataSource.swift */; };
+		E187146B25211AD600C8E5AD /* EmojiCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187146A25211AD500C8E5AD /* EmojiCollectionViewDataSource.swift */; };
 		E18714712521839D00C8E5AD /* EmojiCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18714702521839D00C8E5AD /* EmojiCollectionViewDelegate.swift */; };
+		E19D80532523D2070039477B /* EmojiSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D80522523D2070039477B /* EmojiSectionHeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		97D303F623556EF900307413 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		97D303F823557C8700307413 /* EmojiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
 		97D304022360C0F800307413 /* EmojiDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailController.swift; sourceTree = "<group>"; };
-		E187146A25211AD500C8E5AD /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		E187146A25211AD500C8E5AD /* EmojiCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E18714702521839D00C8E5AD /* EmojiCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		E19D80522523D2070039477B /* EmojiSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,7 @@
 		E1871443251EB3DD00C8E5AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97D303E623556D3400307413 /* ViewController.swift */,
+				E19D80562523E5370039477B /* ViewController */,
 				97D304022360C0F800307413 /* EmojiDetailController.swift */,
 			);
 			path = Controllers;
@@ -100,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				97D303F623556EF900307413 /* Emoji.swift */,
-				E187146A25211AD500C8E5AD /* DataSource.swift */,
-				E18714702521839D00C8E5AD /* EmojiCollectionViewDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,8 +110,19 @@
 			isa = PBXGroup;
 			children = (
 				97D303F823557C8700307413 /* EmojiCell.swift */,
+				E19D80522523D2070039477B /* EmojiSectionHeaderCollectionReusableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E19D80562523E5370039477B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				97D303E623556D3400307413 /* ViewController.swift */,
+				E187146A25211AD500C8E5AD /* EmojiCollectionViewDataSource.swift */,
+				E18714702521839D00C8E5AD /* EmojiCollectionViewDelegate.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E187146B25211AD600C8E5AD /* DataSource.swift in Sources */,
+				E19D80532523D2070039477B /* EmojiSectionHeaderCollectionReusableView.swift in Sources */,
+				E187146B25211AD600C8E5AD /* EmojiCollectionViewDataSource.swift in Sources */,
 				97D303E723556D3400307413 /* ViewController.swift in Sources */,
 				97D303E323556D3400307413 /* AppDelegate.swift in Sources */,
 				97D303F923557C8700307413 /* EmojiCell.swift in Sources */,
