@@ -49,7 +49,6 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="emojiLabel" destination="w1f-Ay-rDw" id="ZoC-fh-ayu"/>
-                                            <segue destination="iAZ-nV-SpH" kind="show" identifier="ShowEmojiDetail" id="jRf-yd-6Nv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -86,7 +85,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Tn-jQ-Tgf" secondAttribute="bottom" id="vfK-Ns-bvm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="N3U-gq-2fT"/>
+                    <navigationItem key="navigationItem" id="N3U-gq-2fT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jN2-NQ-8dF">
+                            <connections>
+                                <action selector="addEmoji:" destination="BYZ-38-t0r" id="E8q-7x-UbK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="4Tn-jQ-Tgf" id="SmD-yd-iV8"/>
                     </connections>
@@ -104,8 +109,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDU-8a-NwL">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

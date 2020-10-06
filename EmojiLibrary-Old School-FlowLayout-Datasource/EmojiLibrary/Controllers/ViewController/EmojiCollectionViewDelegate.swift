@@ -10,6 +10,8 @@ import UIKit
 
 class EmojiCollectionViewDelegate: NSObject {
     
+    weak var viewController: ViewController?
+    
     let numberOfItemsPerRow: CGFloat
     let minimumInterItemSpacing: CGFloat
     
@@ -44,6 +46,17 @@ extension EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = viewController, !viewController.isEditing else { return }
+        guard let emojiDetailController = viewController.storyboard?.instantiateViewController(identifier: "EmojiDetail") as? EmojiDetailController else { fatalError() }
+        let emojiCategoryKey = Emoji.shared.sections[indexPath.section]
+        emojiDetailController.emoji = Emoji.shared.data[emojiCategoryKey]?[indexPath.row]
+        viewController.navigationController?.pushViewController(emojiDetailController, animated: true)
+    }
+    
+    // MARK: - UICollectionViewDelegate -
+    
+    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 
