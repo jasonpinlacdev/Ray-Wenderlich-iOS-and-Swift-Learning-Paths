@@ -33,8 +33,5 @@ extension EmojiCollectionViewDataSource: UICollectionViewDataSource {
         return sectionView
         
     }
-    
-    
-    
-    
+
 }

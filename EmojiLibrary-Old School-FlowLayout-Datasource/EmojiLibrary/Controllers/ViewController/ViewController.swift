@@ -3,6 +3,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     // MARK: - you can abstract the datasource and delegate protol adoptions into their own objects to fulfill the single responsibility per class rule -
     let dataSource = EmojiCollectionViewDataSource()
@@ -12,23 +14,32 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         
+        deleteButton.isEnabled = false
+        addButton.isEnabled = true
+        
+        collectionView.allowsMultipleSelection = true
+        
         // this gives the delgate object a reference to our viewController. create this property in the delegegate class and make it a weak property.
         delegate.viewController = self
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
         //        collectionView.dataSource = self
         //        collectionView.delegate = self
+       
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        collectionView.indexPathsForVisibleItems.forEach { indexPath in
-            guard let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell else { return }
-            emojiCell.isEditing = editing
-        }
+        deleteButton.isEnabled = editing
+        addButton.isEnabled = !editing
         
-        if !editing {
+        if editing {
+            collectionView.indexPathsForVisibleItems.forEach { indexPath in
+                guard let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell else { return }
+                emojiCell.isEditing = editing
+            }
+        } else {
             collectionView.indexPathsForSelectedItems?.compactMap({ $0 }).forEach({ indexPath in
                 collectionView.deselectItem(at: indexPath, animated: true)
             })
@@ -37,10 +48,8 @@ class ViewController: UIViewController {
     
     @IBAction func addEmoji(_ sender: Any) {
         let (category, emoji): (Emoji.Category, String) = Emoji.randomEmoji()
-        guard var emojiCategoryData = Emoji.shared.data[category] else { return }
-        
-        emojiCategoryData.append(emoji)
-        Emoji.shared.data.updateValue(emojiCategoryData, forKey: category)
+       
+        Emoji.shared.addEmoji(emoji, to: category)
         
         let indexPathItem: Int = (Emoji.shared.data[category]?.count)! - 1
         let indexPathSection: Int = Emoji.shared.sections.firstIndex(of: category)!
@@ -48,6 +57,17 @@ class ViewController: UIViewController {
         collectionView.insertItems(at: [indexPath])
     }
     
+    @IBAction func deleteEmoji(_ sender: Any) {
+        guard let indexPaths = collectionView.indexPathsForSelectedItems?.sorted(by: { (a, b) -> Bool in
+            return a > b
+        }) else { return }
+        
+        print(indexPaths)
+        
+        Emoji.shared.deleteEmojis(at: indexPaths)
+//        collectionView.reloadData()
+        collectionView.deleteItems(at: indexPaths)
+    }
     
     // MARK: - 2 different ways of having a segue pass data to the the viewController being segued to. MAKE SURE YOU CLICK HOLD DRAG THE COLLECTION VIEW CELL TO THE DESIRED VIEWCONTROLLER IN ORDER TO CREATE THE SEGUE. IBSegueAction is new. prepare method is older and the segue on IB has the have a storyboard ID given to it. Remember programmatically you can also pass data using delegate/protocol or closures to the DetailViewController for its viewDidLoad method-
     

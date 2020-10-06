@@ -44,4 +44,19 @@ class Emoji {
         return (.smileysAndPeople, extraEmoji[randomIndex])
     }
     
+    func addEmoji(_ emoji: String, to category: Emoji.Category) {
+        guard var emojiCategoryData = data[category] else { return }
+        emojiCategoryData.append(emoji)
+        Emoji.shared.data.updateValue(emojiCategoryData, forKey: category)
+    }
+    
+    func deleteEmojis(at indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            let category = Emoji.shared.sections[indexPath.section]
+            guard var emojiCategoryData = Emoji.shared.data[category] else { return }
+            emojiCategoryData.remove(at: indexPath.row)
+            Emoji.shared.data.updateValue(emojiCategoryData, forKey: category)
+        }
+    }
+    
 }
