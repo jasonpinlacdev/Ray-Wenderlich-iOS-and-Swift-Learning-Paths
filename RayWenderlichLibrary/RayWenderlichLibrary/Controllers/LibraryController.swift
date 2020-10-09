@@ -39,16 +39,19 @@ final class LibraryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        collectionView.collectionViewLayout = configureCollectionViewCompositionalLayout()
-        configureDiffableDataSource()
     }
     
     private func setupView() {
+        print(tutorials)
         self.title = "Library"
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = configureCollectionViewCompositionalLayout()
+        configureDiffableDataSource()
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
     }
     
     func configureCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        // this section provider closure is used to customize the section behavior base
+        // this section provider closure is used to customize the section behavior for specific section indices.
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -58,9 +61,13 @@ final class LibraryController: UIViewController {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .continuous
+            section.orthogonalScrollingBehavior = .groupPaging
             section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             section.interGroupSpacing = 10
+            
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44.0))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+            section.boundarySupplementaryItems = [sectionHeader]
             
             return section
         }
@@ -68,29 +75,42 @@ final class LibraryController: UIViewController {
     }
     
     func configureDiffableDataSource() {
-        diffableDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, tutorial) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TutorialCell.reuseIdentifier, for: indexPath) as? TutorialCell else { fatalError("Failed to dequeue reusable TutorialCell.") }
+        // MARK: - DEQUEUE CELL -
+        diffableDataSource = UICollectionViewDiffableDataSource<TutorialCollection, Tutorial>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, tutorial) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TutorialCell.reuseIdentifier, for: indexPath) as? TutorialCell else { fatalError("Failed to dequeue reusable TutorialCell") }
             cell.titleLabel.text = tutorial.title
             cell.thumbnailImageView.image = tutorial.image
             cell.thumbnailImageView.backgroundColor = tutorial.imageBackgroundColor
             return cell
         })
-        
+        // MARK: - DEQUEUE SECTION HEADER VIEW -
+        diffableDataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            if let titleSupplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: indexPath) as? TitleSupplementaryView {
+                titleSupplementaryView.textLabel.text = self?.diffableDataSource.snapshot().sectionIdentifiers[indexPath.section].title
+                return titleSupplementaryView
+            } else {
+                return nil
+            }
+        }
+        // MARK: - INITIAL SNAPSHOT SETUP AND APPLIED -
         var initialSnapshot = NSDiffableDataSourceSnapshot<TutorialCollection, Tutorial>()
-        
         tutorials.forEach { tutorialCollection in
             initialSnapshot.appendSections([tutorialCollection])
-//            initialSnapshot.appendItems(tutorialCollection.tutorials, toSection: tutorialCollection)
-        }
-        
-        tutorials.forEach { tutorialCollection in
-//            initialSnapshot.appendSections([tutorialCollection])
             initialSnapshot.appendItems(tutorialCollection.tutorials, toSection: tutorialCollection)
         }
         diffableDataSource.apply(initialSnapshot, animatingDifferences: false)
     }
     
-         
     
-    
+}
+
+extension LibraryController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let tutorial = diffableDataSource.itemIdentifier(for: indexPath),
+              let tutorialDetailController = storyboard?.instantiateViewController(identifier: TutorialDetailViewController.reuseIdentifier, creator: { coder -> TutorialDetailViewController? in
+                return TutorialDetailViewController(coder: coder, tutorial: tutorial)
+              })
+        else { return }
+        self.show(tutorialDetailController, sender: nil)
+    }
 }
