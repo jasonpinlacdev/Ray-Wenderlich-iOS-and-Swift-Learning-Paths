@@ -16,6 +16,7 @@ final class TitleSupplementaryView: UICollectionReusableView {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        textLabel.textColor = UIColor.black
         return textLabel
     }()
     

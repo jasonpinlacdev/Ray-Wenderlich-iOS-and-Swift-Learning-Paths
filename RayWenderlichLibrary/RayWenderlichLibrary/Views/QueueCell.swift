@@ -39,9 +39,9 @@ class QueueCell: UICollectionViewCell {
 
   override var isSelected: Bool {
     didSet {
-      if isSelected{
+      if isEditing && isSelected {
         checkboxImageView.image = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-      } else  {
+      } else if isEditing && !isSelected {
         checkboxImageView.image = UIImage(systemName: "checkmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
       }
     }

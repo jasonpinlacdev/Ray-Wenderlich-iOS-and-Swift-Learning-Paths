@@ -29,65 +29,144 @@
 import UIKit
 
 class QueuedTutorialController: UIViewController {
-
-  lazy var dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "MMM d"
-    return formatter
-  }()
-  
-  @IBOutlet var deleteButton: UIBarButtonItem!
-  @IBOutlet var updateButton: UIBarButtonItem!
-  @IBOutlet var applyUpdatesButton: UIBarButtonItem!
-  @IBOutlet weak var collectionView: UICollectionView!
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupView()
-  }
-  
-  private func setupView() {
-    self.title = "Queue"
-    navigationItem.leftBarButtonItem = editButtonItem
-    navigationItem.rightBarButtonItem = nil
     
+    enum QueuedSection {
+        case main
+    }
     
-  }
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter
+    }()
+    
+    @IBOutlet var deleteButton: UIBarButtonItem!
+    @IBOutlet var updateButton: UIBarButtonItem!
+    @IBOutlet var applyUpdatesButton: UIBarButtonItem!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var diffableDataSource: UICollectionViewDiffableDataSource<QueuedSection, Tutorial>!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshDiffableDataSource()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.isEditing = false
+    }
+    
+    private func setupView() {
+        self.title = "Queue"
+        navigationItem.leftBarButtonItem =  editButtonItem
+        navigationItem.rightBarButtonItem = nil
+        configureDiffableDataSource()
+        collectionView.collectionViewLayout = configureCollectionViewCompositionalLayout()
+    }
 }
 
 // MARK: - Queue Events -
 
 extension QueuedTutorialController {
-  override func setEditing(_ editing: Bool, animated: Bool) {
-    super.setEditing(editing, animated: animated)
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        if isEditing {
+            navigationItem.rightBarButtonItems = nil
+            navigationItem.rightBarButtonItem = deleteButton
+        } else {
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItems = [self.applyUpdatesButton, self.updateButton]
+        }
+        
+        collectionView.allowsMultipleSelection = true
+        collectionView.indexPathsForVisibleItems.forEach { indexPath in
+            guard let cell = collectionView.cellForItem(at: indexPath) as? QueueCell else { return }
+            cell.isEditing = isEditing
+            
+            if !isEditing {
+                cell.isSelected = false
+            }
+        }
+    }
     
-    if isEditing {
-      navigationItem.rightBarButtonItems = nil
-      navigationItem.rightBarButtonItem = deleteButton
-    } else {
-      navigationItem.rightBarButtonItem = nil
-      navigationItem.rightBarButtonItems = [self.applyUpdatesButton, self.updateButton]
+    @IBAction func deleteSelectedItems() {
+        guard let selectedIndexPaths = collectionView.indexPathsForSelectedItems else { return }
+        let tutorials = selectedIndexPaths.compactMap { indexPath in
+           return diffableDataSource.itemIdentifier(for: indexPath)
+        }
+        
+        tutorials.forEach { $0.isQueued = false}
+        
+        var currentSnapshot = diffableDataSource.snapshot()
+        currentSnapshot.deleteItems(tutorials)
+        diffableDataSource.apply(currentSnapshot, animatingDifferences: true)
+        
+        isEditing = false
     }
-
-    collectionView.allowsMultipleSelection = true
-    collectionView.indexPathsForVisibleItems.forEach { indexPath in
-      guard let cell = collectionView.cellForItem(at: indexPath) as? QueueCell else { return }
-      cell.isEditing = isEditing
-      
-      if !isEditing {
-        cell.isSelected = false
-      }
+    
+    @IBAction func triggerUpdates() {
+        
     }
-  }
+    
+    @IBAction func applyUpdates() {
 
-  @IBAction func deleteSelectedItems() {
+    }
+}
 
-  }
 
-  @IBAction func triggerUpdates() {
+// MARK: - CompositionalLayout and DiffableDataSource Configurations -
 
-  }
-
-  @IBAction func applyUpdates() {
-  }
+extension QueuedTutorialController {
+    private func configureCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        let itemsSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemsSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(148))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func configureDiffableDataSource() {
+        diffableDataSource = UICollectionViewDiffableDataSource<QueuedSection, Tutorial>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, tutorial) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QueueCell.reuseIdentifier, for: indexPath) as? QueueCell else { fatalError("Failed to dequeue reusable ContentCell") }
+            cell.titleLabel.text = tutorial.title
+            cell.thumbnailImageView.image = tutorial.image
+            cell.thumbnailImageView.backgroundColor = tutorial.imageBackgroundColor
+            cell.publishDateLabel.text = tutorial.formattedDate(using: self.dateFormatter)
+            return cell
+        })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<QueuedSection, Tutorial>()
+        initialSnapshot.appendSections([QueuedSection.main])
+        
+        let queuedTutorials = DataSource.shared.tutorials.flatMap { tutorialCollection in
+            tutorialCollection.queuedTutorials
+        }
+        
+        initialSnapshot.appendItems(queuedTutorials, toSection: QueuedSection.main)
+        diffableDataSource.apply(initialSnapshot, animatingDifferences: true)
+    }
+    
+//    func refreshDiffableDataSource() {
+//        var initialSnapshot = NSDiffableDataSourceSnapshot<QueuedSection, Tutorial>()
+//        initialSnapshot.appendSections([QueuedSection.main])
+//
+//        let queuedTutorials = DataSource.shared.tutorials.flatMap { tutorialCollection in
+//            tutorialCollection.queuedTutorials
+//        }
+//
+//        initialSnapshot.appendItems(queuedTutorials, toSection: QueuedSection.main)
+//        diffableDataSource.apply(initialSnapshot, animatingDifferences: false)
+//    }
+    
 }
