@@ -21,7 +21,7 @@ final class BadgeSupplementaryView: UICollectionReusableView {
     }
     
     private func configure() {
-        self.backgroundColor = UIColor.RWGreen
+        self.backgroundColor = UIColor(named: "rw-green")
         let radius = bounds.width/2.0
         self.layer.cornerRadius = radius
     }
