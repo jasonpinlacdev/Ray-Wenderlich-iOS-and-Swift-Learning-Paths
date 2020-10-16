@@ -49,9 +49,22 @@ class QueuedTutorialController: UIViewController {
     
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, Tutorial>!
     
+    private var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { [weak self] _ in
+            self?.triggerUpdates()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+                self?.applyUpdates()
+            }
+        })
     }
     
     private func setupView() {
@@ -123,6 +136,28 @@ extension QueuedTutorialController {
     }
     
     @IBAction func applyUpdates() {
+        let tutorials = diffableDataSource.snapshot().itemIdentifiers
+        if var firstTutorial = tutorials.first,
+           tutorials.count > 1 {
+            
+            let tutorialsWithUpdates = tutorials.filter { $0.updateCount > 0 }
+            var currentSnapshot = diffableDataSource.snapshot()
+            
+            tutorialsWithUpdates.forEach { tutorial in
+                if tutorial != firstTutorial {
+                    currentSnapshot.moveItem(tutorial, beforeItem: firstTutorial)
+                    firstTutorial = tutorial
+                    tutorial.updateCount = 0
+                }
+            }
+            
+            if let firstIndexPath = diffableDataSource.indexPath(for: firstTutorial) {
+                let badgeView = collectionView.supplementaryView(forElementKind: QueuedTutorialController.badgeElementKind, at: firstIndexPath) as? BadgeSupplementaryView
+                badgeView?.isHidden = true
+            }
+            
+            diffableDataSource.apply(currentSnapshot, animatingDifferences: true)
+        }
     }
 }
 

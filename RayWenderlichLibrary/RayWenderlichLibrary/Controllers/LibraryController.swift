@@ -42,7 +42,6 @@ final class LibraryController: UIViewController {
     }
     
     private func setupView() {
-        print(tutorials)
         self.title = "Library"
         collectionView.delegate = self
         collectionView.collectionViewLayout = configureCollectionViewCompositionalLayout()
