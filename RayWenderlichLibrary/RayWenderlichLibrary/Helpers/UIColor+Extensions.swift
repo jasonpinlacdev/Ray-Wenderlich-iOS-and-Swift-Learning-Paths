@@ -52,3 +52,9 @@ extension UIColor {
     self.init(red: red, green: green, blue:  blue, alpha: alpha)
   }
 }
+
+
+extension UIColor {
+    static let RWGreen = UIColor(named: "rw-Green")
+}
+

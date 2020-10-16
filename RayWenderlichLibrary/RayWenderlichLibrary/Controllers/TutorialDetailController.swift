@@ -101,6 +101,7 @@ final class TutorialDetailViewController: UIViewController {
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 10
             
+            // MARK: SECTION HEADERS
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50.0))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
             section.boundarySupplementaryItems = [sectionHeader]

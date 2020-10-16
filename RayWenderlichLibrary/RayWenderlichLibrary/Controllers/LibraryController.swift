@@ -65,6 +65,7 @@ final class LibraryController: UIViewController {
             section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             section.interGroupSpacing = 10
             
+            // MARK: SECTION HEADERS
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44.0))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
             section.boundarySupplementaryItems = [sectionHeader]
