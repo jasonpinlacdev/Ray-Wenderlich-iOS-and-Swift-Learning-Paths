@@ -37,7 +37,9 @@ class RMLibraryTableViewController: UITableViewController {
     }
     
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> RMDetailTableViewController? {
-        guard let indexPath = tableView.indexPathForSelectedRow, let book = diffableDataSource.itemIdentifier(for: indexPath) else { fatalError("Nothing selected!") }
+        guard let indexPath = tableView.indexPathForSelectedRow,
+              let book = diffableDataSource.itemIdentifier(for: indexPath)
+        else { fatalError("Nothing selected!") }
         return RMDetailTableViewController(coder: coder, book: book)
     }
     
