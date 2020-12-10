@@ -63,6 +63,30 @@ class RMLibraryViewController: UITableViewController {
         ], animated: false)
     }
     
+    func configureDiffableDataSource() {
+        diffableDataSource = RMLibraryDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
+            // this closure function is exactly the same as cellForRowAt
+            if indexPath.section == 0 {
+                return tableView.dequeueReusableCell(withIdentifier: RMAddNewBookTableViewCell.reuseId, for: indexPath)
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError("Failed to dequeue a RMBookTableViewCell") }
+                cell.titleLabel.text = book.title
+                cell.authorLabel.text = book.author
+                
+                if let review = book.review {
+                    cell.reviewLabel.text = review
+                    cell.reviewLabel.isHidden = false
+                } else {
+                    cell.reviewLabel.isHidden = true
+                }
+                
+                cell.bookmarkImageView.isHidden = book.readMe ?  false : true
+                cell.bookThumbnailImageView.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
+                return cell
+            }
+        })
+    }
+    
     @objc func sortByTitleTapped(_ sender: UIBarButtonItem) {
         toolbarItems?.forEach { button in
             button.tintColor = (button == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
@@ -118,34 +142,8 @@ extension RMLibraryViewController {
             navigationController?.pushViewController(detailTableViewController, animated: true)
         }
     }
-    
-    // MARK: - UITableViewDatasource Methods -
-    
-    func configureDiffableDataSource() {
-        diffableDataSource = RMLibraryDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
-            // this closure function is exactly the same as cellForRowAt
-            if indexPath.section == 0 {
-                return tableView.dequeueReusableCell(withIdentifier: RMAddNewBookTableViewCell.reuseId, for: indexPath)
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: RMBookTableViewCell.reuseId, for: indexPath) as? RMBookTableViewCell else { fatalError("Failed to dequeue a RMBookTableViewCell") }
-                cell.titleLabel.text = book.title
-                cell.authorLabel.text = book.author
-                
-                if let review = book.review {
-                    cell.reviewLabel.text = review
-                    cell.reviewLabel.isHidden = false
-                } else {
-                    cell.reviewLabel.isHidden = true
-                }
-                
-                cell.bookmarkImageView.isHidden = book.readMe ?  false : true
-                cell.bookThumbnailImageView.image = book.image ?? RMLibrarySymbol.letterSquare(letter: book.title.first).image
-                return cell
-            }
-        })
-    }
-    
 }
+
 
 class RMLibraryDiffableDataSource: UITableViewDiffableDataSource<RMLibrarySection, RMBook> {
     
