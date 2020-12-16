@@ -76,7 +76,7 @@ final class ViewController: UIViewController {
 //            })
 //        }
 
-        // MARK: - getting the titleLable's centerY constraint -
+        // MARK: - getting the titleLable's centerY constraint this way because multiplier property of a constraint is a get only property -
 //        let superViewConstraints = titleLabel.superview!.constraints
 //        superViewConstraints.first { $0.identifier == "Title Center Y" }?.isActive = false
 //
