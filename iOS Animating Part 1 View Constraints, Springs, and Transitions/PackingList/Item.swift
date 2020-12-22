@@ -21,6 +21,6 @@ extension UIImage {
 
 extension UIImageView {
   convenience init(item: Item) {
-    self.init( image: UIImage(item: item) )
+    self.init( image: .init(item: item) )
   }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,18 +36,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerY" secondItem="7Lr-a6-pgK" secondAttribute="centerY" multiplier="2/3" priority="745" id="3gA-V9-gpa"/>
-                                    <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerY" secondItem="7Lr-a6-pgK" secondAttribute="centerY" priority="750" identifier="Title Center Y" id="ML0-7M-cQe"/>
+                                    <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerY" secondItem="7Lr-a6-pgK" secondAttribute="centerY" priority="750" identifier="Title Center Y Constraint" id="ML0-7M-cQe"/>
                                     <constraint firstItem="IOq-Pr-fqH" firstAttribute="centerY" secondItem="OVl-Vy-Hss" secondAttribute="centerY" id="NcL-NH-gxp"/>
                                     <constraint firstItem="OVl-Vy-Hss" firstAttribute="centerX" secondItem="7Lr-a6-pgK" secondAttribute="centerX" id="PlC-5c-Tdx"/>
                                     <constraint firstAttribute="height" constant="80" id="vCC-PK-uyy"/>
                                     <constraint firstAttribute="trailing" secondItem="IOq-Pr-fqH" secondAttribute="trailing" constant="8" id="yNV-0i-Atf"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3gA-V9-gpa"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-ZN-xEy" customClass="TableView" customModule="PackingList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="375" height="698"/>
@@ -79,13 +73,10 @@
                     </view>
                     <connections>
                         <outlet property="menuButton" destination="IOq-Pr-fqH" id="Pu7-iQ-wcj"/>
-                        <outlet property="menuButtonTrailingConstraint" destination="yNV-0i-Atf" id="GcW-gM-x7K"/>
-                        <outlet property="menuHeightConstraint" destination="vCC-PK-uyy" id="YZt-hk-gq2"/>
+                        <outlet property="menuButtonTrailingConstraint" destination="yNV-0i-Atf" id="ecD-3P-8by"/>
+                        <outlet property="menuHeightConstraint" destination="vCC-PK-uyy" id="LkO-Cy-NyN"/>
                         <outlet property="tableView" destination="tdH-ZN-xEy" id="JzZ-jq-73Q"/>
                         <outlet property="titleLabel" destination="OVl-Vy-Hss" id="KYJ-17-5qZ"/>
-                        <outlet property="titleLabelCenterXConstraint" destination="PlC-5c-Tdx" id="zBu-ey-xjg"/>
-                        <outlet property="titleLabelCenterYClosedConstraint" destination="ML0-7M-cQe" id="RqH-ll-8fy"/>
-                        <outlet property="titleLabelCenterYOpenConstraint" destination="3gA-V9-gpa" id="DJP-JF-pNc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

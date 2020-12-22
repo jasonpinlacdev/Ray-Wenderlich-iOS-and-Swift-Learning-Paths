@@ -32,57 +32,41 @@
 
 import UIKit
 
-final class TableView: UITableView {
-  required init!(coder: NSCoder) {
-    super.init(coder: coder)
-    dataSource = diffableDataSource
-    delegate = self
-    updateSnapshot()
+/// A scroll view, which loads all 10 images, and has a callback
+/// for when the user taps on one of the images.
+final class HorizontalItemSlider: UIScrollView {
+  required init(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
-  var handleSelection: ( (Item) -> Void )!
-  
-  func addItem(_ item: Item) {
-    itemSet.insert(item)
-    updateSnapshot()
-  }
+  typealias HandleTap = (Item) -> Void
 
-  private var itemSet = Set(
-    (0...2).map { _ in Item.allCases.randomElement()! }
-  )
-    
-  private lazy var diffableDataSource = UITableViewDiffableDataSource<Section, Item>(tableView: self) {
-    tableView, indexPath, item in
+  init(in view: UIView, handleTap: @escaping HandleTap) {
+    super.init(
+      frame: .init(x: 0, y: 120, width: view.frame.width, height: 80)
+    )
 
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.accessoryType = .none
-    cell.textLabel!.text = item.rawValue
-    cell.imageView!.image = .init(item: item)
-    return cell
-  }
-    
-}
+    let buttonWidth: CGFloat = 60
 
-//MARK:- private
-private extension TableView {
-  typealias Section = Bool
+    for (index, item) in Item.allCases.enumerated() {
+      let imageView = UIImageView(item: item)
+      imageView.center = CGPoint(
+        x: CGFloat(index) * buttonWidth + buttonWidth / 2,
+        y: buttonWidth / 2
+      )
+      imageView.isUserInteractionEnabled = true
 
-  var itemArray: [Item] {
-    Item.allCases.filter(itemSet.contains)
-  }
+      addSubview(imageView)
 
-  func updateSnapshot() {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-    snapshot.appendSections([.init()])
-    snapshot.appendItems(itemArray)
-    diffableDataSource.apply(snapshot)
-  }
-}
+      imageView.addGestureRecognizer(
+        TapGestureRecognizer { handleTap(item) }
+      )
+    }
 
-//MARK:- UITableViewDelegate
-extension TableView: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    deselectRow(at: indexPath, animated: true)
-    handleSelection(itemArray[indexPath.row])
+    let padding: CGFloat = 10
+    contentSize = CGSize(
+      width: padding * buttonWidth,
+      height:  buttonWidth + 2 * padding
+    )
   }
 }
