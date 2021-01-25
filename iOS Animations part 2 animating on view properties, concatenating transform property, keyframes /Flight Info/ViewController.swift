@@ -158,17 +158,64 @@ private extension ViewController {
     
     func depart() {
         //TODO: Animate the plane taking off and landing
+        
+        // store the plane's center value
+        let planeCenterValue = plane.center
+        
+        // create a new keyframe animation
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0,
+                                animations: { [plane = self.plane!] in
+                                    // move plane right and up
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+                                        plane.center.x += 90
+                                        plane.center.y -= 10
+                                    })
+                                    // rotate plane
+                                    UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4, animations: {
+                                        plane.transform = CGAffineTransform(rotationAngle: -.pi/6)
+                                    })
+                                    // move plane right and up while fading it out
+                                    UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                                        plane.center.x += 100
+                                        plane.center.y -= 50
+                                        plane.alpha = 0
+                                    })
+                                    // move plane just off left side, reset transform and height
+                                    UIView.addKeyframe(withRelativeStartTime: 0.51, relativeDuration: 0.01, animations: {
+                                        plane.transform = .identity
+                                        plane.center = CGPoint(x: 0, y: planeCenterValue.y)
+                                    })
+                                    // move plane back to original position and fade in
+                                    UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.45, animations: {
+                                        plane.center = planeCenterValue
+                                        plane.alpha = 1
+                                    })
+        })
     }
     
     func changeSummary(to summaryText: String) {
         //TODO: Animate the summary text
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45, animations: {
+                self.summary.center.y -= 100
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.55, relativeDuration: 0.45, animations: {
+                self.summary.center.y += 100
+            })
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.50, execute: {
+            self.summary.text = summaryText
+        })
+      
     }
     
     func changeFlight(to flight: Flight, animated: Bool = false) {
         // populate the UI with the next flight's data
         flightNumberLabel.text = flight.number
         gateNumberLabel.text = flight.gateNumber
-        summary.text = flight.summary
+
         
         if animated {
             // TODO: Call your animation
@@ -176,11 +223,14 @@ private extension ViewController {
             move(label: originLabel, text: flight.origin, offset: CGPoint(x: -50.0, y: 0.0))
             move(label: destinationLabel, text: flight.destination, offset: flight.showWeatherEffects ? CGPoint(x: 0.0, y: 50.0) : CGPoint(x: 0.0, y: -50.0))
             cubeTransition(label: statusLabel, text: flight.status)
+            depart()
+            changeSummary(to: flight.summary)
         } else {
             background.image = UIImage(named: flight.weatherImageName)
             originLabel.text = flight.origin
             destinationLabel.text = flight.destination
             statusLabel.text = flight.status
+            summary.text = flight.summary
         }
         
         // schedule next flight
