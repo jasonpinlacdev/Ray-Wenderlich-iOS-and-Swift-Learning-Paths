@@ -24,56 +24,80 @@ userQueue.async {
   task2()
 }
 //: Now create a `DispatchWorkItem`:
-// TODO
+let workItem = DispatchWorkItem {
+    task1()
+}
+
 
 
 
 //: And execute it on `userQueue`:
-print(">> Run task 1 as a work item.")
+print("\n>> Run task 1 as a work item.")
 // TODO
+userQueue.async(execute: workItem)
 
 //: If the current thread really needs `workItem` to finish before it can continue, call `.wait` to tell the system to give it priority. If necessary/possible, the system will increase the priority of other tasks in its queue.
-print(">> Waiting for task 1...")
+print("\n>> Waiting for task 1...")
 // TODO
-
-
-
+if workItem.wait(timeout: .now() + 3) == .timedOut {
+    print("I got tired of waiting.")
+} else {
+    print("Work item completed.")
+}
 
 sleep(2)  // give task 1 time to finish
 //: Other advantages of work items: You can construct a simple dependency, for example, to update task 1 after it completes, and you can cancel work items.
-enum Queues { case mainQ, userQ }
+enum Queues {
+    case mainQ
+    case userQ
+}
 // TODO later: Set specific key for each queue.
 
-//func whichQueue(workItem: String) {
-//  switch DispatchQueue.getSpecific(key: specificKey) {
-//  case .mainQ:
-//    print(">> \(workItem) is running on mainQueue")
-//  case .userQ:
-//    print(">> \(workItem) is running on userQueue")
-//  case .none:
-//    break
-//  }
-//}
+let specificKey = DispatchSpecificKey<Queues>()
+mainQueue.setSpecific(key: specificKey, value: .mainQ)
+userQueue.setSpecific(key: specificKey, value: .userQ)
+
+func whichQueue(workItem: String) {
+  switch DispatchQueue.getSpecific(key: specificKey) {
+  case .mainQ:
+    print(">> \(workItem) is running on mainQueue")
+  case .userQ:
+    print(">> \(workItem) is running on userQueue")
+  case .none:
+    break
+  }
+}
 //: Define two work items:
 // TODO first: Define work items.
+let backgroundWorkItem = DispatchWorkItem(block: {
+    task1()
+    whichQueue(workItem: "backgroundWorkItem")
+})
+let updateUIWorkItem = DispatchWorkItem(block: {
+    task2()
+    whichQueue(workItem: "updateUIWorkItem")
+})
+
+
 // TODO later: Call whichQueue(workItem:)
 
 
-
-
-
-
 //: Execute `updateWorkItem` after `backgroundUIWorkItem` finishes:
-print(">> Run task 2 work item after task 1 work item finishes.")
-// TODO
+
+print("\n>>Run task 1 work item. Run task 2 work item after task 1 work item finishes using notify.")
+userQueue.async(execute: backgroundWorkItem)
+backgroundWorkItem.notify(queue: mainQueue, execute: updateUIWorkItem)
 
 
 
 //: Task 2 runs after task 1, even though task 1 takes longer.
 //:
 //: Cancel `updateWorkItem`:
-print(">> Cancel task 2 work item before task 1 work item finishes.")
+print("\n>> Cancel task 2 work item before task 1 work item finishes.")
 // TODO
+if !updateUIWorkItem.isCancelled {
+    updateUIWorkItem.cancel()
+}
 
 
 
