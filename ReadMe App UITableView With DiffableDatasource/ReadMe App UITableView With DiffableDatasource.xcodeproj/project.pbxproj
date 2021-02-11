@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E11C514E25D4888900F31FA7 /* RMLibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C514D25D4888900F31FA7 /* RMLibraryHeaderView.swift */; };
 		E11C515125D4889600F31FA7 /* RMLibraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11C515025D4889600F31FA7 /* RMLibraryHeaderView.xib */; };
+		E11C515825D48EF800F31FA7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C515725D48EF800F31FA7 /* Library.swift */; };
 		E14E5DA525CC639500ED9B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DA425CC639500ED9B45 /* AppDelegate.swift */; };
 		E14E5DA725CC639500ED9B45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DA625CC639500ED9B45 /* SceneDelegate.swift */; };
 		E14E5DAC25CC639500ED9B45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14E5DAA25CC639500ED9B45 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		E14E5DBE25CC64F400ED9B45 /* RMBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DBD25CC64F400ED9B45 /* RMBook.swift */; };
 		E14E5DC225CC65FC00ED9B45 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */; };
 		E14E5DCC25CC749B00ED9B45 /* RMBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */; };
-		E14E5DD125CC8CF500ED9B45 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DD025CC8CF500ED9B45 /* Library.swift */; };
 		E1FF474825D3376D00C1D4F5 /* RMBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF474725D3376D00C1D4F5 /* RMBookCell.swift */; };
 		E1FF474C25D4558500C1D4F5 /* RMNewBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF474B25D4558500C1D4F5 /* RMNewBookTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,8 @@
 /* Begin PBXFileReference section */
 		E11C514D25D4888900F31FA7 /* RMLibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibraryHeaderView.swift; sourceTree = "<group>"; };
 		E11C515025D4889600F31FA7 /* RMLibraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMLibraryHeaderView.xib; sourceTree = "<group>"; };
-		E14E5DA125CC639500ED9B45 /* ReadMe App UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadMe App UITableView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11C515725D48EF800F31FA7 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "../../../../../Downloads/video-tv-materials-versions-5.1/16-diffable-data-source/Library.swift"; sourceTree = "<group>"; };
+		E14E5DA125CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadMe App UITableView With DiffableDatasource.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14E5DA425CC639500ED9B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14E5DA625CC639500ED9B45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E14E5DAB25CC639500ED9B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		E14E5DBD25CC64F400ED9B45 /* RMBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBook.swift; sourceTree = "<group>"; };
 		E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookDetailViewController.swift; sourceTree = "<group>"; };
-		E14E5DD025CC8CF500ED9B45 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		E1FF474725D3376D00C1D4F5 /* RMBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookCell.swift; sourceTree = "<group>"; };
 		E1FF474B25D4558500C1D4F5 /* RMNewBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMNewBookTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +62,7 @@
 		E14E5DA225CC639500ED9B45 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E14E5DA125CC639500ED9B45 /* ReadMe App UITableView.app */,
+				E14E5DA125CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				E14E5DBD25CC64F400ED9B45 /* RMBook.swift */,
-				E14E5DD025CC8CF500ED9B45 /* Library.swift */,
+				E11C515725D48EF800F31FA7 /* Library.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,9 +123,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E14E5DA025CC639500ED9B45 /* ReadMe App UITableView */ = {
+		E14E5DA025CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E14E5DB525CC639A00ED9B45 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView" */;
+			buildConfigurationList = E14E5DB525CC639A00ED9B45 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView With DiffableDatasource" */;
 			buildPhases = (
 				E14E5D9D25CC639500ED9B45 /* Sources */,
 				E14E5D9E25CC639500ED9B45 /* Frameworks */,
@@ -135,9 +135,9 @@
 			);
 			dependencies = (
 			);
-			name = "ReadMe App UITableView";
+			name = "ReadMe App UITableView With DiffableDatasource";
 			productName = "ReadMe App UITableView";
-			productReference = E14E5DA125CC639500ED9B45 /* ReadMe App UITableView.app */;
+			productReference = E14E5DA125CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -154,7 +154,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E14E5D9C25CC639500ED9B45 /* Build configuration list for PBXProject "ReadMe App UITableView" */;
+			buildConfigurationList = E14E5D9C25CC639500ED9B45 /* Build configuration list for PBXProject "ReadMe App UITableView With DiffableDatasource" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,7 +167,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E14E5DA025CC639500ED9B45 /* ReadMe App UITableView */,
+				E14E5DA025CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource */,
 			);
 		};
 /* End PBXProject section */
@@ -198,8 +198,8 @@
 				E11C514E25D4888900F31FA7 /* RMLibraryHeaderView.swift in Sources */,
 				E14E5DA525CC639500ED9B45 /* AppDelegate.swift in Sources */,
 				E14E5DCC25CC749B00ED9B45 /* RMBookDetailViewController.swift in Sources */,
+				E11C515825D48EF800F31FA7 /* Library.swift in Sources */,
 				E14E5DA725CC639500ED9B45 /* SceneDelegate.swift in Sources */,
-				E14E5DD125CC8CF500ED9B45 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +382,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E14E5D9C25CC639500ED9B45 /* Build configuration list for PBXProject "ReadMe App UITableView" */ = {
+		E14E5D9C25CC639500ED9B45 /* Build configuration list for PBXProject "ReadMe App UITableView With DiffableDatasource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E14E5DB325CC639A00ED9B45 /* Debug */,
@@ -391,7 +391,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E14E5DB525CC639A00ED9B45 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView" */ = {
+		E14E5DB525CC639A00ED9B45 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView With DiffableDatasource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E14E5DB625CC639A00ED9B45 /* Debug */,

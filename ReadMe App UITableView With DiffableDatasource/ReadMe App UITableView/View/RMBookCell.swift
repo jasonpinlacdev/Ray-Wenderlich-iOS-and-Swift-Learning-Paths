@@ -26,11 +26,6 @@ class RMBookCell: UITableViewCell {
         }
     }
     @IBOutlet private var bookmarkImageView: UIImageView!
-
-
-    
-    
-    
     
 }
 
