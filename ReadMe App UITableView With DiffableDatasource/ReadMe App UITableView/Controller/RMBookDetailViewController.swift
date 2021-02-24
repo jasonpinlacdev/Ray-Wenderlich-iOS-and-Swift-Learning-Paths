@@ -24,7 +24,7 @@ class RMBookDetailViewController: UITableViewController {
         super.viewDidLoad()
         titleLabel.text = book?.title
         authorLabel.text = book?.author
-        bookImageView.image = book?.image
+        bookImageView.image = book?.image ?? LibrarySymbol.letterSquare(letter: titleLabel.text?.first).image
         reviewTextView.text = book?.review
         reviewTextView.addDoneButton()
     }

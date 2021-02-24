@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E11C514E25D4888900F31FA7 /* RMLibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C514D25D4888900F31FA7 /* RMLibraryHeaderView.swift */; };
 		E11C515125D4889600F31FA7 /* RMLibraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11C515025D4889600F31FA7 /* RMLibraryHeaderView.xib */; };
-		E11C515825D48EF800F31FA7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C515725D48EF800F31FA7 /* Library.swift */; };
+		E11C516125D5D7E300F31FA7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C516025D5D7E300F31FA7 /* Library.swift */; };
 		E14E5DA525CC639500ED9B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DA425CC639500ED9B45 /* AppDelegate.swift */; };
 		E14E5DA725CC639500ED9B45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DA625CC639500ED9B45 /* SceneDelegate.swift */; };
 		E14E5DAC25CC639500ED9B45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14E5DAA25CC639500ED9B45 /* Main.storyboard */; };
@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		E11C514D25D4888900F31FA7 /* RMLibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLibraryHeaderView.swift; sourceTree = "<group>"; };
 		E11C515025D4889600F31FA7 /* RMLibraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMLibraryHeaderView.xib; sourceTree = "<group>"; };
-		E11C515725D48EF800F31FA7 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "../../../../../Downloads/video-tv-materials-versions-5.1/16-diffable-data-source/Library.swift"; sourceTree = "<group>"; };
+		E11C516025D5D7E300F31FA7 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		E14E5DA125CC639500ED9B45 /* ReadMe App UITableView With DiffableDatasource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadMe App UITableView With DiffableDatasource.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14E5DA425CC639500ED9B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14E5DA625CC639500ED9B45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		E14E5DB925CC64A700ED9B45 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E11C516025D5D7E300F31FA7 /* Library.swift */,
 				E14E5DBD25CC64F400ED9B45 /* RMBook.swift */,
-				E11C515725D48EF800F31FA7 /* Library.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,8 +198,8 @@
 				E11C514E25D4888900F31FA7 /* RMLibraryHeaderView.swift in Sources */,
 				E14E5DA525CC639500ED9B45 /* AppDelegate.swift in Sources */,
 				E14E5DCC25CC749B00ED9B45 /* RMBookDetailViewController.swift in Sources */,
-				E11C515825D48EF800F31FA7 /* Library.swift in Sources */,
 				E14E5DA725CC639500ED9B45 /* SceneDelegate.swift in Sources */,
+				E11C516125D5D7E300F31FA7 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

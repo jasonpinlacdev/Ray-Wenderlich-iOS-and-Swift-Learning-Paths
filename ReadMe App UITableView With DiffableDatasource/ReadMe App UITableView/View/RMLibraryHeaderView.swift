@@ -12,4 +12,7 @@ class RMLibraryHeaderView: UITableViewHeaderFooterView {
     static let reuseId = String(describing: RMLibraryHeaderView.self)
     
     @IBOutlet var titleLabel: UILabel!
+    
+    
+    
 }

@@ -11,7 +11,7 @@
         <!--Book Detail View Controller-->
         <scene sceneID="q8o-Dm-JNv">
             <objects>
-                <tableViewController id="vA1-QD-XDp" customClass="RMBookDetailViewController" customModule="ReadMe_App_UITableView" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vA1-QD-XDp" customClass="RMBookDetailViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LrK-sQ-Irt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                         <sections>
                             <tableViewSection id="G7L-CP-yhR">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMBookCell" id="YsL-6Q-mG7" customClass="RMBookCell" customModule="ReadMe_App_UITableView" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMBookCell" id="YsL-6Q-mG7" customClass="RMBookCell" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YsL-6Q-mG7" id="Ds4-DP-Bag">
@@ -164,7 +164,7 @@
         <!--Table View Controller-->
         <scene sceneID="HiH-Of-hBw">
             <objects>
-                <tableViewController id="g8R-A5-aaA" customClass="RMTableViewController" customModule="ReadMe_App_UITableView" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="g8R-A5-aaA" customClass="RMTableViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gmk-gn-Sdz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,10 +209,10 @@
                                     <segue destination="3YR-Lq-Aj1" kind="show" destinationCreationSelector="showNewBookView:" id="C3f-qo-ghM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMBookCell" id="tpf-Jw-rCH" customClass="RMBookCell" customModule="ReadMe_App_UITableView" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RMBookCell" id="tpf-Jw-rCH" customClass="RMBookCell" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="128" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpf-Jw-rCH" id="nYB-kf-3h3">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpf-Jw-rCH" id="nYB-kf-3h3">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -291,7 +291,7 @@
         <!--New Book Table View Controller-->
         <scene sceneID="rwP-E6-Q4t">
             <objects>
-                <tableViewController id="3YR-Lq-Aj1" customClass="RMNewBookTableViewController" customModule="ReadMe_App_UITableView" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="3YR-Lq-Aj1" customClass="RMNewBookTableViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="19Y-5f-sx3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

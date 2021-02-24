@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct RMBook {
+struct RMBook: Hashable {
     static var mockBook = RMBook(title: "", author: "", review: nil, readMe: true, image: nil)
 
     let title: String
@@ -18,7 +18,17 @@ struct RMBook {
     var image: UIImage?
 }
 
-extension RMBook: Hashable { }
+//extension RMBook: Hashable {
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(title)
+//        hasher.combine(author)
+//    }
+//
+//    static func ==(lhs: RMBook, rhs: RMBook) -> Bool {
+//        lhs.title == rhs.title && lhs.author == rhs.author
+//    }
+//}
+
 
 extension RMBook: Codable {
     enum CodingKeys: String, CodingKey {
