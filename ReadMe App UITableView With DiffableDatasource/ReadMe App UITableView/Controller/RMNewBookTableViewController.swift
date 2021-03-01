@@ -9,33 +9,42 @@ import UIKit
 
 class RMNewBookTableViewController: UITableViewController {
     
-    @IBOutlet var titleTextField: UITextField! {
-        didSet {
-            titleTextField.returnKeyType = .done
-            titleTextField.delegate = self
-            titleTextField.addDoneButton()
-        }
-    }
-    @IBOutlet var authorTextField: UITextField! {
-        didSet {
-            authorTextField.returnKeyType = .done
-            authorTextField.delegate = self
-            authorTextField.addDoneButton()
-        }
-    }
-    @IBOutlet var imageView: UIImageView! {
-        didSet {
-            imageView.layer.cornerRadius = 12
-        }
-    }
+    var newBookImage: UIImage?
+    
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var authorTextField: UITextField!
+    @IBOutlet var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleTextField.returnKeyType = .done
+        titleTextField.delegate = self
+        titleTextField.addDoneButton()
+        authorTextField.returnKeyType = .done
+        authorTextField.delegate = self
+        authorTextField.addDoneButton()
+        imageView.layer.cornerRadius = 12
         view.addGestureRecognizer( UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+        
+    @IBAction func saveNewBook() {
+        guard let title = titleTextField.text,
+              let author = authorTextField.text,
+              !title.isEmpty,
+              !author.isEmpty
+        else { return }
+        
+        let newBook = RMBook(title: title, author: author, review: nil, readMe: true, image: newBookImage)
+        Library.addNew(book: newBook)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func cancel() {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -56,6 +65,7 @@ extension RMNewBookTableViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
         imageView.image = selectedImage
+        newBookImage = selectedImage
         dismiss(animated: true)
     }
 }
@@ -66,7 +76,6 @@ extension RMNewBookTableViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
     }
 }
-
 
 extension UITextField {
     func addDoneButton() {

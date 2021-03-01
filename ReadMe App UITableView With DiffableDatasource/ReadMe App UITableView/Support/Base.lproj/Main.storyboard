@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,7 @@
         <!--Book Detail View Controller-->
         <scene sceneID="q8o-Dm-JNv">
             <objects>
-                <tableViewController id="vA1-QD-XDp" customClass="RMBookDetailViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="vA1-QD-XDp" customClass="RMBookDetailViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LrK-sQ-Irt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +38,9 @@
                                                             <state key="normal" image="bookmark.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="toggleReadMe" destination="vA1-QD-XDp" eventType="touchUpInside" id="bLx-2Z-vj8"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hff-5e-2NB">
                                                             <rect key="frame" x="43" y="0.0" width="331" height="35"/>
@@ -149,10 +153,22 @@
                             <outlet property="delegate" destination="vA1-QD-XDp" id="y3B-oQ-pk1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="R50-2Z-ID9"/>
+                    <navigationItem key="navigationItem" id="R50-2Z-ID9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xm5-Ye-rrc">
+                            <connections>
+                                <action selector="cancel:" destination="vA1-QD-XDp" id="FzO-Ww-f7B"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wJz-nN-smV">
+                            <connections>
+                                <action selector="saveChanges:" destination="vA1-QD-XDp" id="bRL-yM-Srg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="oWr-mf-8ds" id="UQg-vV-il9"/>
-                        <outlet property="bookImageView" destination="k6Y-h9-YKq" id="0JC-dw-Ear"/>
+                        <outlet property="imageView" destination="k6Y-h9-YKq" id="0JC-dw-Ear"/>
+                        <outlet property="readMeButton" destination="Kaz-He-NwZ" id="D6L-Gs-JiW"/>
                         <outlet property="reviewTextView" destination="YGP-ph-cHH" id="jWu-EX-9Em"/>
                         <outlet property="titleLabel" destination="rJ3-Vr-Uix" id="818-bG-s3r"/>
                     </connections>
@@ -282,7 +298,45 @@
                             <outlet property="delegate" destination="g8R-A5-aaA" id="5cf-lu-uec"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="flexibleSpace" id="92d-uM-hC4">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                        </barButtonItem>
+                        <barButtonItem title="Title" id="Ww7-5j-wem">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                            <connections>
+                                <action selector="applyTitleSort:" destination="g8R-A5-aaA" id="24z-4C-LCa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="Q2D-f7-Gwd">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                        </barButtonItem>
+                        <barButtonItem title="Author" id="oPk-FF-jNL">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                            <connections>
+                                <action selector="applyAuthorSort:" destination="g8R-A5-aaA" id="oOx-hV-qVb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="e8s-BD-DHH">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                        </barButtonItem>
+                        <barButtonItem title="Read Me" id="hQI-br-Pfp">
+                            <color key="tintColor" name="ReadMe Tint Color"/>
+                            <connections>
+                                <action selector="applyReadMeSort:" destination="g8R-A5-aaA" id="IL5-GW-Pnm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="sEF-yC-BB0">
+                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Gu5-5J-0bI"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outletCollection property="sortButtons" destination="hQI-br-Pfp" collectionClass="NSMutableArray" id="C7m-Va-4gm"/>
+                        <outletCollection property="sortButtons" destination="Ww7-5j-wem" collectionClass="NSMutableArray" id="NtK-Ef-o4D"/>
+                        <outletCollection property="sortButtons" destination="oPk-FF-jNL" collectionClass="NSMutableArray" id="KYW-WC-M0U"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fZ-4J-jTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,7 +345,7 @@
         <!--New Book Table View Controller-->
         <scene sceneID="rwP-E6-Q4t">
             <objects>
-                <tableViewController id="3YR-Lq-Aj1" customClass="RMNewBookTableViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="3YR-Lq-Aj1" customClass="RMNewBookTableViewController" customModule="ReadMe_App_UITableView_With_DiffableDatasource" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="19Y-5f-sx3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -398,7 +452,18 @@
                             <outlet property="delegate" destination="3YR-Lq-Aj1" id="NyJ-Js-Lot"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="IpR-Rr-DRp"/>
+                    <navigationItem key="navigationItem" id="IpR-Rr-DRp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bkg-1b-4c5">
+                            <connections>
+                                <action selector="cancel" destination="3YR-Lq-Aj1" id="JGh-Sq-fPl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bTX-XZ-Ru8">
+                            <connections>
+                                <action selector="saveNewBook" destination="3YR-Lq-Aj1" id="61M-hu-FVP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="llD-WC-ckz" id="ay5-l2-JNk"/>
                         <outlet property="imageView" destination="0u1-Ug-m94" id="0Tg-5o-ayu"/>
@@ -412,13 +477,17 @@
         <!--Navigation Controller-->
         <scene sceneID="TbF-M3-4Ub">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1GP-jB-F5M" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="1GP-jB-F5M" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IUW-2W-B7S">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xdd-in-fRZ">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="g8R-A5-aaA" kind="relationship" relationship="rootViewController" id="EE4-xb-VXw"/>
                     </connections>

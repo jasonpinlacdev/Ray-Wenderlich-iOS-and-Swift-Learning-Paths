@@ -13,7 +13,7 @@ struct RMBook: Hashable {
     let title: String
     let author: String
     var review: String?
-    let readMe: Bool
+    var readMe: Bool
     
     var image: UIImage?
 }

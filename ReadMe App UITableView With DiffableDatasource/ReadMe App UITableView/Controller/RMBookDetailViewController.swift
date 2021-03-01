@@ -9,24 +9,42 @@ import UIKit
 import PhotosUI
 
 class RMBookDetailViewController: UITableViewController {
+    
+    var book: RMBook
+    
+    @IBOutlet var readMeButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var bookImageView: UIImageView! {
-        didSet {
-            bookImageView.layer.cornerRadius = 16
-        }
-    }
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet var reviewTextView: UITextView!
     
-    var book: RMBook?
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = book?.title
-        authorLabel.text = book?.author
-        bookImageView.image = book?.image ?? LibrarySymbol.letterSquare(letter: titleLabel.text?.first).image
-        reviewTextView.text = book?.review
+        readMeButton.setImage(book.readMe ? LibrarySymbol.bookmarkFill.image : LibrarySymbol.bookmark.image, for: .normal)
+        titleLabel.text = book.title
+        authorLabel.text = book.author
+        imageView.layer.cornerRadius = 16
+        imageView.image = book.image ?? LibrarySymbol.letterSquare(letter: titleLabel.text?.first).image
+        reviewTextView.text = book.review
         reviewTextView.addDoneButton()
+        reviewTextView.delegate = self
+    }
+    
+    // required init?(coder:) means we are using interface builder/storyboards. Behind the scenes this decoder is needed to translate the storyboard implementations into code.
+    
+    // This init method is used in conjunction with the @IBSegueAction func showBookDetailView(coder:)
+    init?(coder: NSCoder, book: RMBook) {
+        self.book = book
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented. Use init(coder:, book:) instead.")
+    }
+    
+    @IBAction func toggleReadMe() {
+        book.readMe.toggle()
+        readMeButton.setImage(book.readMe ? LibrarySymbol.bookmarkFill.image : LibrarySymbol.bookmark.image, for: .normal)
     }
     
     @IBAction func updateBookImage(_ sender: Any) {
@@ -37,28 +55,29 @@ class RMBookDetailViewController: UITableViewController {
         present(imagePicker, animated: true)
     }
     
-    // required init?(coder:) means we are using interface builder/storyboards. Behind the scenes this decoder is needed to translate the storyboard implementations into code.
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    @IBAction func saveChanges(_ sender: Any) {
+        Library.update(book: book)
+        navigationController?.popViewController(animated: true)
     }
-    
-    // This init method is used in conjunction with the @IBSegueAction func showBookDetailView(coder:)
-    init?(coder: NSCoder, book: RMBook) {
-        self.book = book
-        super.init(coder: coder)
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
-    
-
-    
 }
 
 
 extension RMBookDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        bookImageView.image = selectedImage
-        Library.saveImage(selectedImage, forBook: self.book!)
+        imageView.image = selectedImage
+        book.image = selectedImage
         dismiss(animated: true)
+    }
+}
+
+extension RMBookDetailViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+        book.review = textView.text
     }
 }
 

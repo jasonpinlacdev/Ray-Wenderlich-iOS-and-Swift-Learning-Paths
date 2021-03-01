@@ -18,6 +18,7 @@
 		E14E5DBE25CC64F400ED9B45 /* RMBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DBD25CC64F400ED9B45 /* RMBook.swift */; };
 		E14E5DC225CC65FC00ED9B45 /* RMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */; };
 		E14E5DCC25CC749B00ED9B45 /* RMBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */; };
+		E193A9BB25EC4EED00BA05C0 /* RMTableViewDiffableDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193A9BA25EC4EED00BA05C0 /* RMTableViewDiffableDatasource.swift */; };
 		E1FF474825D3376D00C1D4F5 /* RMBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF474725D3376D00C1D4F5 /* RMBookCell.swift */; };
 		E1FF474C25D4558500C1D4F5 /* RMNewBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FF474B25D4558500C1D4F5 /* RMNewBookTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		E14E5DBD25CC64F400ED9B45 /* RMBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBook.swift; sourceTree = "<group>"; };
 		E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTableViewController.swift; sourceTree = "<group>"; };
 		E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookDetailViewController.swift; sourceTree = "<group>"; };
+		E193A9BA25EC4EED00BA05C0 /* RMTableViewDiffableDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTableViewDiffableDatasource.swift; sourceTree = "<group>"; };
 		E1FF474725D3376D00C1D4F5 /* RMBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookCell.swift; sourceTree = "<group>"; };
 		E1FF474B25D4558500C1D4F5 /* RMNewBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMNewBookTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,9 +103,9 @@
 		E14E5DBB25CC64AE00ED9B45 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */,
-				E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */,
+				E193A9B825EC4EAE00BA05C0 /* RMTableViewController */,
 				E1FF474B25D4558500C1D4F5 /* RMNewBookTableViewController.swift */,
+				E14E5DCB25CC749B00ED9B45 /* RMBookDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +120,15 @@
 				E14E5DAF25CC639A00ED9B45 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		E193A9B825EC4EAE00BA05C0 /* RMTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E14E5DC125CC65FC00ED9B45 /* RMTableViewController.swift */,
+				E193A9BA25EC4EED00BA05C0 /* RMTableViewDiffableDatasource.swift */,
+			);
+			path = RMTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E193A9BB25EC4EED00BA05C0 /* RMTableViewDiffableDatasource.swift in Sources */,
 				E1FF474C25D4558500C1D4F5 /* RMNewBookTableViewController.swift in Sources */,
 				E14E5DBE25CC64F400ED9B45 /* RMBook.swift in Sources */,
 				E14E5DC225CC65FC00ED9B45 /* RMTableViewController.swift in Sources */,

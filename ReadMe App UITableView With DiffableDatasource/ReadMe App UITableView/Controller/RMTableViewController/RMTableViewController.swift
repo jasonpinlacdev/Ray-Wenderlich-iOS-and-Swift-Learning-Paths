@@ -7,26 +7,24 @@
 
 import UIKit
 
-enum LibrarySection: String, CaseIterable {
-    case addNew
-    case readMe = "Read Me!"
-    case finished = "Finished"
-}
-
 class RMTableViewController: UITableViewController {
     
-    var datasource: UITableViewDiffableDataSource<LibrarySection, RMBook>!
+    @IBOutlet var sortButtons: [UIBarButtonItem]!
+    
+    var diffDatasource: RMTableViewDiffableDatasource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Read Me Book Library"
+        navigationItem.leftBarButtonItem = editButtonItem
         tableView.register(UINib(nibName: "\(RMLibraryHeaderView.self)", bundle: nil), forHeaderFooterViewReuseIdentifier: RMLibraryHeaderView.reuseId)
         configureDatasource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        diffDatasource.update(sortStyle: diffDatasource.currentSortStyle, animatingDifferences: false)
+//        tableView.reloadData()
     }
     
     
@@ -38,7 +36,7 @@ class RMTableViewController: UITableViewController {
     @IBSegueAction func showBookDetailView(_ coder: NSCoder) -> RMBookDetailViewController? {
         // diffable datasource
         guard let indexPath = tableView.indexPathForSelectedRow,
-              let book = datasource.itemIdentifier(for: indexPath) else { fatalError() }
+              let book = diffDatasource.itemIdentifier(for: indexPath) else { fatalError() }
         return RMBookDetailViewController(coder: coder, book: book)
         
         // datasource
@@ -57,14 +55,39 @@ class RMTableViewController: UITableViewController {
 //        return nil
     }
     
+    @IBAction func applyTitleSort(_ sender: UIBarButtonItem) {
+        diffDatasource.update(sortStyle: .title, animatingDifferences: true)
+        sortButtons.forEach {
+            $0.tintColor = ($0 == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        navigationItem.leftBarButtonItem?.isEnabled = false
+    }
+    
+    @IBAction func applyAuthorSort(_ sender: UIBarButtonItem) {
+        diffDatasource.update(sortStyle: .author, animatingDifferences: true)
+        sortButtons.forEach {
+            $0.tintColor = ($0 == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        navigationItem.leftBarButtonItem?.isEnabled = false
+    }
+    
+    @IBAction func applyReadMeSort(_ sender: UIBarButtonItem) {
+        diffDatasource.update(sortStyle: .readMe, animatingDifferences: true)
+        sortButtons.forEach {
+            $0.tintColor = ($0 == sender) ? UIColor(named: "ReadMe Tint Color") : .secondaryLabel
+        }
+        navigationItem.leftBarButtonItem?.isEnabled = true
+    }
+
 }
 
 
 // MARK: UITableView Diffable Datasource
 extension RMTableViewController {
     func configureDatasource() {
-        self.datasource = UITableViewDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
-            if indexPath.section == 0 {
+        
+        self.diffDatasource = RMTableViewDiffableDatasource(tableView: self.tableView, cellProvider: { (tableView, indexPath, book) -> UITableViewCell? in
+            if indexPath.section == self.diffDatasource.snapshot().indexOfSection(.addNew) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RMNewBookCell", for: indexPath)
                 return cell
             } else {
@@ -73,16 +96,8 @@ extension RMTableViewController {
                 return cell
             }
         })
-        var initialSnapshot = NSDiffableDataSourceSnapshot<LibrarySection, RMBook>()
-        initialSnapshot.appendSections(LibrarySection.allCases)
-
-        let booksToRead: [RMBook] = Library.books.filter { $0.readMe }
-        let finishedBooks: [RMBook] = Library.books.filter { !$0.readMe }
-
-        initialSnapshot.appendItems([RMBook.mockBook], toSection: .addNew)
-        initialSnapshot.appendItems(booksToRead, toSection: .readMe)
-        initialSnapshot.appendItems(finishedBooks, toSection: .finished)
-        datasource.apply(initialSnapshot)
+        
+        diffDatasource.update(sortStyle: .readMe, animatingDifferences: false)
     }
 }
 
@@ -130,6 +145,16 @@ extension RMTableViewController {
 //            return cell
 //        }
 //    }
+//
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        indexPath.section == 0 ? false : true
+//    }
+//
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            print("delete")
+//        }
+//    }
 //}
 
 
@@ -155,9 +180,5 @@ extension RMTableViewController {
         return section == 0 ? 0 : 60
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-    
-
 }
+
