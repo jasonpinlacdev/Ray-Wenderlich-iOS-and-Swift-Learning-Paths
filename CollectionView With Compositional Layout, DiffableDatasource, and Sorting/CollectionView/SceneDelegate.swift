@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  CollectionView-CompositionalLayout-DiffableDataSource
+//  CollectionView
 //
-//  Created by Jason Pinlac on 9/23/20.
+//  Created by Jason Pinlac on 3/1/21.
 //
 
 import UIKit
