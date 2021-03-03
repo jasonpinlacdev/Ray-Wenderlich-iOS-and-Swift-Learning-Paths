@@ -10,12 +10,12 @@ import UIKit
 class Data {
     
     // singleton
-    static var shared = Data()
+    static let shared = Data()
     
     let numbers: [Int]
     
     private init() {
-        numbers = Array(Set(1...100))
+        numbers = Array(Set(1...300))
     }
     
     

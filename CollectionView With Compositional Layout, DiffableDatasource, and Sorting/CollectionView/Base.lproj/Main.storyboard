@@ -28,26 +28,27 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NumberCell" id="UZs-sT-cZS" customClass="NumberCell" customModule="CollectionView" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="g4f-5v-TFr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-kW-pqg">
-                                                    <rect key="frame" x="8" y="11.5" width="398" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-kW-pqg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="centerY" secondItem="g4f-5v-TFr" secondAttribute="centerY" id="ECB-Qv-gyf"/>
-                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="leading" secondItem="g4f-5v-TFr" secondAttribute="leading" constant="8" id="mTz-4f-s0p"/>
-                                                <constraint firstAttribute="trailing" secondItem="eHS-kW-pqg" secondAttribute="trailing" constant="8" id="mwR-Lq-JwT"/>
+                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="centerY" secondItem="g4f-5v-TFr" secondAttribute="centerY" id="50z-01-F3B"/>
+                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="centerX" secondItem="g4f-5v-TFr" secondAttribute="centerX" id="IC9-K8-0gj"/>
+                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="height" secondItem="g4f-5v-TFr" secondAttribute="height" id="Rp6-jX-Gew"/>
+                                                <constraint firstItem="eHS-kW-pqg" firstAttribute="width" secondItem="g4f-5v-TFr" secondAttribute="width" id="ZFj-IX-DuD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="44"/>
+                                        <size key="customSize" width="50" height="50"/>
                                         <connections>
                                             <outlet property="numberLabel" destination="eHS-kW-pqg" id="eAR-EK-5nN"/>
                                         </connections>
