@@ -9,7 +9,8 @@ import UIKit
 
 class Data {
     
-    // singleton
+    // singleton - Only a class can truly be a singleton because they are references to a single instance in memory. Structs are not true singletons because if you make an assignment, its a copy of the instance therefore existing more than 1 single instance.
+    
     static let shared = Data()
     
     let numbers: [Int]
@@ -21,3 +22,13 @@ class Data {
     
     
 }
+
+
+//struct DataB {
+//
+//    static let shared = DataB()
+//
+//    static let numbers = Array(Set(1...300))
+//
+//    private init() {}
+//}

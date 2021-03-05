@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E144048625EDC7EB0027C286 /* CollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E144048625EDC7EB0027C286 /* CollectionView New School CompositionalLayout and DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CollectionView New School CompositionalLayout and DiffableDataSource.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E144048925EDC7EB0027C286 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E144048B25EDC7EB0027C286 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E144048D25EDC7EB0027C286 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		E144048725EDC7EB0027C286 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E144048625EDC7EB0027C286 /* CollectionView.app */,
+				E144048625EDC7EB0027C286 /* CollectionView New School CompositionalLayout and DiffableDataSource.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E144048525EDC7EB0027C286 /* CollectionView */ = {
+		E144048525EDC7EB0027C286 /* CollectionView New School CompositionalLayout and DiffableDataSource */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E144049A25EDC7EF0027C286 /* Build configuration list for PBXNativeTarget "CollectionView" */;
+			buildConfigurationList = E144049A25EDC7EF0027C286 /* Build configuration list for PBXNativeTarget "CollectionView New School CompositionalLayout and DiffableDataSource" */;
 			buildPhases = (
 				E144048225EDC7EB0027C286 /* Sources */,
 				E144048325EDC7EB0027C286 /* Frameworks */,
@@ -131,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = CollectionView;
+			name = "CollectionView New School CompositionalLayout and DiffableDataSource";
 			productName = CollectionView;
-			productReference = E144048625EDC7EB0027C286 /* CollectionView.app */;
+			productReference = E144048625EDC7EB0027C286 /* CollectionView New School CompositionalLayout and DiffableDataSource.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -150,7 +150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E144048125EDC7EB0027C286 /* Build configuration list for PBXProject "CollectionView" */;
+			buildConfigurationList = E144048125EDC7EB0027C286 /* Build configuration list for PBXProject "CollectionView New School CompositionalLayout and DiffableDataSource" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E144048525EDC7EB0027C286 /* CollectionView */,
+				E144048525EDC7EB0027C286 /* CollectionView New School CompositionalLayout and DiffableDataSource */,
 			);
 		};
 /* End PBXProject section */
@@ -374,7 +374,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E144048125EDC7EB0027C286 /* Build configuration list for PBXProject "CollectionView" */ = {
+		E144048125EDC7EB0027C286 /* Build configuration list for PBXProject "CollectionView New School CompositionalLayout and DiffableDataSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E144049825EDC7EF0027C286 /* Debug */,
@@ -383,7 +383,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E144049A25EDC7EF0027C286 /* Build configuration list for PBXNativeTarget "CollectionView" */ = {
+		E144049A25EDC7EF0027C286 /* Build configuration list for PBXNativeTarget "CollectionView New School CompositionalLayout and DiffableDataSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E144049B25EDC7EF0027C286 /* Debug */,

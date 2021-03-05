@@ -19,7 +19,7 @@ enum SortStyle {
 
 class ViewControllerDiffableDataSource: UICollectionViewDiffableDataSource<Section, Int> {
     
-    func updateDatasource(sortStyle: SortStyle) {
+    func updateDatasource(sortStyle: SortStyle, animatingDifferences: Bool = true) {
     
         var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
         snapshot.appendSections(Section.allCases)
@@ -35,7 +35,7 @@ class ViewControllerDiffableDataSource: UICollectionViewDiffableDataSource<Secti
         }
     
         snapshot.appendItems(sortedNumbers, toSection: .main)
-        apply(snapshot, animatingDifferences: true)
+        apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
 }

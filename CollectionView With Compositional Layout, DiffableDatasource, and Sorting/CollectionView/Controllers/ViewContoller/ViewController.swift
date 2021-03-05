@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             cell.set(text: number.description)
             return cell
         })
-        diffableDataSource.updateDatasource(sortStyle: .random)
+        diffableDataSource.updateDatasource(sortStyle: .random, animatingDifferences: false)
     }
     
     
