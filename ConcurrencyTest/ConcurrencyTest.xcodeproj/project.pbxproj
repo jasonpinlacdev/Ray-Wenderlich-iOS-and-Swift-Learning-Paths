@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1031FDD25F16696007F5F9F /* CalculatePrimeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1031FDC25F16696007F5F9F /* CalculatePrimeOperation.swift */; };
 		E16648DA25F052CE0029858C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16648D925F052CE0029858C /* AppDelegate.swift */; };
 		E16648DC25F052CE0029858C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16648DB25F052CE0029858C /* SceneDelegate.swift */; };
 		E16648DE25F052CE0029858C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16648DD25F052CE0029858C /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1031FDC25F16696007F5F9F /* CalculatePrimeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatePrimeOperation.swift; sourceTree = "<group>"; };
 		E16648D625F052CE0029858C /* ConcurrencyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcurrencyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16648D925F052CE0029858C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E16648DB25F052CE0029858C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1031FDF25F16795007F5F9F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E16648D925F052CE0029858C /* AppDelegate.swift */,
+				E16648DB25F052CE0029858C /* SceneDelegate.swift */,
+				E16648DF25F052CE0029858C /* Main.storyboard */,
+				E16648E225F052D20029858C /* Assets.xcassets */,
+				E16648E425F052D20029858C /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E1031FE425F167A7007F5F9F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E16648DD25F052CE0029858C /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1031FE525F167A8007F5F9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1031FE625F167A9007F5F9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E1031FE725F167C1007F5F9F /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				E1031FDC25F16696007F5F9F /* CalculatePrimeOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		E16648CD25F052CE0029858C = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +100,11 @@
 		E16648D825F052CE0029858C /* ConcurrencyTest */ = {
 			isa = PBXGroup;
 			children = (
-				E16648D925F052CE0029858C /* AppDelegate.swift */,
-				E16648DB25F052CE0029858C /* SceneDelegate.swift */,
-				E16648DD25F052CE0029858C /* ViewController.swift */,
-				E16648DF25F052CE0029858C /* Main.storyboard */,
-				E16648E225F052D20029858C /* Assets.xcassets */,
-				E16648E425F052D20029858C /* LaunchScreen.storyboard */,
+				E1031FE725F167C1007F5F9F /* Operations */,
+				E1031FE625F167A9007F5F9F /* Models */,
+				E1031FE525F167A8007F5F9F /* Views */,
+				E1031FE425F167A7007F5F9F /* Controllers */,
+				E1031FDF25F16795007F5F9F /* Support */,
 				E16648E725F052D20029858C /* Info.plist */,
 			);
 			path = ConcurrencyTest;
@@ -137,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1031FDD25F16696007F5F9F /* CalculatePrimeOperation.swift in Sources */,
 				E16648DE25F052CE0029858C /* ViewController.swift in Sources */,
 				E16648DA25F052CE0029858C /* AppDelegate.swift in Sources */,
 				E16648DC25F052CE0029858C /* SceneDelegate.swift in Sources */,
