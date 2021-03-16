@@ -1,7 +1,8 @@
 import Foundation
 
 class Emoji {
-  enum Category: String, CaseIterable {
+  
+    enum Category: String, CaseIterable {
     case smileysAndPeople = "Smileys & People"
     case animalsAndNature = "Animals & Nature"
     case foodAndDrink = "Food & Drink"

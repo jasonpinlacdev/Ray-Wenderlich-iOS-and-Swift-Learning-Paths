@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Emoji Collection View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EmojiLibrary_CollectionView_Old_School_using_FlowLayout_and_DataSource" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EmojiCollectionViewController" customModule="EmojiLibrary_CollectionView_Old_School_using_FlowLayout_and_DataSource" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,11 +20,11 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-fW-szv">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Sdr-tb-SrD">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Sdr-tb-SrD">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="100"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmojiCell" id="opy-oc-rbT" customClass="EmojiCell" customModule="EmojiLibrary_CollectionView_Old_School_using_FlowLayout_and_DataSource" customModuleProvider="target">
@@ -49,6 +49,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="emojiLabel" destination="Sgh-mY-R8e" id="qlE-b2-3DZ"/>
+                                            <segue destination="txS-G7-e6W" kind="show" destinationCreationSelector="showEmojiDetailViewController:" id="uZh-kf-NjV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -71,6 +72,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="763.768115942029" y="107.8125"/>
+        </scene>
+        <!--Emoji Detail View Controller-->
+        <scene sceneID="mWO-xS-h48">
+            <objects>
+                <viewController storyboardIdentifier="EmojiDetailViewController" id="txS-G7-e6W" customClass="EmojiDetailViewController" customModule="EmojiLibrary_CollectionView_Old_School_using_FlowLayout_and_DataSource" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DQQ-rp-aXE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-2P-4bg">
+                                <rect key="frame" x="0.0" y="27" width="414" height="896"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q37-F4-YzN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yFh-2P-4bg" firstAttribute="height" secondItem="DQQ-rp-aXE" secondAttribute="height" id="WT3-vq-Q5H"/>
+                            <constraint firstItem="yFh-2P-4bg" firstAttribute="width" secondItem="DQQ-rp-aXE" secondAttribute="width" id="fgi-EJ-etJ"/>
+                            <constraint firstItem="yFh-2P-4bg" firstAttribute="centerY" secondItem="q37-F4-YzN" secondAttribute="centerY" id="hHh-FN-xm5"/>
+                            <constraint firstItem="yFh-2P-4bg" firstAttribute="centerX" secondItem="q37-F4-YzN" secondAttribute="centerX" id="yzT-Mg-VNM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uTT-XK-NMR"/>
+                    <connections>
+                        <outlet property="emojiLabel" destination="yFh-2P-4bg" id="CCr-hb-eKv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BDE-Pf-Yb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1623" y="108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nbL-Qi-s0f">
