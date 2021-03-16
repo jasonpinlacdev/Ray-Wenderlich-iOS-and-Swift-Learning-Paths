@@ -9,8 +9,6 @@ import UIKit
 
 class EmojiCollectionViewDelegate: NSObject {
     
-    var controller: EmojiCollectionViewController?
-    
     let numberOfItemsPerRow: CGFloat
     let interItemSpacing: CGFloat
     
@@ -21,11 +19,7 @@ class EmojiCollectionViewDelegate: NSObject {
 }
 
 extension EmojiCollectionViewDelegate: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let controller = controller {
-//            controller.performSegue(withIdentifier: "ShowEmojiDetailViewController", sender: nil)
-//        }
-//    }
+    
 }
 
 extension EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
@@ -46,16 +40,11 @@ extension EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
-            return UIEdgeInsets(top: 0, left: 0, bottom: interItemSpacing/2, right: 0)
-        } else {
-            return UIEdgeInsets(top: interItemSpacing/2, left: 0, bottom: interItemSpacing/2, right: 0)
-        }
+        return UIEdgeInsets(top: interItemSpacing, left: 0, bottom: interItemSpacing, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 50.0)
+        return CGSize(width: collectionView.bounds.width, height: 50.0)
     }
-    
     
 }

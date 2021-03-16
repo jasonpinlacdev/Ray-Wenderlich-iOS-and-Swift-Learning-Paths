@@ -33,10 +33,10 @@ extension EmojiCollectionViewDataSource: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmojiCollectionHeaderView.reuseId, for: indexPath) as? EmojiCollectionHeaderView else { fatalError() }
-        let category = Emoji.shared.sections[indexPath.section]
-        sectionHeaderView.set(emojiCategory: category.rawValue)
-        return sectionHeaderView
+        guard let emojiCollectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmojiCollectionHeaderView.reuseId, for: indexPath) as? EmojiCollectionHeaderView else { fatalError() }
+        let category = Emoji.shared.sections[indexPath.section].rawValue
+        emojiCollectionHeaderView.set(category: category)
+        return emojiCollectionHeaderView
     }
     
 }

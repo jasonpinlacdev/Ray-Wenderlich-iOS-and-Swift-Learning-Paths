@@ -18,7 +18,7 @@
 		0AD3AE312509BE890001FE1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD3AE302509BE890001FE1E /* LaunchScreen.storyboard */; };
 		E133594625FFCFFF0011F9E1 /* EmojiCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133594525FFCFFF0011F9E1 /* EmojiCollectionViewDataSource.swift */; };
 		E133594925FFD0080011F9E1 /* EmojiCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E133594825FFD0080011F9E1 /* EmojiCollectionViewDelegate.swift */; };
-		E1335952260052630011F9E1 /* EmojiCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1335951260052630011F9E1 /* EmojiCollectionHeaderView.swift */; };
+		E13359622601143C0011F9E1 /* EmojiCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13359612601143C0011F9E1 /* EmojiCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		0AD3AE302509BE890001FE1E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E133594525FFCFFF0011F9E1 /* EmojiCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E133594825FFD0080011F9E1 /* EmojiCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewDelegate.swift; sourceTree = "<group>"; };
-		E1335951260052630011F9E1 /* EmojiCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionHeaderView.swift; sourceTree = "<group>"; };
+		E13359612601143C0011F9E1 /* EmojiCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				0AD3AE2A2509B9580001FE1E /* EmojiCell.swift */,
-				E1335951260052630011F9E1 /* EmojiCollectionHeaderView.swift */,
+				E13359612601143C0011F9E1 /* EmojiCollectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E133594625FFCFFF0011F9E1 /* EmojiCollectionViewDataSource.swift in Sources */,
-				E1335952260052630011F9E1 /* EmojiCollectionHeaderView.swift in Sources */,
+				E13359622601143C0011F9E1 /* EmojiCollectionHeaderView.swift in Sources */,
 				0AD3AE2E2509B99D0001FE1E /* Emoji.swift in Sources */,
 				0AD3AE1B2509B8FA0001FE1E /* EmojiCollectionViewController.swift in Sources */,
 				0AD3AE172509B8FA0001FE1E /* AppDelegate.swift in Sources */,
