@@ -9,6 +9,8 @@ import UIKit
 
 class EmojiCollectionViewDelegate: NSObject {
     
+    var controller: EmojiCollectionViewController?
+    
     let numberOfItemsPerRow: CGFloat
     let interItemSpacing: CGFloat
     
@@ -46,5 +48,23 @@ extension EmojiCollectionViewDelegate: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 50.0)
     }
+    
+    //MARK: - 2nd way to handle showing detail using segue + performSegue() + prepare() from didSelectItemAt
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        let category = Emoji.shared.sections[indexPath.section]
+    //        let emoji = Emoji.shared.data[category]![indexPath.item]
+    //        controller?.performSegue(withIdentifier: "ShowEmojiDetailViewController", sender: emoji )
+    //    }
+        
+
+    
+//    // MARK: - 4th way to handle showing detail using programmatic approach using storyboard.instantiateVC
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let category = Emoji.shared.sections[indexPath.section]
+//        let emoji = Emoji.shared.data[category]![indexPath.item]
+//        guard let emojiDetailViewController = controller?.storyboard?.instantiateViewController(identifier: "EmojiDetailViewController") as? EmojiDetailViewController else { fatalError() }
+//        emojiDetailViewController.emoji = emoji
+//        controller?.navigationController?.pushViewController(emojiDetailViewController, animated: true)
+//    }
     
 }
