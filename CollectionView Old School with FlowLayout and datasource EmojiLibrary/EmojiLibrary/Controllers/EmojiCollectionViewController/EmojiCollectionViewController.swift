@@ -4,8 +4,8 @@ class EmojiCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let dataSource = EmojiCollectionViewDataSource()
-    lazy var delegate = EmojiCollectionViewDelegate(numberOfItemsPerRow: 7, interItemSpacing: 5.0)
+    let dataSource = EmojiCollectionDataSource()
+    let delegate = EmojiCollectionDelegate(numberOfItemsPerRow: 7, interItemSpacing: 5.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,14 @@ class EmojiCollectionViewController: UIViewController {
     }
     
 
+    @IBAction func addNewEmoji(_ sender: Any) {
+        let (category, newEmoji) = Emoji.randomEmoji()
+        dataSource.addEmoji(newEmoji, to: category)
+//        collectionView.reloadData()
+        let itemCount = collectionView.numberOfItems(inSection: 0)
+        let insertedIndexPath = IndexPath(item: itemCount, section: 0)
+        collectionView.insertItems(at: [insertedIndexPath])
+    }
     // MARK: - 1st way to handle showing detail using segue + prepare()
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "ShowEmojiDetailViewController" {
@@ -30,13 +38,13 @@ class EmojiCollectionViewController: UIViewController {
 //    }
     
     // MARK: - 2nd way to handle showing detail using segue + performSegue() + prepare()
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "ShowEmojiDetailViewController" {
-    //            guard let emoji = sender as? String else { fatalError() }
-    //            guard let emojiDetailViewController = segue.destination as? EmojiDetailViewController else { fatalError() }
-    //            emojiDetailViewController.emoji = emoji
-    //        }
-    //    }
+//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            if segue.identifier == "ShowEmojiDetailViewController" {
+//                guard let emoji = sender as? String else { fatalError() }
+//                guard let emojiDetailViewController = segue.destination as? EmojiDetailViewController else { fatalError() }
+//                emojiDetailViewController.emoji = emoji
+//            }
+//        }
 
     // MARK: - 3rd way to handle showing detail using iOS 13+ @IBSegueAction + init?(data, coder)
 //    @IBSegueAction func showEmojiDetailViewController(_ coder: NSCoder) -> EmojiDetailViewController? {

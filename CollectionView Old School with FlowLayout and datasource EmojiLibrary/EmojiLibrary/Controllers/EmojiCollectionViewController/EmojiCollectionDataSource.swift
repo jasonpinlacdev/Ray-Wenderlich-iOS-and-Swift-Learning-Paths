@@ -8,11 +8,12 @@
 import UIKit
 
 
-class EmojiCollectionViewDataSource: NSObject {
+class EmojiCollectionDataSource: NSObject {
     
 }
 
-extension EmojiCollectionViewDataSource: UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource protocol methods - These methods allow our dataSource object to dequeue and provide the cells and data for each cell to our collectionView
+extension EmojiCollectionDataSource: UICollectionViewDataSource {
    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Emoji.shared.sections.count
@@ -37,7 +38,17 @@ extension EmojiCollectionViewDataSource: UICollectionViewDataSource {
         let category = Emoji.shared.sections[indexPath.section].rawValue
         emojiCollectionHeaderView.set(category: category)
         return emojiCollectionHeaderView
+        
     }
     
+}
+
+// MARK: DataSource helper methods - These methods allow the dataSource object to manage the underlying data for our app
+extension EmojiCollectionDataSource {
+    func addEmoji(_ emoji: String, to category: Emoji.Category) {
+        guard var emojisAtCategory = Emoji.shared.data[category] else { return }
+        emojisAtCategory.append(emoji)
+        Emoji.shared.data.updateValue(emojisAtCategory, forKey: category)
+    }
 }
 
