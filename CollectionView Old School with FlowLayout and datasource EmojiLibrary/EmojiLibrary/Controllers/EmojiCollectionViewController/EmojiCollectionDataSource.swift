@@ -29,7 +29,6 @@ extension EmojiCollectionDataSource: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseId, for: indexPath) as? EmojiCell else { fatalError() }
         let emoji = Emoji.shared.data[Emoji.shared.sections[indexPath.section]]![indexPath.item]
         cell.set(emoji: emoji)
-        cell.contentView.backgroundColor = UIColor(red: CGFloat.random(in: 0.0...1.0), green: CGFloat.random(in: 0.0...1.0), blue: CGFloat.random(in: 0.0...1.0), alpha: 1.0)
         return cell
     }
     
@@ -45,10 +44,15 @@ extension EmojiCollectionDataSource: UICollectionViewDataSource {
 
 // MARK: DataSource helper methods - These methods allow the dataSource object to manage the underlying data for our app
 extension EmojiCollectionDataSource {
+    
     func addEmoji(_ emoji: String, to category: Emoji.Category) {
         guard var emojisAtCategory = Emoji.shared.data[category] else { return }
         emojisAtCategory.append(emoji)
         Emoji.shared.data.updateValue(emojisAtCategory, forKey: category)
+    }
+    
+    func deleteEmoji() {
+        
     }
 }
 

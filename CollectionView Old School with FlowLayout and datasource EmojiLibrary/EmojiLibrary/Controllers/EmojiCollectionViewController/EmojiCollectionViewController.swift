@@ -12,7 +12,32 @@ class EmojiCollectionViewController: UIViewController {
         collectionView.dataSource = self.dataSource
         collectionView.delegate = self.delegate
         collectionView.register(EmojiCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: EmojiCollectionHeaderView.reuseId)
-        delegate.controller = self
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if self.isEditing && identifier == "ShowEmojiDetailViewController" { return false }
+        return true
+    }
+    
+    // overriden to work with our EmojiCell's overriden isSelected property and our added isEditing property
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        // all visible cells have their isEditing property set to true
+        let indexPathsOnScreen = collectionView.indexPathsForVisibleItems
+        indexPathsOnScreen.forEach {
+            guard let cell = collectionView.cellForItem(at: $0) as? EmojiCell else { return }
+            cell.isEditing = editing
+        }
+        
+        if editing == false {
+            collectionView.indexPathsForSelectedItems?.compactMap {$0}.forEach {
+                collectionView.deselectItem(at: $0, animated: true)
+            }
+        }
+        
     }
     
 
@@ -23,19 +48,22 @@ class EmojiCollectionViewController: UIViewController {
         let itemCount = collectionView.numberOfItems(inSection: 0)
         let insertedIndexPath = IndexPath(item: itemCount, section: 0)
         collectionView.insertItems(at: [insertedIndexPath])
+        
+    
     }
+    
     // MARK: - 1st way to handle showing detail using segue + prepare()
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowEmojiDetailViewController" {
-//            guard let cell = sender as? EmojiCell,
-//                  let indexPath = collectionView.indexPath(for: cell),
-//                  let emojiDetailViewController = segue.destination as? EmojiDetailViewController
-//            else { fatalError() }
-//            let category = Emoji.shared.sections[indexPath.section]
-//            let emoji = Emoji.shared.data[category]?[indexPath.item]
-//            emojiDetailViewController.emoji = emoji
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowEmojiDetailViewController" {
+            guard let cell = sender as? EmojiCell,
+                  let indexPath = collectionView.indexPath(for: cell),
+                  let emojiDetailViewController = segue.destination as? EmojiDetailViewController
+            else { fatalError() }
+            let category = Emoji.shared.sections[indexPath.section]
+            let emoji = Emoji.shared.data[category]?[indexPath.item]
+            emojiDetailViewController.emoji = emoji
+        }
+    }
     
     // MARK: - 2nd way to handle showing detail using segue + performSegue() + prepare()
 //        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

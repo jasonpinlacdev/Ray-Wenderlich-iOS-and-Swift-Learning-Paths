@@ -6,10 +6,6 @@ class EmojiDetailViewController: UIViewController {
     
     var emoji: String?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
     // MARK: - 3rd way @IBSegueAction + init?(data, coder) -
 //    init?(emoji: String, coder: NSCoder) {
 //        self.emoji = emoji
@@ -17,9 +13,9 @@ class EmojiDetailViewController: UIViewController {
 //    }
     
     // MARK: - 4th way progammatically with storyboard.instantiate VC -
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

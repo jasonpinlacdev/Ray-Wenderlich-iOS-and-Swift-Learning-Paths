@@ -49,6 +49,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="emojiLabel" destination="Sgh-mY-R8e" id="qlE-b2-3DZ"/>
+                                            <segue destination="txS-G7-e6W" kind="show" identifier="ShowEmojiDetailViewController" id="bnP-Ec-GjO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -87,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-2P-4bg">
-                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="27" width="414" height="896"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
