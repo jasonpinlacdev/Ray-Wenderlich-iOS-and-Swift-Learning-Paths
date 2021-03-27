@@ -23,7 +23,7 @@ class EmojiCollectionHeaderView: UICollectionReusableView {
             categoryLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 5.0),
             categoryLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
-        backgroundColor = UIColor.systemTeal
+        backgroundColor = UIColor.darkGray
     }
     
     required init?(coder: NSCoder) {

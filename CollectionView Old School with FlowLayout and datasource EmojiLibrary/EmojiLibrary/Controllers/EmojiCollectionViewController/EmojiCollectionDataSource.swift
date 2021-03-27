@@ -44,15 +44,24 @@ extension EmojiCollectionDataSource: UICollectionViewDataSource {
 
 // MARK: DataSource helper methods - These methods allow the dataSource object to manage the underlying data for our app
 extension EmojiCollectionDataSource {
-    
     func addEmoji(_ emoji: String, to category: Emoji.Category) {
-        guard var emojisAtCategory = Emoji.shared.data[category] else { return }
-        emojisAtCategory.append(emoji)
-        Emoji.shared.data.updateValue(emojisAtCategory, forKey: category)
+        // get the array of emojis from the data layer
+        guard var arrayOfEmojisAtCategory = Emoji.shared.data[category] else { fatalError() }
+        // append the new emoji item to the array
+        arrayOfEmojisAtCategory.append(emoji)
+        // update the dictionary by adding back the modified array to its respective category
+        Emoji.shared.data.updateValue(arrayOfEmojisAtCategory, forKey: category)
     }
     
-    func deleteEmoji() {
-        
+    func deleteEmoji(at indexPath: IndexPath) {
+        let category = Emoji.shared.sections[indexPath.section]
+        guard var arrayOfEmojisAtCategory = Emoji.shared.data[category] else { fatalError() }
+        arrayOfEmojisAtCategory.remove(at: indexPath.item)
+        Emoji.shared.data.updateValue(arrayOfEmojisAtCategory, forKey: category)
+    }
+    
+    func deleteEmojis(at indexPaths: [IndexPath]) {
+        let sortedIndexPaths = indexPaths.sorted { $0 > $1 }
+       sortedIndexPaths.forEach { deleteEmoji(at: $0) }
     }
 }
-

@@ -49,7 +49,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="emojiLabel" destination="Sgh-mY-R8e" id="qlE-b2-3DZ"/>
-                                            <segue destination="txS-G7-e6W" kind="show" identifier="ShowEmojiDetailViewController" id="bnP-Ec-GjO"/>
+                                            <segue destination="txS-G7-e6W" kind="show" identifier="ShowEmojiDetailViewController" id="RnT-qF-1jw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -65,14 +65,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bX3-6q-dlS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gnW-o6-cvb">
-                            <connections>
-                                <action selector="addNewEmoji:" destination="BYZ-38-t0r" id="XTU-oy-0o5"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="go2-x1-X0O">
+                                <connections>
+                                    <action selector="addEmoji:" destination="BYZ-38-t0r" id="1eU-4K-KhN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="trash" id="Lig-rM-kT2">
+                                <connections>
+                                    <action selector="deleteEmoji:" destination="BYZ-38-t0r" id="dpw-g8-A3X"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="go2-x1-X0O" id="Zej-04-vPW"/>
                         <outlet property="collectionView" destination="4fD-fW-szv" id="dKN-MG-bwT"/>
+                        <outlet property="deleteButton" destination="Lig-rM-kT2" id="x25-c2-gEB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -3,6 +3,8 @@ import UIKit
 class EmojiCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     let dataSource = EmojiCollectionDataSource()
     let delegate = EmojiCollectionDelegate(numberOfItemsPerRow: 7, interItemSpacing: 5.0)
@@ -12,56 +14,72 @@ class EmojiCollectionViewController: UIViewController {
         collectionView.dataSource = self.dataSource
         collectionView.delegate = self.delegate
         collectionView.register(EmojiCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: EmojiCollectionHeaderView.reuseId)
-        
         navigationItem.leftBarButtonItem = editButtonItem
+        collectionView.allowsMultipleSelection = true
     }
     
+    
+    // override shouldPerformSegue to check to see if the vc is in editMode or not
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if self.isEditing && identifier == "ShowEmojiDetailViewController" { return false }
+        if self.isEditing && identifier == "ShowEmojiDetailViewController" {
+            return false
+        }
         return true
     }
-    
-    // overriden to work with our EmojiCell's overriden isSelected property and our added isEditing property
+
+    // override setEditing to work with our EmojiCell's overriden isSelected property and our added isEditing property
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        // all visible cells have their isEditing property set to true
-        let indexPathsOnScreen = collectionView.indexPathsForVisibleItems
-        indexPathsOnScreen.forEach {
-            guard let cell = collectionView.cellForItem(at: $0) as? EmojiCell else { return }
-            cell.isEditing = editing
+        addButton.isEnabled = !editing
+        deleteButton.isEnabled = editing
+        
+        let visibleIndexes = collectionView.indexPathsForVisibleItems
+        visibleIndexes.forEach {
+            guard let emojiCell = collectionView.cellForItem(at: $0) as? EmojiCell else { fatalError() }
+            emojiCell.isEditing = editing
         }
         
-        if editing == false {
-            collectionView.indexPathsForSelectedItems?.compactMap {$0}.forEach {
+        if !editing {
+            guard let indexPathsForSelectedItems = collectionView.indexPathsForSelectedItems else { fatalError() }
+            indexPathsForSelectedItems.forEach {
                 collectionView.deselectItem(at: $0, animated: true)
             }
         }
-        
     }
     
-
-    @IBAction func addNewEmoji(_ sender: Any) {
-        let (category, newEmoji) = Emoji.randomEmoji()
-        dataSource.addEmoji(newEmoji, to: category)
+    @IBAction func addEmoji(_ sender: UIBarButtonItem) {
+        let (category, emoji) = Emoji.randomEmoji()
+        dataSource.addEmoji(emoji, to: category)
 //        collectionView.reloadData()
-        let itemCount = collectionView.numberOfItems(inSection: 0)
-        let insertedIndexPath = IndexPath(item: itemCount, section: 0)
-        collectionView.insertItems(at: [insertedIndexPath])
-        
+        let itemPosition = Emoji.shared.data[category]!.count - 1
+        let sectionPosition = Emoji.shared.sections.firstIndex(of: category)!
+        let indexPathOfNewEmoji = IndexPath(item: itemPosition, section: sectionPosition)
+        collectionView.insertItems(at: [indexPathOfNewEmoji])
+    }
     
+    @IBAction func deleteEmoji(_ sender: UIBarButtonItem) {
+        guard let indexPathsOfSelectedCells = collectionView.indexPathsForSelectedItems else { fatalError() }
+        dataSource.deleteEmojis(at: indexPathsOfSelectedCells)
+        collectionView.deleteItems(at: indexPathsOfSelectedCells)
     }
     
     // MARK: - 1st way to handle showing detail using segue + prepare()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowEmojiDetailViewController" {
-            guard let cell = sender as? EmojiCell,
-                  let indexPath = collectionView.indexPath(for: cell),
-                  let emojiDetailViewController = segue.destination as? EmojiDetailViewController
+            guard let emojiDetailViewController = segue.destination as? EmojiDetailViewController,
+                  let cell = sender as? EmojiCell,
+                  let indexPath = collectionView.indexPath(for: cell)
             else { fatalError() }
+            
             let category = Emoji.shared.sections[indexPath.section]
             let emoji = Emoji.shared.data[category]?[indexPath.item]
             emojiDetailViewController.emoji = emoji
+            
+            guard let indexPathsForSelectedItems = collectionView.indexPathsForSelectedItems else { fatalError() }
+            indexPathsForSelectedItems.forEach {
+                collectionView.deselectItem(at: $0, animated: true)
+            }
         }
     }
     

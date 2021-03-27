@@ -1,5 +1,7 @@
 import Foundation
 
+
+// This class is the app's Data Layer/ Data repository
 class Emoji {
   
     enum Category: String, CaseIterable {
@@ -35,4 +37,5 @@ class Emoji {
     let randomIndex = Int.random(in: 0..<extraEmoji.count)
     return (.smileysAndPeople, extraEmoji[randomIndex])
   }
+
 }

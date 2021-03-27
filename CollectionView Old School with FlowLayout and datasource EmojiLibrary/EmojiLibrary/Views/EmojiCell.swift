@@ -6,18 +6,20 @@ class EmojiCell: UICollectionViewCell {
     
     @IBOutlet weak var emojiLabel: UILabel!
     
-    var isEditing = false
-    
-    // overriden to add a property observer that changes the cells color when selected either red or grey if the VC is in edit mode or not
+    // this added property keeps track of the visible cells on the screen when the VC goes into edit mode.
+    var isEditing: Bool = false
+
+//    // overriden to add a property observer that changes the cells color when selected either red or grey if the VC is in edit mode or not
     override var isSelected: Bool {
         didSet {
             if isEditing {
-                contentView.backgroundColor = isSelected ? UIColor.systemRed : UIColor.systemGroupedBackground
+                self.contentView.backgroundColor = isSelected ? .systemRed : .systemGroupedBackground
             } else {
-                contentView.backgroundColor = UIColor.systemGroupedBackground
+                self.contentView.backgroundColor = .systemGroupedBackground
             }
         }
     }
+
     
     func set(emoji: String) {
         emojiLabel.text = emoji
