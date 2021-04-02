@@ -12,7 +12,7 @@ class NumberCell: UICollectionViewCell {
     static let reuseId = String(describing: NumberCell.self)
 
     @IBOutlet var label: UILabel!
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.contentView.backgroundColor = .systemRed

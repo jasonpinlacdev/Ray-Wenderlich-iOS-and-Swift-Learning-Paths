@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17CB3ED26163BC700543DD9 /* NumbersSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17CB3EC26163BC700543DD9 /* NumbersSectionHeaderView.swift */; };
 		E197EEF9260F9F0A00BA50D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197EEF8260F9F0A00BA50D0 /* AppDelegate.swift */; };
 		E197EEFB260F9F0A00BA50D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197EEFA260F9F0A00BA50D0 /* SceneDelegate.swift */; };
 		E197EF00260F9F0A00BA50D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E197EEFE260F9F0A00BA50D0 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E17CB3EC26163BC700543DD9 /* NumbersSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersSectionHeaderView.swift; sourceTree = "<group>"; };
 		E197EEF5260F9F0A00BA50D0 /* UICollectionView using Compositional Layout and Diffable DataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UICollectionView using Compositional Layout and Diffable DataSource.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E197EEF8260F9F0A00BA50D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E197EEFA260F9F0A00BA50D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				E197EF1D2610DEB000BA50D0 /* NumberCell.swift */,
+				E17CB3EC26163BC700543DD9 /* NumbersSectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				E197EF142610D3E500BA50D0 /* Number.swift in Sources */,
 				E197EF222610EB0500BA50D0 /* NumbersViewController.swift in Sources */,
 				E197EF5326112DF300BA50D0 /* NumbersDiffableDataSource.swift in Sources */,
+				E17CB3ED26163BC700543DD9 /* NumbersSectionHeaderView.swift in Sources */,
 				E197EEF9260F9F0A00BA50D0 /* AppDelegate.swift in Sources */,
 				E197EEFB260F9F0A00BA50D0 /* SceneDelegate.swift in Sources */,
 				E197EF1E2610DEB000BA50D0 /* NumberCell.swift in Sources */,

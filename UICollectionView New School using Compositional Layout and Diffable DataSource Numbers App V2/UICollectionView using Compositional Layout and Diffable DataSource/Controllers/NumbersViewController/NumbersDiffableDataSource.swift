@@ -53,5 +53,12 @@ class NumbersDiffableDataSource: UICollectionViewDiffableDataSource<Data.Section
         self.apply(snapshot)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let numbersHeaderSectionView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: NumbersSectionHeaderView.reuseId, for: indexPath) as? NumbersSectionHeaderView else { fatalError() }
+        // Remember we are working with a diffable dataSource so we have to use the current snapshot IE the current source of truth!
+        numbersHeaderSectionView.label.text = snapshot().sectionIdentifiers[indexPath.section].rawValue
+        return numbersHeaderSectionView
+    }
     
 }
+

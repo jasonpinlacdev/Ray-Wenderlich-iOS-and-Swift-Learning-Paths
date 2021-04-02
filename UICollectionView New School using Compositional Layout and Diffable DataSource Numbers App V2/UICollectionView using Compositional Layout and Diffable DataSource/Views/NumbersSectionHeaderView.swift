@@ -2,7 +2,7 @@
 //  NumbersSectionHeaderView.swift
 //  UICollectionView using Compositional Layout and Diffable DataSource
 //
-//  Created by Jason Pinlac on 3/28/21.
+//  Created by Jason Pinlac on 4/1/21.
 //
 
 import UIKit
@@ -10,19 +10,16 @@ import UIKit
 class NumbersSectionHeaderView: UICollectionReusableView {
     static let reuseId = String(describing: NumbersSectionHeaderView.self)
     
-    let label: UILabel = UILabel()
+    let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemGray
-
-        label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            label.widthAnchor.constraint(equalTo: self.widthAnchor),
-            label.heightAnchor.constraint(equalTo: self.heightAnchor),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
         ])
     }
     

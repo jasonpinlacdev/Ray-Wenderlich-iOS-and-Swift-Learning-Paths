@@ -10,17 +10,21 @@ import UIKit
 class Data {
     
     enum Section: String, CaseIterable {
-        case ones
-        case tens
-        case twenties
-        case thirties
-        case forties
-        case fifties
-        case sixties
-        case seventies
-        case eighties
-        case nineties
+        case ones = "ONES"
+        case tens  = "TENS"
+        case twenties = "TWENTIES"
+        case thirties = "THIRTIES"
+        case forties = "FOURTIES"
+        case fifties = "FIFTIES"
+        case sixties = "SIXTIES"
+        case seventies = "SEVENTIES"
+        case eighties = "EIGHTIES"
+        case nineties = "NINETIES"
     }
+    
+    static let shared = Data()
+    
+    private init() { }
     
     let numbers: [Section: [Int]] = [
         .ones: Array(0...9),
@@ -34,8 +38,5 @@ class Data {
         .eighties: Array(80...89),
         .nineties: Array(90...99),
     ]
-    
-    static let shared = Data()
-    
-    private init() { }
+
 }

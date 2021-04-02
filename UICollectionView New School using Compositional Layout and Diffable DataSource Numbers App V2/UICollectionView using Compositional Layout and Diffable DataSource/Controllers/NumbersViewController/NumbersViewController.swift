@@ -13,13 +13,13 @@ class NumbersViewController: UIViewController {
     
     var diffableDataSource: NumbersDiffableDataSource!
     
-    
     @IBOutlet var sortButtons: [UIBarButtonItem]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Numbers Collection"
+        title = "DiffableDataSource + Compositional Layout"
         collectionView.collectionViewLayout = configureCollectionViewLayout()
+        collectionView.register(NumbersSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NumbersSectionHeaderView.reuseId)
         configureDiffableDataSource()
     }
     
@@ -55,6 +55,11 @@ class NumbersViewController: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50.0))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        section.boundarySupplementaryItems = [header]
         return UICollectionViewCompositionalLayout(section: section)
     }
     
