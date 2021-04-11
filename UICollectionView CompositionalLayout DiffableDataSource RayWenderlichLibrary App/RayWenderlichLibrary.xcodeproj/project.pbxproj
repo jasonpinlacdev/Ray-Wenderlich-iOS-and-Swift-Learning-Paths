@@ -26,6 +26,8 @@
 		97D304462361626100307413 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D304452361626100307413 /* ContentCell.swift */; };
 		97D304482361628900307413 /* QueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D304472361628900307413 /* QueueCell.swift */; };
 		E121AF482617DBF500F9E976 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121AF472617DBF500F9E976 /* DataRepository.swift */; };
+		E1D542A92620A0E200DFA04E /* LibraryDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D542A82620A0E200DFA04E /* LibraryDiffableDataSource.swift */; };
+		E1D542AC2620BFD200DFA04E /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D542AB2620BFD200DFA04E /* LibrarySectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		97D304452361626100307413 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		97D304472361628900307413 /* QueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCell.swift; sourceTree = "<group>"; };
 		E121AF472617DBF500F9E976 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		E1D542A82620A0E200DFA04E /* LibraryDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDiffableDataSource.swift; sourceTree = "<group>"; };
+		E1D542AB2620BFD200DFA04E /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				97D304432361625000307413 /* TutorialCell.swift */,
 				97D304452361626100307413 /* ContentCell.swift */,
 				97D304472361628900307413 /* QueueCell.swift */,
+				E1D542AB2620BFD200DFA04E /* LibrarySectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,7 +140,7 @@
 		97D3043023615F2B00307413 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				97D3043123615F7C00307413 /* LibraryController.swift */,
+				E1D542A1261F945000DFA04E /* LibraryController */,
 				97D3043323615FC700307413 /* TutorialDetailController.swift */,
 				97D3043F236161AC00307413 /* QueuedTutorialController.swift */,
 			);
@@ -152,6 +157,15 @@
 				97D3042123615DA800307413 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		E1D542A1261F945000DFA04E /* LibraryController */ = {
+			isa = PBXGroup;
+			children = (
+				97D3043123615F7C00307413 /* LibraryController.swift */,
+				E1D542A82620A0E200DFA04E /* LibraryDiffableDataSource.swift */,
+			);
+			path = LibraryController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +247,10 @@
 				97D30440236161AC00307413 /* QueuedTutorialController.swift in Sources */,
 				97D3043423615FC700307413 /* TutorialDetailController.swift in Sources */,
 				E121AF482617DBF500F9E976 /* DataRepository.swift in Sources */,
+				E1D542A92620A0E200DFA04E /* LibraryDiffableDataSource.swift in Sources */,
 				97D304442361625000307413 /* TutorialCell.swift in Sources */,
 				97D3041723615DA600307413 /* AppDelegate.swift in Sources */,
+				E1D542AC2620BFD200DFA04E /* LibrarySectionHeaderView.swift in Sources */,
 				97D3041923615DA600307413 /* SceneDelegate.swift in Sources */,
 				97D30438236160A100307413 /* Section.swift in Sources */,
 				97D304362361607100307413 /* Tutorial.swift in Sources */,
