@@ -36,7 +36,7 @@
 import UIKit
 
 class QueueCell: UICollectionViewCell {
-  static let reuseIdentifier = String(describing: QueueCell.self)
+  static let reuseId = String(describing: QueueCell.self)
   
   var isEditing: Bool = false {
     didSet {

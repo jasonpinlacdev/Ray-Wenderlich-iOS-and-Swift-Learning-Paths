@@ -41,30 +41,41 @@ final class LibraryController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   
   var diffableDataSource: LibraryDiffableDataSource!
+  lazy var delegate = LibraryDelegate(controller: self)
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Library"
-    self.collectionView.register(LibrarySectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: LibrarySectionHeaderView.reuseId)
-    self.collectionView.collectionViewLayout = configureCompositionalLayout()
+    title = "Library"
+    collectionView.register(SectionHeaderSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderSupplementaryView.reuseId)
+    collectionView.collectionViewLayout = configureCompositionalLayout()
     configureDiffableDataSource()
+    collectionView.delegate = delegate
   }
   
+}
+
+// MARK: - CollectionView Cofiguration -
+extension LibraryController {
   func configureCompositionalLayout() -> UICollectionViewCompositionalLayout {
     let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
       let pad: CGFloat = 10.0
+      
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
       let item = NSCollectionLayoutItem(layoutSize: itemSize)
       item.contentInsets = NSDirectionalEdgeInsets(top: pad, leading: pad, bottom: pad, trailing: pad)
+      
       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: .fractionalHeight(0.3))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item, item])
+      
       let section = NSCollectionLayoutSection(group: group)
       section.orthogonalScrollingBehavior = .groupPaging
       section.contentInsets = NSDirectionalEdgeInsets(top: -pad * 2, leading: 0, bottom: pad * 2, trailing: 0)
       section.interGroupSpacing = pad
-      let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100.0))
+      
+      let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(75.0))
       let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
       section.boundarySupplementaryItems = [header]
+      
       return section
     }
     return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
@@ -80,15 +91,10 @@ final class LibraryController: UIViewController {
     
     diffableDataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) -> UICollectionReusableView? in
       guard let self = self else { return nil }
-      guard let librarySectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LibrarySectionHeaderView.reuseId, for: indexPath) as? LibrarySectionHeaderView else { return nil }
+      guard let librarySectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderSupplementaryView.reuseId, for: indexPath) as? SectionHeaderSupplementaryView else { return nil }
       librarySectionHeaderView.titleLabel.text = self.diffableDataSource.snapshot().sectionIdentifiers[indexPath.section].title
       return librarySectionHeaderView
     }
-    
-    diffableDataSource.applySnapshot(animatingDifferences: false)
+    diffableDataSource.update(animatingDifferences: false)
   }
-  
-
-  
-  
 }

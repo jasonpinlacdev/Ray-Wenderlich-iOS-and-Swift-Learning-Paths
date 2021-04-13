@@ -8,13 +8,13 @@
 
 import UIKit
 
-class LibrarySectionHeaderView: UICollectionReusableView {
-  static let reuseId = String(describing: LibrarySectionHeaderView.self)
-  
+class SectionHeaderSupplementaryView: UICollectionReusableView {
+  static let reuseId = String(describing: SectionHeaderSupplementaryView.self)
   let titleLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+//    backgroundColor = .systemRed
     addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)

@@ -10,7 +10,7 @@ import UIKit
 
 class LibraryDiffableDataSource: UICollectionViewDiffableDataSource<TutorialsCollection, Tutorial> {
   
-  func applySnapshot(animatingDifferences: Bool) {
+  func update(animatingDifferences: Bool) {
     var snapshot = NSDiffableDataSourceSnapshot<TutorialsCollection, Tutorial>()
     snapshot.appendSections(DataRepository.shared.topics)
     DataRepository.shared.topics.forEach { snapshot.appendItems($0.tutorials, toSection: $0) }
