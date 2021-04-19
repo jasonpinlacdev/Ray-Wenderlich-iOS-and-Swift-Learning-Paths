@@ -16,34 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="jVe-gD-2ur">
-                                <rect key="frame" x="47" y="44" width="320" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Tia-SS-MC6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="216"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7q-xi-Qif">
-                                <rect key="frame" x="120" y="270" width="174" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g10-x5-k61">
+                                <rect key="frame" x="120" y="240" width="174" height="30"/>
                                 <state key="normal" title="Calculate Prime Numbers"/>
                                 <connections>
-                                    <action selector="calculatePrimeNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8PG-uE-8N2"/>
+                                    <action selector="calculatePrimeNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fYo-Fq-v0S"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="jVe-gD-2ur" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0r9-Q2-DjC"/>
-                            <constraint firstItem="K7q-xi-Qif" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NKQ-Qi-9wD"/>
-                            <constraint firstItem="K7q-xi-Qif" firstAttribute="top" secondItem="jVe-gD-2ur" secondAttribute="bottom" constant="10" id="dPA-ZI-KCb"/>
-                            <constraint firstItem="jVe-gD-2ur" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fOp-SY-skS"/>
+                            <constraint firstItem="g10-x5-k61" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2XA-hy-3Cs"/>
+                            <constraint firstItem="Tia-SS-MC6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AIR-tJ-N2t"/>
+                            <constraint firstItem="Tia-SS-MC6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AnW-28-vHr"/>
+                            <constraint firstItem="Tia-SS-MC6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c1z-oA-fs7"/>
+                            <constraint firstItem="g10-x5-k61" firstAttribute="bottom" secondItem="Tia-SS-MC6" secondAttribute="bottom" constant="10" id="fRO-GH-fh8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tia-SS-MC6" secondAttribute="trailing" id="qbb-Nk-Su3"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="jVe-gD-2ur" id="euB-t6-TOX"/>
-                        <outlet property="primeNumberButton" destination="K7q-xi-Qif" id="vbV-ey-h0S"/>
+                        <outlet property="primeNumberButton" destination="g10-x5-k61" id="t3r-Ix-9Vi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="82"/>
+            <point key="canvasLocation" x="-146" y="89"/>
         </scene>
     </scenes>
     <resources>
