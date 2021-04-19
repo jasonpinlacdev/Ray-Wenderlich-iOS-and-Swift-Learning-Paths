@@ -22,6 +22,16 @@ class FlickrTableViewController: UIViewController {
     loadFlickrImage()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "ShowPhotoView" {
+      guard let photoViewController = segue.destination as? PhotoViewController else { fatalError() }
+      guard let selectedIndexPath = tableView.indexPathForSelectedRow else { fatalError() }
+      let flickrPhoto = diffDataSource.itemIdentifier(for: selectedIndexPath)
+      photoViewController.photo = flickrPhoto?.image
+      photoViewController.photoTitle = flickrPhoto?.title
+    }
+  }
+  
   func loadFlickrImage() {
 
     let urlSessionConfiguration = URLSessionConfiguration.ephemeral
@@ -62,8 +72,10 @@ class FlickrTableViewController: UIViewController {
   func configureDiffDataSource() {
     diffDataSource = FlickrDiffableDataSource(tableView: self.tableView, cellProvider: { (tableView, indexPath, flickrPhoto) -> UITableViewCell? in
       guard let flickrCell = tableView.dequeueReusableCell(withIdentifier: FlickrCell.reuseId) as? FlickrCell else { fatalError() }
-      flickrCell.textLabel?.text = flickrPhoto.title
-      flickrCell.imageView?.image = flickrPhoto.image
+//      flickrCell.textLabel?.text  = flickrPhoto.title
+//      flickrCell.imageView?.image = flickrPhoto.image
+      flickrCell.flickrTitleLabel.text  = flickrPhoto.title
+      flickrCell.flickrImageView.image = flickrPhoto.image
       return flickrCell
     })
   }
