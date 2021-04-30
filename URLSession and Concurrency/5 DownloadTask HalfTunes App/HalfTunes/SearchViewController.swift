@@ -51,8 +51,9 @@ class SearchViewController: UIViewController {
   
   func startDownload(_ track: Track) {
     let download = Download(url: track.url)
-    download.task = downloadsSession.downloadTask(with: track.url) { (locationURL, response, error) in
-      self.saveDownload(download: download, location: locationURL, response: response, error: error)
+    download.task = URLSession.shared.downloadTask(with: track.url) {
+      location, response, error in
+      self.saveDownload(download: download, location: location, response: response, error: error)
     }
     download.task?.resume()
     download.isDownloading = true
