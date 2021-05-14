@@ -33,26 +33,9 @@
 /// THE SOFTWARE.
 ///
 
-import Foundation
+import UIKit
 
-struct Video: Codable {
-  let url: String
-  let title: String
-  
-  var identifier = UUID().uuidString
-  
-  enum CodingKeys: String, CodingKey {
-    case url
-    case title
-  }
-}
-
-extension Video: Hashable {
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(identifier)
-  }
-  
-  static func == (lhs: Video, rhs: Video) -> Bool {
-    return (lhs.url == rhs.url) && (lhs.title == rhs.title)
-  }
+final class ContentCell: UICollectionViewCell {
+  static let reuseId = String(describing: ContentCell.self)
+  @IBOutlet weak var textLabel: UILabel!
 }

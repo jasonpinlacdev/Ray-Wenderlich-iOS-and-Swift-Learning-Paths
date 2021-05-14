@@ -39,7 +39,7 @@ extension UIColor {
   convenience init?(hexString: String) {
     var chars = Array(hexString.hasPrefix("#") ? hexString.dropFirst() : hexString[...])
     let red, green, blue, alpha: CGFloat
-    
+
     switch chars.count {
     case 3:
       chars = chars.flatMap { [$0, $0] }

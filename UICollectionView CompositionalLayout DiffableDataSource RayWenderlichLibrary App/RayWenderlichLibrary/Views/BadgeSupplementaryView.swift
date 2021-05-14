@@ -2,7 +2,7 @@
 //  BadgeSupplementaryView.swift
 //  RayWenderlichLibrary
 //
-//  Created by Jason Pinlac on 4/13/21.
+//  Created by Jason Pinlac on 5/14/21.
 //  Copyright © 2021 Ray Wenderlich. All rights reserved.
 //
 
@@ -14,16 +14,20 @@ class BadgeSupplementaryView: UICollectionReusableView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setup()
+    configure()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  private func setup() {
-    self.backgroundColor = UIColor(named: "rw-green")
-    self.layer.cornerRadius = self.bounds.width/2
+  private func configure() {
+    backgroundColor = UIColor(named: "rw-green")
+    self.layer.cornerRadius = self.bounds.size.width/2
+    self.clipsToBounds = true
   }
+  
+  
+  
   
 }

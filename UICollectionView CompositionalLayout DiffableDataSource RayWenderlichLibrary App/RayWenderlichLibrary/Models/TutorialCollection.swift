@@ -33,31 +33,28 @@
 /// THE SOFTWARE.
 ///
 
-import UIKit
+import Foundation
 
-class QueueCell: UICollectionViewCell {
-  static let reuseId = String(describing: QueueCell.self)
+struct TutorialCollection: Codable {
+  let title: String
+  let tutorials: [Tutorial]
   
-  var isEditing: Bool = false {
-    didSet {
-      checkboxImageView.isHidden = !isEditing
-    }
+  var identifier = UUID().uuidString
+  
+  enum CodingKeys: String, CodingKey {
+    case title
+    case tutorials
   }
-  
-  override var isSelected: Bool {
-    didSet {
-      if isSelected{
-        checkboxImageView.image = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-      } else  {
-        checkboxImageView.image = UIImage(systemName: "checkmark.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-      }
-    }
-  }
-  
-  @IBOutlet weak var thumbnailImageView: UIImageView!
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var publishDateLabel: UILabel!
-  @IBOutlet weak var checkboxImageView: UIImageView!
-  
 }
+
+extension TutorialCollection: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(identifier)
+  }
+  
+  static func == (lhs: TutorialCollection, rhs: TutorialCollection) -> Bool {
+    lhs.title == rhs.title
+  }
+}
+
 

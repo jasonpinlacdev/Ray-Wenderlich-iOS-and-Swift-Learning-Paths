@@ -43,8 +43,20 @@ class Tutorial: Codable {
   let publishDate: Date
   let content: [Section]
   var updateCount: Int
-  let uuid = UUID().uuidString
+  
+  var identifier = UUID().uuidString
+  
+  enum CodingKeys: String, CodingKey {
+    case title
+    case thumbnail
+    case artworkColor
+    case isQueued
+    case publishDate
+    case content
+    case updateCount
+  }
 }
+
 
 extension Tutorial {
   var image: UIImage? {
@@ -60,12 +72,13 @@ extension Tutorial {
   }
 }
 
+
 extension Tutorial: Hashable {
   func hash(into hasher: inout Hasher) {
-    hasher.combine(uuid)
+    hasher.combine(identifier)
   }
   
-  static func ==(lhs: Tutorial, rhs: Tutorial) -> Bool {
-    return lhs.uuid == rhs.uuid
+  static func ==(rhs: Tutorial, lhs: Tutorial) -> Bool {
+    return (rhs.title == lhs.title) && (rhs.publishDate == lhs.publishDate)
   }
 }
