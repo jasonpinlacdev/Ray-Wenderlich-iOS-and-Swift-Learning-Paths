@@ -60,40 +60,16 @@
 		D2A5F2021F4A9144005CD714 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				E14E5DDA25CDCA2A00ED9B45 /* Views */,
-				E14E5DDB25CDCA2D00ED9B45 /* Controllers */,
-				E14E5DDC25CDCA4000ED9B45 /* Support */,
+				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
+				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
+				D2B49CC021D6ED390029C93D /* CollectionViewController.swift */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
+				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
+				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+				D2B49CC221D6EEC50029C93D /* PhotoCell.swift */,
 				4095C36123C6AFDA00B30E5D /* Photos.plist */,
 			);
 			path = Concurrency;
-			sourceTree = "<group>";
-		};
-		E14E5DDA25CDCA2A00ED9B45 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D2B49CC221D6EEC50029C93D /* PhotoCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E14E5DDB25CDCA2D00ED9B45 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				D2B49CC021D6ED390029C93D /* CollectionViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E14E5DDC25CDCA4000ED9B45 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
-				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
-				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
-				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,9 +288,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XWVP4F494Z;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Concurrency/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,9 +309,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XWVP4F494Z;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Concurrency/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
