@@ -7,24 +7,49 @@ import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
 //: # Use Dispatch Queues
 //: ## Using a Global Queue
-// This is a helper function to see how long it takes to execute a task/block of code.
-func duration(_ block: () -> ()) -> TimeInterval {
-  let startTime = Date()
-  block()
-  return Date().timeIntervalSince(startTime)
-}
-
-
 // TODO: Get the .userInitiated global dispatch queue
 let userInitiatedQueue = DispatchQueue.global(qos: .userInitiated)
+
 // TODO: Get the .default global dispatch queue
-let defaultQueue = DispatchQueue.global(qos: .default)
+let defaultQueue = DispatchQueue.global()
+
 // TODO: Get the main queue
 let mainQueue = DispatchQueue.main
+
+//mainQueue.async {
+//  duration {
+//    for i in 141...145 {
+//      print("main 🔵 \(i)")
+//    }
+//  }
+//
+//}
+//
+//userInitiatedQueue.async {
+//  duration {
+//    for i in 71...75 {
+//      print("userInitiated 🟢 \(i)")
+//    }
+//  }
+//
+//}
+//
+//defaultQueue.async {
+//  duration {
+//    for i in 1...5 {
+//      print("default 🔴 \(i)")
+//    }
+//  }
+//}
+
+
+
+
+
 //: Some simple tasks:
-// task1 will run longer than task 2. This is evenident if we run both tasks asynchronously.
 func task1() {
   print("Task 1 started")
+  // make task1 take longer than task2
   sleep(1)
   print("Task 1 finished")
 }
@@ -35,16 +60,19 @@ func task2() {
 }
 
 print("=== Starting userInitated global queue ===")
-// TODO: Dispatch tasks onto the userInitated queue. Global DispatchQueues are concurrent by default.
-
-duration {
-  userInitiatedQueue.sync {
+// TODO: Dispatch tasks onto the userInitated queue
+userInitiatedQueue.async {
+  duration {
     task1()
   }
-  userInitiatedQueue.async {
+}
+
+userInitiatedQueue.async {
+  duration {
     task2()
   }
 }
+
 
 
 sleep(2)
@@ -56,11 +84,14 @@ let mySerialQueue = DispatchQueue(label: "dev.jasonpinlac.serial")
 
 print("\n=== Starting mySerialQueue ===")
 // TODO: Dispatch tasks onto mySerialQueue
-duration {
-  mySerialQueue.async {
+mySerialQueue.async {
+  duration {
     task1()
   }
-  mySerialQueue.async {
+
+}
+mySerialQueue.async {
+  duration {
     task2()
   }
 }
@@ -73,17 +104,20 @@ let workerQueue = DispatchQueue(label: "dev.jasonpinlac.concurrent", attributes:
 
 print("\n=== Starting workerQueue ===")
 // TODO: Dispatch tasks onto workerQueue
-duration {
-  workerQueue.async {
+workerQueue.async {
+  duration {
     task1()
   }
-  workerQueue.async {
+}
+
+workerQueue.async {
+  duration {
     task2()
   }
 }
 
 
-
+sleep(2)
 //: ## Dispatching Work _Synchronously_
 //: You have to be very careful calling a queue’s `sync` method because the _current_ thread has to wait until the task finishes running on the other queue. **Never** call sync on the **main** queue because that will deadlock your app!
 //:
@@ -98,21 +132,25 @@ func changeValue() {
 }
 //: Run `changeValue()` asynchronously, and display `value` on the current thread
 // TODO
-let anotherSerialQueue = DispatchQueue(label: "dev.jasonpinlac.serial")
-anotherSerialQueue.async {
+print("\n=== Data race example using async ===")
+print("value: \(value)")
+workerQueue.async {
   changeValue()
 }
-print(value)
+print("value after change: \(value)")
 
-
-
+sleep(2)
 //: Now reset `value`, then run `changeValue()` __synchronously__, to block the current thread until the `changeValue` task has finished, thus removing the race condition:
 // TODO
+print("\n==== Data race example fixed using sync ===")
 value = 42
-anotherSerialQueue.sync {
+
+print("value: \(value)")
+workerQueue.sync {
   changeValue()
 }
-print(value)
+print("value after change: \(value)")
+
 
 
 

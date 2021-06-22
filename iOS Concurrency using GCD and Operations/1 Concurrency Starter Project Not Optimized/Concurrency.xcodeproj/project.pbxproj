@@ -12,11 +12,8 @@
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		D2B49CC121D6ED390029C93D /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B49CC021D6ED390029C93D /* CollectionViewController.swift */; };
 		D2B49CC321D6EEC60029C93D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B49CC221D6EEC50029C93D /* PhotoCell.swift */; };
-		E13375AA266956F5002C6144 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13375A9266956F5002C6144 /* PhotosViewController.swift */; };
-		E13375AD26695C55002C6144 /* PhotosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13375AC26695C55002C6144 /* PhotosDataSource.swift */; };
-		E13375AF26695C61002C6144 /* PhotosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13375AE26695C61002C6144 /* PhotosDelegate.swift */; };
-		E13375B126695E64002C6144 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13375B026695E64002C6144 /* DataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +24,8 @@
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2B49CC021D6ED390029C93D /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		D2B49CC221D6EEC50029C93D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		E13375A9266956F5002C6144 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		E13375AC26695C55002C6144 /* PhotosDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDataSource.swift; sourceTree = "<group>"; };
-		E13375AE26695C61002C6144 /* PhotosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDelegate.swift; sourceTree = "<group>"; };
-		E13375B026695E64002C6144 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,59 +60,16 @@
 		D2A5F2021F4A9144005CD714 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				E13375B026695E64002C6144 /* DataRepository.swift */,
-				E13375A7266955A9002C6144 /* Models */,
-				E13375A6266955A6002C6144 /* Views */,
-				E13375A5266955A2002C6144 /* Controllers */,
-				E13375A8266955AF002C6144 /* Support */,
-				D2A5F20F1F4A9144005CD714 /* Info.plist */,
-			);
-			path = Concurrency;
-			sourceTree = "<group>";
-		};
-		E13375A5266955A2002C6144 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E13375AB26695C33002C6144 /* PhotosViewController */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E13375A6266955A6002C6144 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D2B49CC221D6EEC50029C93D /* PhotoCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E13375A7266955A9002C6144 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		E13375A8266955AF002C6144 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				4095C36123C6AFDA00B30E5D /* Photos.plist */,
 				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
+				D2B49CC021D6ED390029C93D /* CollectionViewController.swift */,
+				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+				D2B49CC221D6EEC50029C93D /* PhotoCell.swift */,
+				4095C36123C6AFDA00B30E5D /* Photos.plist */,
 			);
-			path = Support;
-			sourceTree = "<group>";
-		};
-		E13375AB26695C33002C6144 /* PhotosViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E13375A9266956F5002C6144 /* PhotosViewController.swift */,
-				E13375AC26695C55002C6144 /* PhotosDataSource.swift */,
-				E13375AE26695C61002C6144 /* PhotosDelegate.swift */,
-			);
-			path = PhotosViewController;
+			path = Concurrency;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,12 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13375AD26695C55002C6144 /* PhotosDataSource.swift in Sources */,
-				E13375AA266956F5002C6144 /* PhotosViewController.swift in Sources */,
+				D2B49CC121D6ED390029C93D /* CollectionViewController.swift in Sources */,
 				D2B49CC321D6EEC60029C93D /* PhotoCell.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
-				E13375AF26695C61002C6144 /* PhotosDelegate.swift in Sources */,
-				E13375B126695E64002C6144 /* DataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +290,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XWVP4F494Z;
 				INFOPLIST_FILE = Concurrency/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,7 +311,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XWVP4F494Z;
 				INFOPLIST_FILE = Concurrency/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
