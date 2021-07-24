@@ -9,6 +9,12 @@ open class Person {
   private var firstName: String
   private var lastName: String
   
+  open var name: String {
+    get {
+      return "\(firstName) \(lastName)"
+    }
+  }
+  
   public init(firstName: String, lastName: String) {
     self.firstName = firstName
     self.lastName = lastName
@@ -21,16 +27,9 @@ open class Person {
     self.lastName = lastName
   }
   
-  open var name: String {
-    get {
-      return "\(firstName) \(lastName)"
-    }
-  }
-  
 }
 
 func randomDelay(maxDuration: Double) {
-  //  let randomWait = arc4random_uniform(UInt32(maxDuration * Double(USEC_PER_SEC)))
   let randomWait = UInt32.random(in: 0..<UInt32(maxDuration * Double(USEC_PER_SEC)))
   usleep(randomWait)
 }
@@ -46,7 +45,6 @@ print(nameChangingPerson.name)
 //: What happens if you try and use the `changeName(firstName:lastName:)` simulataneously from a concurrent queue?
 let workerQueue = DispatchQueue(label: "com.raywenderlich.worker", attributes: .concurrent)
 let nameChangeGroup = DispatchGroup()
-
 let nameList = [("Charlie", "Cheesecake"), ("Delia", "Dingle"), ("Eva", "Evershed"), ("Freddie", "Frost"), ("Gina", "Gregory")]
 
 // Comment out the code below before you implement ThreadSafePerson
@@ -60,16 +58,32 @@ for (idx, name) in nameList.enumerated() {
 
 nameChangeGroup.notify(queue: DispatchQueue.global()) {
   print("Final name: \(nameChangingPerson.name)")
-  PlaygroundPage.current.finishExecution()
+  //  PlaygroundPage.current.finishExecution()
 }
 
 // makes the current thread synchronously block until the group finishes its work
+print("Waiting for the dispatchGroup to finish changing the name.")
 nameChangeGroup.wait()
 //: __Result:__ `nameChangingPerson` has been left in an inconsistent state.
 //:
 //: ## The Solution: Dispatch Barrier for Thread Safety
 //: A barrier allows you add a task to a concurrent queue that will be run in a serial fashion, i.e., it will wait for the currently queued tasks to complete, and prevent any new ones starting.
 class ThreadSafePerson: Person {
+  
+  private let isolationQueue = DispatchQueue(label: "dev.jasonpinlac.isolation", attributes: .concurrent)
+  
+  override var name: String {
+    isolationQueue.sync {
+      super.name
+    }
+  }
+  
+  override func changeName(firstName: String, lastName: String) {
+    isolationQueue.async(flags: .barrier) {
+      super.changeName(firstName: firstName, lastName: lastName)
+    }
+    
+  }
   
   
 }
