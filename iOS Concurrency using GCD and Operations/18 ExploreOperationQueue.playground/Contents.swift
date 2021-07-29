@@ -9,8 +9,9 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 //: ## Creating a queue
 //: Creating a queue is simple, using the default initializer; you can also set the maximum number of queued operations that can execute at the same time:
 // TODO: Create printerQueue
-
+let printerQueue = OperationQueue()
 // TODO later: Set maximum to 2
+printerQueue.maxConcurrentOperationCount = 2
 //: ## Adding `Operations` to Queues
 /*: `Operation`s can be added to queues directly as closures
  - important:
@@ -19,9 +20,18 @@ PlaygroundPage.current.needsIndefiniteExecution = true
  You can see that here, with the result of the `duration` function:
  */
 // TODO: Add 5 operations to printerQueue
-
+duration {
+  printerQueue.addOperation { print("Hello"); sleep(2) }
+  printerQueue.addOperation { print("my"); sleep(2) }
+  printerQueue.addOperation { print("name"); sleep(2) }
+  printerQueue.addOperation { print("is"); sleep(2) }
+  printerQueue.addOperation { print("Jason"); sleep(2) }
+}
 
 
 // TODO: Measure duration of all operations
+duration {
+  printerQueue.waitUntilAllOperationsAreFinished()
+}
 
 PlaygroundPage.current.finishExecution()
