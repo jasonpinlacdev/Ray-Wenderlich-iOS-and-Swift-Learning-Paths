@@ -7,31 +7,47 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 //: # Creating a Complex Operation
 //: ## Subclassing `Operation`
 //: Allows you more control over precisely what the `Operation` is doing
+let inputImage = UIImage(named: "dark_road_small.jpg")
+
+// TODO: Create and run TiltShiftOperation
 class TiltShiftOperation: Operation {
+  
+  private let context = CIContext()
   private let inputImage: UIImage?
   var outputImage: UIImage?
-  private static let context = CIContext()
+
   
-  init(image: UIImage?) {
-    self.inputImage = image
+  init(inputImage: UIImage?) {
+    self.inputImage = inputImage
     super.init()
   }
   
   override func main() {
-    guard let inputImage = self.inputImage,
-          let filter = TiltShiftFilter(image: inputImage),
+    guard let input = self.inputImage,
+          let filter = TiltShiftFilter(image: input),
           let output = filter.outputImage
-    else { print("Image filter failed."); return }
+    else {
+      print("Failed to generate a tilt shift image.")
+      return
+    }
+  
+    let fromRect = CGRect(origin: .zero, size: input.size)
+    guard let cgImage = context.createCGImage(output, from: fromRect) else {
+      print("Failed to generate a titlt shift operation.")
+      return
+    }
     
-    let fromRect = CGRect(origin: .zero, size: inputImage.size)
-    guard let cgImage = TiltShiftOperation.context.createCGImage(output, from: fromRect) else { print("No output image generated."); return }
     self.outputImage = UIImage(cgImage: cgImage)
   }
+  
 }
 
-let inputImage = UIImage(named: "dark_road_small.jpg")
-// TODO: Create and run TiltShiftOperation
-let tiltShiftOperation = TiltShiftOperation(image: inputImage)
-tiltShiftOperation.start()
-tiltShiftOperation.outputImage
-PlaygroundPage.current.finishExecution()
+let tiltShiftOperation = TiltShiftOperation(inputImage: inputImage)
+
+tiltShiftOperation.completionBlock = {
+  tiltShiftOperation.outputImage
+}
+
+duration {
+tiltShiftOperation.start() // this is a sync call
+}
