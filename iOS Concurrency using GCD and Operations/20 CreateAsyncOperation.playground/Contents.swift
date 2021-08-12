@@ -13,6 +13,7 @@ extension AsyncOperation {
     case executing
     case finished
     
+    // add this var keyPath computed property that returns a string to match the base Operations state variables such as isReady, isExecuting, isFinished
     fileprivate var keyPath: String {
       return "is\(self.rawValue.capitalized)"
     }
@@ -21,6 +22,7 @@ extension AsyncOperation {
 
 class AsyncOperation: Operation {
   // TODO: Create state management
+  // here is the state property of type State enum. This property has property observers that use KVO to directly notify the base Operations state properties, IE, isExecuting, isFinished. Remember we have to do 2 KVO notifications for isExecuting and isFinished because the base Operation class doesn't have a single state property like our async operation subclass does. Instead it has multiple state properties that are get only of type boolean that we have to change and notify on when our operation state changes.
   var state: State = State.ready {
     willSet {
       willChangeValue(forKey: state.keyPath)
@@ -33,6 +35,7 @@ class AsyncOperation: Operation {
   }
   
   // TODO: Override properties
+  // we dont override isReady because apple's documentation says not to. The base class operation will decide when its actually ready based off of its dependencies.
   override var isExecuting: Bool { return state == .executing }
   override var isFinished: Bool { return state == .finished }
   
@@ -46,6 +49,7 @@ class AsyncOperation: Operation {
     main()
   }
   
+  // override cancel
   override func cancel() {
     state = .finished
   }
