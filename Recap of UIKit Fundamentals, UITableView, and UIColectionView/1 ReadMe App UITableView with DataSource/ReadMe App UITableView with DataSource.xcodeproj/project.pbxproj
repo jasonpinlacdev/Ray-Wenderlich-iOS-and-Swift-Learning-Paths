@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1F961F026E3037D00CB4B39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F961EF26E3037D00CB4B39 /* AppDelegate.swift */; };
+		E1F961F226E3037D00CB4B39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F961F126E3037D00CB4B39 /* SceneDelegate.swift */; };
+		E1F961F426E3037D00CB4B39 /* ReadMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F961F326E3037D00CB4B39 /* ReadMeViewController.swift */; };
+		E1F961F726E3037D00CB4B39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F961F526E3037D00CB4B39 /* Main.storyboard */; };
+		E1F961F926E3038200CB4B39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F961F826E3038200CB4B39 /* Assets.xcassets */; };
+		E1F961FC26E3038200CB4B39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F961FA26E3038200CB4B39 /* LaunchScreen.storyboard */; };
+		E1F9620926E314C800CB4B39 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9620826E314C800CB4B39 /* Book.swift */; };
+		E1F9620C26E31CBD00CB4B39 /* ReadMeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9620B26E31CBD00CB4B39 /* ReadMeTableViewDataSource.swift */; };
+		E1F9620E26E31CCC00CB4B39 /* ReadMeTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9620D26E31CCC00CB4B39 /* ReadMeTableViewDelegate.swift */; };
+		E1F9621326E42C5E00CB4B39 /* BookDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9621226E42C5E00CB4B39 /* BookDetailTableViewController.swift */; };
+		E1F9621A26E57EB800CB4B39 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9621926E57EB800CB4B39 /* BookTableViewCell.swift */; };
+		E1F9621D26E5C24500CB4B39 /* AddNewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9621C26E5C24500CB4B39 /* AddNewBookViewController.swift */; };
+		E1F9621F26E693DF00CB4B39 /* LibraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9621E26E693DF00CB4B39 /* LibraryHeaderView.swift */; };
+		E1F9622126E6A4CF00CB4B39 /* LibraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F9622026E6A4CF00CB4B39 /* LibraryHeaderView.xib */; };
+		E1F9622326E83B6400CB4B39 /* ReadMeTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9622226E83B6400CB4B39 /* ReadMeTableViewDiffableDataSource.swift */; };
+		E1F9622526E83FAC00CB4B39 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9622426E83FAB00CB4B39 /* Library.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E1F961EC26E3037D00CB4B39 /* ReadMe App UITableView with DataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadMe App UITableView with DataSource.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F961EF26E3037D00CB4B39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1F961F126E3037D00CB4B39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E1F961F326E3037D00CB4B39 /* ReadMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeViewController.swift; sourceTree = "<group>"; };
+		E1F961F626E3037D00CB4B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1F961F826E3038200CB4B39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1F961FB26E3038200CB4B39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1F961FD26E3038200CB4B39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1F9620826E314C800CB4B39 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Book.swift; path = ../../../Book.swift; sourceTree = "<group>"; };
+		E1F9620B26E31CBD00CB4B39 /* ReadMeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeTableViewDataSource.swift; sourceTree = "<group>"; };
+		E1F9620D26E31CCC00CB4B39 /* ReadMeTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeTableViewDelegate.swift; sourceTree = "<group>"; };
+		E1F9621226E42C5E00CB4B39 /* BookDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTableViewController.swift; sourceTree = "<group>"; };
+		E1F9621926E57EB800CB4B39 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		E1F9621C26E5C24500CB4B39 /* AddNewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBookViewController.swift; sourceTree = "<group>"; };
+		E1F9621E26E693DF00CB4B39 /* LibraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryHeaderView.swift; sourceTree = "<group>"; };
+		E1F9622026E6A4CF00CB4B39 /* LibraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryHeaderView.xib; sourceTree = "<group>"; };
+		E1F9622226E83B6400CB4B39 /* ReadMeTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		E1F9622426E83FAB00CB4B39 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1F961E926E3037D00CB4B39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1F961E326E3037D00CB4B39 = {
+			isa = PBXGroup;
+			children = (
+				E1F961EE26E3037D00CB4B39 /* ReadMe App UITableView with DataSource */,
+				E1F961ED26E3037D00CB4B39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1F961ED26E3037D00CB4B39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1F961EC26E3037D00CB4B39 /* ReadMe App UITableView with DataSource.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1F961EE26E3037D00CB4B39 /* ReadMe App UITableView with DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9621126E42A2800CB4B39 /* Data Repository */,
+				E1F9620426E303E000CB4B39 /* Models */,
+				E1F9620526E303E300CB4B39 /* Views */,
+				E1F9620326E303DA00CB4B39 /* Controllers */,
+				E1F9620626E303EB00CB4B39 /* Storyboards */,
+				E1F9620726E303F000CB4B39 /* Support */,
+				E1F961FD26E3038200CB4B39 /* Info.plist */,
+			);
+			path = "ReadMe App UITableView with DataSource";
+			sourceTree = "<group>";
+		};
+		E1F9620326E303DA00CB4B39 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9621B26E5C21700CB4B39 /* AddNewBookViewController */,
+				E1F9620A26E31C8100CB4B39 /* ReadMeViewController */,
+				E1F9621426E42C7C00CB4B39 /* BookDetailViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1F9620426E303E000CB4B39 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9620826E314C800CB4B39 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E1F9620526E303E300CB4B39 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9621926E57EB800CB4B39 /* BookTableViewCell.swift */,
+				E1F9621E26E693DF00CB4B39 /* LibraryHeaderView.swift */,
+				E1F9622026E6A4CF00CB4B39 /* LibraryHeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1F9620626E303EB00CB4B39 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E1F961F526E3037D00CB4B39 /* Main.storyboard */,
+				E1F961FA26E3038200CB4B39 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E1F9620726E303F000CB4B39 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E1F961F826E3038200CB4B39 /* Assets.xcassets */,
+				E1F961EF26E3037D00CB4B39 /* AppDelegate.swift */,
+				E1F961F126E3037D00CB4B39 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E1F9620A26E31C8100CB4B39 /* ReadMeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1F961F326E3037D00CB4B39 /* ReadMeViewController.swift */,
+				E1F9622226E83B6400CB4B39 /* ReadMeTableViewDiffableDataSource.swift */,
+				E1F9620B26E31CBD00CB4B39 /* ReadMeTableViewDataSource.swift */,
+				E1F9620D26E31CCC00CB4B39 /* ReadMeTableViewDelegate.swift */,
+			);
+			path = ReadMeViewController;
+			sourceTree = "<group>";
+		};
+		E1F9621126E42A2800CB4B39 /* Data Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9622426E83FAB00CB4B39 /* Library.swift */,
+			);
+			path = "Data Repository";
+			sourceTree = "<group>";
+		};
+		E1F9621426E42C7C00CB4B39 /* BookDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9621226E42C5E00CB4B39 /* BookDetailTableViewController.swift */,
+			);
+			path = BookDetailViewController;
+			sourceTree = "<group>";
+		};
+		E1F9621B26E5C21700CB4B39 /* AddNewBookViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E1F9621C26E5C24500CB4B39 /* AddNewBookViewController.swift */,
+			);
+			path = AddNewBookViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1F961EB26E3037D00CB4B39 /* ReadMe App UITableView with DataSource */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1F9620026E3038200CB4B39 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView with DataSource" */;
+			buildPhases = (
+				E1F961E826E3037D00CB4B39 /* Sources */,
+				E1F961E926E3037D00CB4B39 /* Frameworks */,
+				E1F961EA26E3037D00CB4B39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReadMe App UITableView with DataSource";
+			productName = "ReadMe App UITableView with DataSource";
+			productReference = E1F961EC26E3037D00CB4B39 /* ReadMe App UITableView with DataSource.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1F961E426E3037D00CB4B39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					E1F961EB26E3037D00CB4B39 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = E1F961E726E3037D00CB4B39 /* Build configuration list for PBXProject "ReadMe App UITableView with DataSource" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1F961E326E3037D00CB4B39;
+			productRefGroup = E1F961ED26E3037D00CB4B39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1F961EB26E3037D00CB4B39 /* ReadMe App UITableView with DataSource */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1F961EA26E3037D00CB4B39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F961FC26E3038200CB4B39 /* LaunchScreen.storyboard in Resources */,
+				E1F961F926E3038200CB4B39 /* Assets.xcassets in Resources */,
+				E1F961F726E3037D00CB4B39 /* Main.storyboard in Resources */,
+				E1F9622126E6A4CF00CB4B39 /* LibraryHeaderView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1F961E826E3037D00CB4B39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F9620E26E31CCC00CB4B39 /* ReadMeTableViewDelegate.swift in Sources */,
+				E1F9620926E314C800CB4B39 /* Book.swift in Sources */,
+				E1F961F426E3037D00CB4B39 /* ReadMeViewController.swift in Sources */,
+				E1F961F026E3037D00CB4B39 /* AppDelegate.swift in Sources */,
+				E1F9621A26E57EB800CB4B39 /* BookTableViewCell.swift in Sources */,
+				E1F9622526E83FAC00CB4B39 /* Library.swift in Sources */,
+				E1F961F226E3037D00CB4B39 /* SceneDelegate.swift in Sources */,
+				E1F9621F26E693DF00CB4B39 /* LibraryHeaderView.swift in Sources */,
+				E1F9621326E42C5E00CB4B39 /* BookDetailTableViewController.swift in Sources */,
+				E1F9621D26E5C24500CB4B39 /* AddNewBookViewController.swift in Sources */,
+				E1F9620C26E31CBD00CB4B39 /* ReadMeTableViewDataSource.swift in Sources */,
+				E1F9622326E83B6400CB4B39 /* ReadMeTableViewDiffableDataSource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1F961F526E3037D00CB4B39 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1F961F626E3037D00CB4B39 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1F961FA26E3038200CB4B39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1F961FB26E3038200CB4B39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1F961FE26E3038200CB4B39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E1F961FF26E3038200CB4B39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1F9620126E3038200CB4B39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "ReadMe App UITableView with DataSource/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.ReadMe-App-UITableView-with-DataSource";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E1F9620226E3038200CB4B39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XWVP4F494Z;
+				INFOPLIST_FILE = "ReadMe App UITableView with DataSource/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.jasonpinlac.ReadMe-App-UITableView-with-DataSource";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1F961E726E3037D00CB4B39 /* Build configuration list for PBXProject "ReadMe App UITableView with DataSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1F961FE26E3038200CB4B39 /* Debug */,
+				E1F961FF26E3038200CB4B39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1F9620026E3038200CB4B39 /* Build configuration list for PBXNativeTarget "ReadMe App UITableView with DataSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1F9620126E3038200CB4B39 /* Debug */,
+				E1F9620226E3038200CB4B39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1F961E426E3037D00CB4B39 /* Project object */;
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JGL-00-tfh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Emoji Collection Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="EmojiCollectionController" customModule="EmojiLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-fW-szv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Sdr-tb-SrD">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmojiCell" id="opy-oc-rbT" customClass="EmojiCell" customModule="EmojiLibrary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S0s-LU-huk">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgh-mY-R8e">
+                                                    <rect key="frame" x="13.5" y="14.5" width="23" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Sgh-mY-R8e" firstAttribute="centerY" secondItem="S0s-LU-huk" secondAttribute="centerY" id="AzG-ZV-MBE"/>
+                                                <constraint firstItem="Sgh-mY-R8e" firstAttribute="centerX" secondItem="S0s-LU-huk" secondAttribute="centerX" id="BYj-h9-lst"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="emojiLabel" destination="Sgh-mY-R8e" id="qlE-b2-3DZ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4fD-fW-szv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G8T-nl-BOu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4fD-fW-szv" secondAttribute="bottom" id="UJr-Jj-up2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fD-fW-szv" secondAttribute="trailing" id="agr-s1-w2f"/>
+                            <constraint firstItem="4fD-fW-szv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wzB-a1-oI7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bX3-6q-dlS">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="UPE-dQ-FE5">
+                                <connections>
+                                    <action selector="addRandomEmoji:" destination="BYZ-38-t0r" id="gHC-1y-22P"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Item" systemItem="trash" id="BB9-Iq-CQ8">
+                                <connections>
+                                    <action selector="deleteSelectedEmojis:" destination="BYZ-38-t0r" id="ZfE-Zj-t1K"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addEmojiButton" destination="UPE-dQ-FE5" id="B5j-u5-QYQ"/>
+                        <outlet property="collectionView" destination="4fD-fW-szv" id="dKN-MG-bwT"/>
+                        <outlet property="deleteEmojiButton" destination="BB9-Iq-CQ8" id="ReQ-2z-ovP"/>
+                        <segue destination="BS8-J9-Ajs" kind="show" identifier="EmojiDetailController" id="fzW-cp-dxQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763.768115942029" y="107.8125"/>
+        </scene>
+        <!--Emoji Detail Controller-->
+        <scene sceneID="N2j-1r-bdi">
+            <objects>
+                <viewController id="BS8-J9-Ajs" customClass="EmojiDetailController" customModule="EmojiLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J4q-Yn-g73">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKg-Fy-jJQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aBr-7k-Isl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WKg-Fy-jJQ" firstAttribute="width" secondItem="aBr-7k-Isl" secondAttribute="width" id="DPK-r1-FOb"/>
+                            <constraint firstItem="WKg-Fy-jJQ" firstAttribute="centerX" secondItem="aBr-7k-Isl" secondAttribute="centerX" id="YwM-2Z-2eC"/>
+                            <constraint firstItem="WKg-Fy-jJQ" firstAttribute="height" secondItem="aBr-7k-Isl" secondAttribute="height" id="Zdk-20-DSs"/>
+                            <constraint firstItem="WKg-Fy-jJQ" firstAttribute="centerY" secondItem="aBr-7k-Isl" secondAttribute="centerY" id="rIq-hN-SWB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Mh-K5-LwK"/>
+                    <connections>
+                        <outlet property="textLabel" destination="WKg-Fy-jJQ" id="irF-mj-wZF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUg-ae-zGr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1672" y="108"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nbL-Qi-s0f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JGL-00-tfh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mMA-3n-c9P">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="COR-ir-qHR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hdd-wg-kz4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-146.37681159420291" y="107.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
