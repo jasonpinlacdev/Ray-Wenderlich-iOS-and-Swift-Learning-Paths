@@ -46,25 +46,81 @@ class QueuedTutorialController: UIViewController {
   @IBOutlet var deleteButton: UIBarButtonItem!
   @IBOutlet var updateButton: UIBarButtonItem!
   @IBOutlet var applyUpdatesButton: UIBarButtonItem!
+  
   @IBOutlet weak var collectionView: UICollectionView!
+  var queuedTutorialCollectionViewDiffableDataSource: QueuedTutorialCollectionViewDiffableDataSource!
+  var queuedTutorialCollectionViewDelgate = QueuedTutorialControllerDelegate()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    configureCollectionView()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    queuedTutorialCollectionViewDiffableDataSource.updateSnapshot()
   }
   
   private func setupView() {
     self.title = "Queue"
     navigationItem.leftBarButtonItem = editButtonItem
     navigationItem.rightBarButtonItem = nil
-    
-    
   }
 }
+
+//MARK: - CollectionView Layout and DataSource Configurations -
+
+extension QueuedTutorialController {
+  
+  func configureCollectionView() {
+    self.collectionView.delegate = self.queuedTutorialCollectionViewDelgate
+    self.collectionView.collectionViewLayout = configureCollectionViewCompositionalLayout()
+    configureCollectionViewDiffableDataSource()
+  }
+  
+  private func configureCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+    let sectionProvider: UICollectionViewCompositionalLayoutSectionProvider = { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection in
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(110.0))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      return section
+    }
+    return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+  }
+  
+  private func configureCollectionViewDiffableDataSource() {
+    self.queuedTutorialCollectionViewDiffableDataSource = QueuedTutorialCollectionViewDiffableDataSource(collectionView: self.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+      guard let queueCell = collectionView.dequeueReusableCell(withReuseIdentifier: QueueCell.reuseIdentifier, for: indexPath) as? QueueCell else { fatalError("Failed to dequeue a reusable QueueCell") }
+      queueCell.titleLabel.text = self.queuedTutorialCollectionViewDiffableDataSource.itemIdentifier(for: indexPath)?.title
+      queueCell.thumbnailImageView.image = self.queuedTutorialCollectionViewDiffableDataSource.itemIdentifier(for: indexPath)?.image
+      return queueCell
+    })
+    var initialSnapshot = NSDiffableDataSourceSnapshot<QueuedTutorialSection, Tutorial>()
+    initialSnapshot.appendSections([QueuedTutorialSection.main])
+    initialSnapshot.appendItems(DataRepository.shared.getQueuedTutorials(), toSection: QueuedTutorialSection.main)
+    queuedTutorialCollectionViewDiffableDataSource.apply(initialSnapshot)
+  }
+  
+  
+  
+  
+  
+}
+
+
+
+
+
+
+
 
 // MARK: - Queue Events -
 
 extension QueuedTutorialController {
+  
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
     

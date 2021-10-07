@@ -13,4 +13,20 @@ class DataRepository {
     guard let genreCollection  = try? PropertyListDecoder().decode([Genre].self, from: genreCollectionPListData) else { return }
     self.genreCollection = genreCollection
   }
+  
+  func getQueuedTutorials() -> [Tutorial] {
+    var queuedTutorials: [Tutorial] = []
+    
+    
+    DataRepository.shared.genreCollection.forEach { genre in
+      genre.tutorials.forEach { tutorial in
+        if tutorial.isQueued {
+          queuedTutorials.append(tutorial) }
+      }
+    }
+    return queuedTutorials
+  }
+  
+  
+
 }

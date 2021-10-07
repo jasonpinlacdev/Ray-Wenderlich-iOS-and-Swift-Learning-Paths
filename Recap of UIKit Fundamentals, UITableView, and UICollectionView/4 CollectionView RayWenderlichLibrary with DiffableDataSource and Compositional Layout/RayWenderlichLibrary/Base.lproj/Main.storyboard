@@ -106,7 +106,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7de-yS-rfX">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" name="rw-bg"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z2e-lA-6Uc">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -160,7 +160,6 @@
                                                 <constraint firstItem="QhW-hv-SUk" firstAttribute="top" secondItem="Fcn-VG-EQ3" secondAttribute="top" constant="16" id="pMj-kR-O6h"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" name="rw-card"/>
                                         <size key="customSize" width="394" height="128"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -191,7 +190,6 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wdc-kX-NQN"/>
-                        <color key="backgroundColor" name="rw-bg"/>
                         <constraints>
                             <constraint firstItem="7de-yS-rfX" firstAttribute="leading" secondItem="Wdc-kX-NQN" secondAttribute="leading" id="Cdp-DE-nY1"/>
                             <constraint firstItem="Wdc-kX-NQN" firstAttribute="trailing" secondItem="7de-yS-rfX" secondAttribute="trailing" id="PJB-jH-SOM"/>
@@ -407,12 +405,6 @@
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
-        <namedColor name="rw-bg">
-            <color red="0.94900000095367432" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="rw-card">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="rw-light-gray">
             <color red="0.9179999828338623" green="0.92500001192092896" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

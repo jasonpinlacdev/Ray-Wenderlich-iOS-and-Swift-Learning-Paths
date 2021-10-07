@@ -32,6 +32,8 @@
 		E1B912E0270D2E5B00D7A05F /* TutorialDetailCollectionViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B912DF270D2E5B00D7A05F /* TutorialDetailCollectionViewDiffableDataSource.swift */; };
 		E1B912E2270D83D500D7A05F /* TutorialDetailSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B912E1270D83D500D7A05F /* TutorialDetailSectionHeaderCollectionReusableView.swift */; };
 		E1B912E4270E02E100D7A05F /* TutorialDetailViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B912E3270E02E100D7A05F /* TutorialDetailViewControllerDelegate.swift */; };
+		E1B91326270F58B600D7A05F /* QueuedTutorialControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B91325270F58B500D7A05F /* QueuedTutorialControllerDelegate.swift */; };
+		E1B91328270F59F900D7A05F /* QueuedTutorialCollectionViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B91327270F59F900D7A05F /* QueuedTutorialCollectionViewDiffableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		E1B912DF270D2E5B00D7A05F /* TutorialDetailCollectionViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailCollectionViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		E1B912E1270D83D500D7A05F /* TutorialDetailSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		E1B912E3270E02E100D7A05F /* TutorialDetailViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDetailViewControllerDelegate.swift; sourceTree = "<group>"; };
+		E1B91325270F58B500D7A05F /* QueuedTutorialControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuedTutorialControllerDelegate.swift; sourceTree = "<group>"; };
+		E1B91327270F59F900D7A05F /* QueuedTutorialCollectionViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuedTutorialCollectionViewDiffableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				97D3043F236161AC00307413 /* QueuedTutorialController.swift */,
+				E1B91327270F59F900D7A05F /* QueuedTutorialCollectionViewDiffableDataSource.swift */,
+				E1B91325270F58B500D7A05F /* QueuedTutorialControllerDelegate.swift */,
 			);
 			path = QueuedTutorialController;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				E1A961BF270CCB2C00A17378 /* GenreSectionHeaderCollectionReusableView.swift in Sources */,
 				97D304442361625000307413 /* TutorialCell.swift in Sources */,
 				97D3041723615DA600307413 /* AppDelegate.swift in Sources */,
+				E1B91326270F58B600D7A05F /* QueuedTutorialControllerDelegate.swift in Sources */,
 				97D3041923615DA600307413 /* SceneDelegate.swift in Sources */,
 				E1B912E2270D83D500D7A05F /* TutorialDetailSectionHeaderCollectionReusableView.swift in Sources */,
 				97D30438236160A100307413 /* Section.swift in Sources */,
@@ -297,6 +304,7 @@
 				E1B912DC270CFDC700D7A05F /* GenreCollectionDelegate.swift in Sources */,
 				97D3042C23615E5800307413 /* UIColor+Extensions.swift in Sources */,
 				97D3043C236160DC00307413 /* Video.swift in Sources */,
+				E1B91328270F59F900D7A05F /* QueuedTutorialCollectionViewDiffableDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
